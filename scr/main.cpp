@@ -4,11 +4,24 @@
 using namespace std;
 
 int main()
-
 {
-	const double I_ext(0);
+	constexpr double INITIAL_TIME(0);//
+	constexpr double FINAL_TIME(1000);
+	constexpr double h(20); //strep in time, milliseconds
+	double simtime(INITIAL_TIME);
 	
-	cout << "Hello"<< endl;
-	//const 
+	constexpr double I_ext(20);//piktoampere
 	
+	//Neuron neuron;
+	
+	
+	while (simtime <= FINAL_TIME)
+	{
+		simtime += h;
 	}
+	
+	
+	cout << "End"<< endl;
+
+	
+}

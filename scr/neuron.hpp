@@ -2,6 +2,7 @@
 #define NEURON_H
 
 #include <iostream>
+#include <vector>
 
 class Neuron
 {
@@ -10,6 +11,8 @@ class Neuron
 	void update();
 	
 	private:
+	
+	double membranePotential;
 	
 	//double 
 };
