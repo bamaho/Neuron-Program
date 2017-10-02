@@ -11,6 +11,8 @@ neuron.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
 iostream
 -
+array
+-
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.cpp
 neuron.hpp
@@ -18,5 +20,7 @@ neuron.hpp
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
 iostream
+-
+vector
 -
 

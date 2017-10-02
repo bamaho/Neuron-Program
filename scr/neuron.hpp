@@ -8,11 +8,15 @@ class Neuron
 {
 	public:
 	
+	Neuron();
+	
 	void update();
+	size_t getNumberOfSpike();
 	
 	private:
 	
 	double membranePotential;
+	std::vector<double> spikes;
 	
 	//double 
 };
