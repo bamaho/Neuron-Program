@@ -11,7 +11,7 @@ class Neuron
 	Neuron();
 	
 	void update();
-	size_t getNumberOfSpike();
+	size_t getNumberOfSpikes();
 	
 	private:
 	
