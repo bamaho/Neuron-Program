@@ -10,11 +10,17 @@ class Neuron
 	
 	Neuron();
 	
-	double getMembranePotential();
-	size_t getNumberOfSpikes();
-	std::vector<double> getSpikeTime();	//Vector is not the appropriate choice
+	double getMembranePotential() const;
+	size_t getNumberOfSpikes() const;
+	std::vector<double> getSpikeTime() const;	//Vector is not the appropriate choice
+	
+	bool isRefractory(double currentSimulationTime) const;
+	//void setInRefractoryState();
+	
+	void spike(double currentSimulationTime);	//stores the spikeing time and sets the membrane potential to zero
 	
 	void update();	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
+	void updateMembranePotential(double inputCurrent);	//Calculates and alters the new membrane Potential as a function of the current membrane potential and the input current
 	
 	
 	
@@ -22,8 +28,7 @@ class Neuron
 	
 	double membranePotential;
 	std::vector<double> spikes;
-	
-	//double 
+
 };
 
 
