@@ -24,6 +24,7 @@ constexpr double REFRACTION_TIME(2);//period after spike during which the neuron
 constexpr double TIME_CONSTANT_TAU(20);	//in milliseconds
 constexpr double NUMBER_OF_CONNECTIONS_FROM_NEURONS_C(1);//each neuron receives C randomly chosen connections from other neurons in the network
 
-constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(0);
+constexpr double MEMBRANE_RESISTANCE_R(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C);
+constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(exp(-MIN_TIME_INTERVAL/TIME_CONSTANT_TAU));
 
 #endif

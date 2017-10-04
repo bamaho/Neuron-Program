@@ -28,7 +28,7 @@ int main()
 					inputCurrent = EXTERNAL_CURRENT;
 				}
 				
-				
+				neuron.updateMembranePotential(inputCurrent);
 				
 			}
 		}

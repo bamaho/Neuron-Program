@@ -36,7 +36,5 @@ using namespace std;
 
 	void Neuron::updateMembranePotential(double inputCurrent)
 	{
-		double membraneResistance(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C);//Is this the right place?
-	// inter
-//membranePotential = //
+		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL));
 	}
