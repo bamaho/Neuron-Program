@@ -7,4 +7,5 @@ CMakeFiles/neuron.dir/main.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/seco
 
 CMakeFiles/neuron.dir/neuron.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.cpp
 CMakeFiles/neuron.dir/neuron.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
+CMakeFiles/neuron.dir/neuron.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
 
