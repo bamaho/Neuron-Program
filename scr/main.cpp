@@ -14,7 +14,7 @@ int main()
 	{
 		if(not neuron.isRefractory(simulationTime))
 		{
-			if(neuron.getMembranePotential() <= MEMBRANE_POTENTIAL_THRESHOLD)
+			if(neuron.getMembranePotential() >= MEMBRANE_POTENTIAL_THRESHOLD)
 			{
 				neuron.spike(simulationTime);
 			}
