@@ -37,9 +37,11 @@ int main()
 		//If time is in the indicated interval
 		//inputCurrent = 
 		//cout << simulationTime << endl;
+		cerr << "DEBUG: membrane potential at time " << simulationTime << " is " << neuron.getMembranePotential() << endl;
 		simulationTime += MIN_TIME_INTERVAL;
 	}
 	
+	neuron.printSpikingTimes("spikes.txt");
 	
 	cout << "End"<< endl;
 

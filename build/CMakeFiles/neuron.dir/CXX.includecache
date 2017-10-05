@@ -23,11 +23,21 @@ vector
 -
 cmath
 -
+string
+-
+iostream
+-
+fstream
+-
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
 iostream
 -
 vector
+-
+string
+-
+fstream
 -
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
