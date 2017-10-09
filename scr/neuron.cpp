@@ -6,8 +6,11 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <list>
 
 using namespace std;
+
+std::list<unsigned int> Neuron::numberOfSpikes(15,0);//until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
 
 	Neuron::Neuron()
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
@@ -22,30 +25,32 @@ using namespace std;
 /*	std::vector<double> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
 	{	return spikes;	}*/
 	
-	bool Neuron::isRefractory(double currentSimulationTime) const	//If there haven't occured any spikes yet or the latest spike took place and the neuron has in the meantime undergone a complete refractory state, then the neuron isn't refractory
+	bool Neuron::isRefractory(unsigned int currentSimulationTime) const	//If there haven't occured any spikes yet or the latest spike took place and the neuron has in the meantime undergone a complete refractory state, then the neuron isn't refractory
 	{	if(spikes.empty() or ((currentSimulationTime - spikes.back())>=	REFRACTION_TIME))//do I account for one point in time twice? 
 		{	return false;	}
 		else { return true; }
 	}
 	
-	void Neuron::spike(double currentSimulationTime)
+	void Neuron::spike(unsigned int currentSimulationTime)
 	{
 		spikes.push_back(currentSimulationTime);
+		numberOfSpikes.front() ++;//increments the number of spikes of the current time interval, loading buffer
 		membranePotential = 0;
 	}
 	
-	void Neuron::updateMembranePotential(double inputCurrent)
+	void Neuron::updateMembranePotential(double inputCurrent)//, int numberOfSpikes)
 	{
-		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL));
+		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+SPIKE_AMPLITUDE_J*numberOfSpikes.back());
 	}
 
-	void Neuron::update(double simulationTime)	//Not complete yet, will be invoked at each cycle of the simulation and makes the neutron evolve in the course of time
+	void Neuron::update(unsigned int simulationTime)	//Not complete yet, will be invoked at each cycle of the simulation and makes the neutron evolve in the course of time
 	{
 		if(not isRefractory(simulationTime))
 		{
 			if(getMembranePotential() >= MEMBRANE_POTENTIAL_THRESHOLD)
 			{
 				spike(simulationTime);
+				//return true;//does spike
 			}
 			
 			else
@@ -62,8 +67,17 @@ using namespace std;
 			}
 		}
 		
+		//return false;//doesn't spike
 		
 	}
+	
+	void Neuron::updateRingBuffer() //deletes the last entry, adds new zero in the beginning
+	{
+		numberOfSpikes.pop_back();
+		numberOfSpikes.push_front(0);
+		
+	}
+	
 
 	
 	void Neuron::printSpikingTimes(const string& nameOfFile) const //prints the registered times when spikes ocurred into a file with a name to indicate
@@ -81,7 +95,7 @@ using namespace std;
 			
 			for(auto const& spike: spikes)
 			{
-				out << spike << endl;
+				out << spike*MIN_TIME_INTERVAL_H << endl; //prints the time not in number of threps but in milliseconds
 			}
 		}
 		out.close();
