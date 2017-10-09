@@ -25,14 +25,19 @@ class Neuron
 	
 	void printSpikingTimes(const std::string& nameOfFile) const;	//stores the values of hte spikes
 	
-	static void updateRingBuffer(); //updates the ring buffer, deletes the last element and adds an empty one in the front
+	void updateRingBuffer(); //updates the ring buffer, deletes the last element and adds an empty one in the front
+	
+	void receiveSpike(unsigned int localTimeOfSpikingNeuron);
 	
 	private:
 	
 	double membranePotential;
 	std::vector<unsigned int> spikes; //a vector is not the appropriate choice...a list would provide the required functions as well
+	std::vector<Neuron*> targets;	//Neurons on which an eventual spike of the current neuron has an impact
 	
-	static std::list<unsigned int> numberOfSpikes; //ring-buffer: the first element always corresponds to the current one..., last one to the least recent one, stores how many spikes arrive
+	unsigned int internalTime;
+	
+	std::list<unsigned int> numberOfSpikes; //ring-buffer: the first element always corresponds to the current one..., last one to the least recent one, stores how many spikes arrive
 
 };
 

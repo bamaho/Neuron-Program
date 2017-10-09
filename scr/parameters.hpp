@@ -24,7 +24,7 @@ constexpr double MEMBRANE_POTENTIAL_THRESHOLD(20);
 constexpr unsigned int REFRACTION_TIME(2);//period after spike during which the neuron is insenstitive to stimulation, in steps
 
 constexpr unsigned int TIME_CONSTANT_TAU(20);	//in milliseconds?
-constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_NEURONS_C(1);//each neuron receives C randomly chosen connections from other neurons in the network //to be altered
+constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_NEURONS_C(2);//each neuron receives C randomly chosen connections from other neurons in the network //to be altered
 
 constexpr double MEMBRANE_RESISTANCE_R(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C);//division by zero
 constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU));//division by zero

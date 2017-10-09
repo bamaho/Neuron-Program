@@ -10,10 +10,11 @@
 
 using namespace std;
 
-std::list<unsigned int> Neuron::numberOfSpikes(15,0);//until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
+//std::list<unsigned int> Neuron::numberOfSpikes(15,0);//until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
 
 	Neuron::Neuron()
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
+	,internalTime(INITIAL_TIME)//Might be more appropriate to use the time of creation as an argument, by default the assumption is, that it gets created at the beginning of the simulation
 	{}
 	
 	double Neuron::getMembranePotential() const
@@ -34,7 +35,7 @@ std::list<unsigned int> Neuron::numberOfSpikes(15,0);//until the delay arrives i
 	void Neuron::spike(unsigned int currentSimulationTime)
 	{
 		spikes.push_back(currentSimulationTime);
-		numberOfSpikes.front() ++;//increments the number of spikes of the current time interval, loading buffer
+		//numberOfSpikes.front() ++;//increments the number of spikes of the current time interval, loading buffer
 		membranePotential = 0;
 	}
 	
@@ -63,7 +64,7 @@ std::list<unsigned int> Neuron::numberOfSpikes(15,0);//until the delay arrives i
 				}
 				
 				updateMembranePotential(inputCurrent);
-				
+				internalTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;
 			}
 		}
 		

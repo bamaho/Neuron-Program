@@ -10,7 +10,7 @@ int main()
 {
 	Neuron neuron;	//initialization of neuron
 	Neuron neuron2;
-	double simulationTime(INITIAL_TIME);	//initializing the simulation time
+	unsigned int simulationTime(INITIAL_TIME);	//initializing the simulation time
 	
 	while (simulationTime < FINAL_TIME)	// "<" because the time scale is defined as each interval step going from [t to t+h), t+h isn't in the interval otherwise I would account twice for certain points in time
 	{
