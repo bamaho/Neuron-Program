@@ -5,6 +5,9 @@
 
 //Parameters
 
+	//General
+constexpr double EPSILON_VERY_SMALL(0.000001);
+
 	//Time
 constexpr unsigned int INITIAL_TIME(0);	//starting time of the simulation, in steps
 constexpr unsigned int FINAL_TIME(1000);	//time when the simulation ends, in steps

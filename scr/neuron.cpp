@@ -37,6 +37,16 @@ using namespace std;
 		spikes.push_back(currentSimulationTime);
 		//numberOfSpikes.front() ++;//increments the number of spikes of the current time interval, loading buffer
 		membranePotential = 0;
+		if(not targets.empty())
+		{
+			for(auto& targetNeuron: targets)
+			{
+				if(targetNeuron != nullptr) {
+                targetNeuron->receiveSpike(internalTime);
+				}
+			
+			}
+		}
 	}
 	
 	void Neuron::updateMembranePotential(double inputCurrent)//, int numberOfSpikes)
@@ -79,6 +89,16 @@ using namespace std;
 		
 	}
 	
+	void Neuron::receiveSpike(unsigned int localTimeOfSpikingNeuron)
+	{
+		//numberOfSpikes[abs(localTimeOfSpikingNeuron-internalTime) < EPSILON_VERY_SMALL]	++;//tests if the current neuron has already ben updated in this cycle, could be made with positions in lists or vectors as well, identifier for each neuron
+		//numberOfSpikes.front() ++;//increments the number of spikes of the current time interval, loading buffer
+		auto temporaryIterator = numberOfSpikes.begin();
+		if(not abs(localTimeOfSpikingNeuron-internalTime) < EPSILON_VERY_SMALL)
+		{++temporaryIterator;}
+		*temporaryIterator++;
+		
+	}
 
 	
 	void Neuron::printSpikingTimes(const string& nameOfFile) const //prints the registered times when spikes ocurred into a file with a name to indicate
