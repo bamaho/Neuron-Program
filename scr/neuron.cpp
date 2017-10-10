@@ -1,7 +1,7 @@
 #include "neuron.hpp"
 #include "parameters.hpp"
 
-#include <vector>
+//#include <vector>
 #include <cmath>
 #include <string>
 #include <iostream>
@@ -10,12 +10,20 @@
 
 using namespace std;
 
-//std::list<unsigned int> Neuron::numberOfSpikes(15,0);//until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
+//until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
 
 	Neuron::Neuron()
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
 	,internalTime(INITIAL_TIME)//Might be more appropriate to use the time of creation as an argument, by default the assumption is, that it gets created at the beginning of the simulation
+	,numberOfSpikes(SIGNAL_DELAY_D,0) //until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
 	{}
+	
+	void Neuron:: addTarget(Neuron* target)//not the most elegant solution, since with this conception it is the users oblication to allocate space in the memory, the usage of unique pointers might have been more appropriate
+{
+    if(target != nullptr) {
+        targets.push_back(target);
+    }
+}
 	
 	double Neuron::getMembranePotential() const
 	{	return membranePotential;	}
@@ -34,6 +42,7 @@ using namespace std;
 	
 	void Neuron::spike(unsigned int currentSimulationTime)
 	{
+		cerr << "Debug Ring Buffer: spike at time " << currentSimulationTime << endl;
 		spikes.push_back(currentSimulationTime);
 		//numberOfSpikes.front() ++;//increments the number of spikes of the current time interval, loading buffer
 		membranePotential = 0;
@@ -51,6 +60,7 @@ using namespace std;
 	
 	void Neuron::updateMembranePotential(double inputCurrent)//, int numberOfSpikes)
 	{
+		cerr << "Debug Ring Buffer : number of Spikes in the Ring Buffer element that is read " << numberOfSpikes.back() << " at time " << internalTime << endl;
 		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+SPIKE_AMPLITUDE_J*numberOfSpikes.back());
 	}
 

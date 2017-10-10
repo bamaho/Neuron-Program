@@ -17,6 +17,8 @@ int main()
 		
 		neuron.update(simulationTime);
 		neuron2.update(simulationTime);
+		//neuron* tmpPtr(&neuron2);
+		neuron.addTarget(&neuron2);
 		
 		//cerr << "DEBUG: membrane potential at time " << simulationTime << " is " << neuron.getMembranePotential() << endl;	//DEBUG: membrane potential developement
 		simulationTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;

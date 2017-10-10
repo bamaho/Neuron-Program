@@ -13,6 +13,8 @@ constexpr unsigned int INITIAL_TIME(0);	//starting time of the simulation, in st
 constexpr unsigned int FINAL_TIME(1000);	//time when the simulation ends, in steps
 constexpr double MIN_TIME_INTERVAL_H(0.1);	//minimal time interval in milliseconds, duration of one time step ...H*number of steps gives the real time in milliseconds
 constexpr unsigned int NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE(1);
+constexpr unsigned int SIGNAL_DELAY_D(15); //in steps
+
 
 	//Current
 constexpr double EXTERNAL_CURRENT(5); //current applied to the neuron from the outside in piktoampere

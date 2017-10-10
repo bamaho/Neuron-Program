@@ -29,6 +29,8 @@ class Neuron
 	
 	void receiveSpike(unsigned int localTimeOfSpikingNeuron);
 	
+	void addTarget(Neuron* target);
+	
 	private:
 	
 	double membranePotential;
