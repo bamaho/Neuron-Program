@@ -15,13 +15,15 @@ class Neuron
 	
 	double getMembranePotential() const;
 	size_t getNumberOfSpikes() const;
-	//std::vector<double> getSpikeTime() const;	//Is this function necessary? 
-	bool isRefractory(unsigned int currentSimulationTime) const; 	//returns as a function of the current simulation time if the neuron is in a refractory state by comparing it to the time of the last spike and the refraction time
 	
+	void update(unsigned int simulationTime);	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
+	
+	bool isRefractory(unsigned int currentSimulationTime) const; 	//returns as a function of the current simulation time if the neuron is in a refractory state by comparing it to the time of the last spike and the refraction time
 	void spike(unsigned int currentSimulationTime);	//stores the spikeing time and sets the membrane potential to zero
+	
 	void updateMembranePotential(double inputCurrent);	//Calculates and alters the new membrane Potential as a function of the current membrane potential and the input current
 	
-	void update(unsigned int simulationTime);	//Could be invoked at each cycle of the simulation and makes the neutron evolve in the course of time, the code that is currently in the loop of the main should be reorganized within the body of ths function
+	
 	
 	void printSpikingTimes(const std::string& nameOfFile) const;	//stores the values of hte spikes
 	
@@ -29,7 +31,10 @@ class Neuron
 	
 	void receiveSpike(unsigned int localTimeOfSpikingNeuron);
 	
+	//Network
 	void addTarget(Neuron* target);
+	
+	//std::vector<double> getSpikeTime() const;	//Is this function necessary? 
 	
 	private:
 	

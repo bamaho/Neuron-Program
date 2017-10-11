@@ -11,14 +11,15 @@ int main()
 	Neuron neuron;	//initialization of neuron
 	Neuron neuron2;
 	unsigned int simulationTime(INITIAL_TIME);	//initializing the simulation time
+	//neuron* tmpPtr(&neuron2);
+		neuron.addTarget(&neuron2);
+		neuron2.addTarget(&neuron);
 	
 	while (simulationTime < FINAL_TIME)	// "<" because the time scale is defined as each interval step going from [t to t+h), t+h isn't in the interval otherwise I would account twice for certain points in time
 	{
 		
 		neuron.update(simulationTime);
 		neuron2.update(simulationTime);
-		//neuron* tmpPtr(&neuron2);
-		neuron.addTarget(&neuron2);
 		
 		//cerr << "DEBUG: membrane potential at time " << simulationTime << " is " << neuron.getMembranePotential() << endl;	//DEBUG: membrane potential developement
 		simulationTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;

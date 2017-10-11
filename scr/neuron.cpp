@@ -14,8 +14,8 @@ using namespace std;
 
 	Neuron::Neuron()
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
-	,internalTime(INITIAL_TIME)//Might be more appropriate to use the time of creation as an argument, by default the assumption is, that it gets created at the beginning of the simulation
-	,numberOfSpikes(SIGNAL_DELAY_D,0) //until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
+	,internalTime(INITIAL_TIME) //Might be more appropriate to use the time of creation as an argument, by default the assumption is, that it gets created at the beginning of the simulation
+	,numberOfSpikes(SIGNAL_DELAY_D + 1,0) //until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
 	{}
 	
 	void Neuron:: addTarget(Neuron* target)//not the most elegant solution, since with this conception it is the users oblication to allocate space in the memory, the usage of unique pointers might have been more appropriate
@@ -84,15 +84,16 @@ using namespace std;
 				}
 				
 				updateMembranePotential(inputCurrent);
-				internalTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;
+				
 			}
 		}
-		
+		updateRingBuffer();
+		internalTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;
 		//return false;//doesn't spike
 		
 	}
 	
-	void Neuron::updateRingBuffer() //deletes the last entry, adds new zero in the beginning
+	void Neuron::updateRingBuffer() //deletes the last entry, adds new zero in the beginning, poor solution, one would only need to have a counter that gets updated
 	{
 		numberOfSpikes.pop_back();
 		numberOfSpikes.push_front(0);
@@ -106,7 +107,8 @@ using namespace std;
 		auto temporaryIterator = numberOfSpikes.begin();
 		if(not abs(localTimeOfSpikingNeuron-internalTime) < EPSILON_VERY_SMALL)
 		{++temporaryIterator;}
-		*temporaryIterator++;
+		(*temporaryIterator)++;
+		cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "first element in ring buffer is : " << numberOfSpikes.front() << endl;
 		
 	}
 
