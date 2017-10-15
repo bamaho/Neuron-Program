@@ -61,7 +61,7 @@ using namespace std;
 	
 	void Neuron::spike(unsigned int currentSimulationTime)	//stores the spiking time, sets the membrane potential to sends a signal to the connected neurons
 	{
-		cerr << "Debug Ring Buffer: spike at time " << currentSimulationTime << endl;
+		//cerr << "Debug Ring Buffer: spike at time " << currentSimulationTime << endl;
 		spikes.push_back(currentSimulationTime);
 		membranePotential = RESET_MEMBRANE_POTENTIAL;
 		if(not targets.empty())
@@ -86,23 +86,31 @@ using namespace std;
 		
 		if(not abs(localTimeOfSpikingNeuron-internalTime) < EPSILON_VERY_SMALL)
 		{	if(currentIndexRingBuffer == 0)
-			{incomingSpikes.back()++;
-				cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element -1 = end in ring buffer is : " << incomingSpikes[0] << endl;}
+			{incomingSpikes.back()++;}
+				//cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element -1 = end in ring buffer is : " << incomingSpikes[0] << endl;
 			else
-			{incomingSpikes[currentIndexRingBuffer-1]++;
-				cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element -1 in ring buffer is : " << incomingSpikes[currentIndexRingBuffer +1] << endl;}
+			{incomingSpikes[currentIndexRingBuffer-1]++;}
+				//cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element -1 in ring buffer is : " << incomingSpikes[currentIndexRingBuffer +1] << endl;
 		}
 		else
 		{
 			incomingSpikes[currentIndexRingBuffer]++;
-			cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element in ring buffer is : " << incomingSpikes[currentIndexRingBuffer] << endl;
+			//cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element in ring buffer is : " << incomingSpikes[currentIndexRingBuffer] << endl;
 		}
 		
 	}
 
 	void Neuron::updateMembranePotential(double inputCurrent)	//adding a second argument "int numberOfSpikes" would be another option
 	{
-		cerr << "Debug Ring Buffer : number of Spikes in the Ring Buffer element that is read " <<incomingSpikes[currentIndexRingBuffer] << " at time " << internalTime << endl;
+		//The following lines are useful for testing only, store the times of arriving spikes, that have an impact on membrane potential, testing functions should be implemented by getters
+		for(size_t i(0); i<incomingSpikes[currentIndexRingBuffer]; i++)
+		{
+			arrivingSpikesTimes.push_back(internalTime);
+		}
+		//cerr << "Debug Ring Buffer : number of Spikes in the Ring Buffer element that is read " <<incomingSpikes[currentIndexRingBuffer] << " at time " << internalTime << endl;
+		
+		
+		
 		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+SPIKE_AMPLITUDE_J*incomingSpikes[currentIndexRingBuffer]);
 	}
 
@@ -156,6 +164,11 @@ using namespace std;
 		}
 	}
 	
-	/*	std::vector<double> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
-	{	return spikes;	}*/
+	//Testing
+	
+		std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
+	{	return spikes;	}
+	
+	std::vector<unsigned int> Neuron::getArrivingSpikesTimes() const	//registers when spikes arrive, has except forr testing no other pu
+	{	return arrivingSpikesTimes;	}
 	

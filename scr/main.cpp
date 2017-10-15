@@ -18,7 +18,7 @@ int main()
 	
 	while (simulationTime < FINAL_TIME)	// "<" because the time scale is defined as each interval step going from [t to t+h), t+h isn't in the interval otherwise I would account twice for certain points in time
 	{
-		neuron.update(simulationTime);	//update neurons, a container will be required to simulate a network
+		neuron.update(simulationTime);	//update neurons, a container will be required to simulate a network, is the simulation time still required as an argument?
 		neuron2.update(simulationTime);
 		//cerr << "DEBUG: membrane potential at time " << simulationTime << " is " << neuron.getMembranePotential() << endl;	//DEBUG: membrane potential developement
 		simulationTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;

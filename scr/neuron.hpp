@@ -36,7 +36,9 @@ class Neuron
 	//Network
 	void addTarget(Neuron* target);	//allows to establish a connection between the neuron and another neuron, so that the other one receives its spikes
 	
-	//std::vector<double> getSpikeTime() const;	//This function isn't necessary
+	//Testing
+	std::vector<unsigned int> getSpikeTime() const;	//This function isn't necessary
+	std::vector<unsigned int> getArrivingSpikesTimes() const;
 	
 	private:
 	
@@ -47,8 +49,11 @@ class Neuron
 	unsigned int internalTime;	//second clock, allows to synchronize the times between the neurons, otherwise a problem arises when it comes to distinguishing between alrady updated and not yet updated neurons in neuron interactions
 	
 	//std::list<unsigned int> numberOfSpikes; //ring-buffer: the first element always corresponds to the current one and the last one to the least recent one, stores how many spikes arrive
-	std::array<unsigned int, SIGNAL_DELAY_D> incomingSpikes; //ring buffer
+	std::array<unsigned int, SIGNAL_DELAY_D + 1> incomingSpikes; //ring buffer, one additional element is required for the neuron to arrive with the right delay
 	size_t currentIndexRingBuffer; // has to be always between 0 and (the signal delay in steps -1)
+	
+	//Testing of ring buffer
+	std::vector<unsigned int> arrivingSpikesTimes;
 };
 
 
