@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//Build shared libraries (DLLs).
+BUILD_SHARED_LIBS:BOOL=OFF
+
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
@@ -61,6 +64,9 @@ CMAKE_C_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 
 //Flags used by the compiler during release builds with debug info.
 CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
+
+//Generate debug library name with a postfix.
+CMAKE_DEBUG_POSTFIX:STRING=d
 
 //Flags used by the linker.
 CMAKE_EXE_LINKER_FLAGS:STRING=
@@ -174,6 +180,37 @@ Neuron_BINARY_DIR:STATIC=/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/se
 //Value Computed by CMake
 Neuron_SOURCE_DIR:STATIC=/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr
 
+//Path to a program.
+PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
+
+//Value Computed by CMake
+gtest_BINARY_DIR:STATIC=/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/gtest
+
+//Dependencies for the target
+gtest_LIB_DEPENDS:STATIC=general;-pthread;
+
+//Value Computed by CMake
+gtest_SOURCE_DIR:STATIC=/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/gtest
+
+//Build gtest's sample programs.
+gtest_build_samples:BOOL=OFF
+
+//Build all of gtest's own tests.
+gtest_build_tests:BOOL=OFF
+
+//Disable uses of pthreads in gtest.
+gtest_disable_pthreads:BOOL=OFF
+
+//Use shared (DLL) run-time lib even when Google Test is built
+// as static lib.
+gtest_force_shared_crt:BOOL=OFF
+
+//Build gtest with internal symbols hidden in shared libraries.
+gtest_hide_internal_symbols:BOOL=OFF
+
+//Dependencies for the target
+gtest_main_LIB_DEPENDS:STATIC=general;-pthread;general;gtest;
+
 
 ########################
 # INTERNAL cache entries
@@ -243,6 +280,10 @@ CMAKE_GENERATOR:INTERNAL=Unix Makefiles
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Have symbol pthread_create
+CMAKE_HAVE_LIBC_CREATE:INTERNAL=
+//Have include pthread.h
+CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Start directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr
@@ -265,7 +306,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=1
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -306,4 +347,14 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PythonInterp
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python][v2.7.6()]
+//Details about finding Threads
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//ADVANCED property for variable: PYTHON_EXECUTABLE
+PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
+//Result of TRY_COMPILE
+THREADS_HAVE_PTHREAD_ARG:INTERNAL=TRUE
+//Result of TRY_RUN
+THREADS_PTHREAD_ARG:INTERNAL=2
 

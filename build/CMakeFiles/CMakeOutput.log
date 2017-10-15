@@ -546,3 +546,20 @@ make[1]: Leaving directory `/home/INTRANET/bmarty/myfiles/cpp/secondYear/secondW
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if files pthread.h exist passed with the following output:
+Change Dir: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2216749436/fast"
+make[1]: Entering directory `/home/INTRANET/bmarty/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2216749436.dir/build.make CMakeFiles/cmTryCompileExec2216749436.dir/build
+make[2]: Entering directory `/home/INTRANET/bmarty/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/CMakeTmp'
+/usr/local/bin/cmake -E cmake_progress_report /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2216749436.dir/CheckIncludeFiles.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2216749436.dir/CheckIncludeFiles.c.o   -c /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec2216749436
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2216749436.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec2216749436.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec2216749436 -rdynamic 
+make[2]: Leaving directory `/home/INTRANET/bmarty/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/INTRANET/bmarty/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/CMakeTmp'
+
+

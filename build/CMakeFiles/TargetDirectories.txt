@@ -1,1 +1,4 @@
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/neuron.dir
+/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/neuron_unitTest.dir
+/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/gtest/CMakeFiles/gtest.dir
+/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/gtest/CMakeFiles/gtest_main.dir

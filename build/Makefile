@@ -70,6 +70,16 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles/progress.marks
@@ -114,6 +124,45 @@ neuron/fast:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/build
 .PHONY : neuron/fast
 
+#=============================================================================
+# Target rules for targets named neuron_unitTest
+
+# Build rule for target.
+neuron_unitTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 neuron_unitTest
+.PHONY : neuron_unitTest
+
+# fast build rule for target.
+neuron_unitTest/fast:
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/build
+.PHONY : neuron_unitTest/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -144,6 +193,7 @@ neuron.o: neuron.cpp.o
 # target to build an object file
 neuron.cpp.o:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/neuron.cpp.o
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/neuron.cpp.o
 .PHONY : neuron.cpp.o
 
 neuron.i: neuron.cpp.i
@@ -152,6 +202,7 @@ neuron.i: neuron.cpp.i
 # target to preprocess a source file
 neuron.cpp.i:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/neuron.cpp.i
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/neuron.cpp.i
 .PHONY : neuron.cpp.i
 
 neuron.s: neuron.cpp.s
@@ -160,7 +211,32 @@ neuron.s: neuron.cpp.s
 # target to generate assembly for a file
 neuron.cpp.s:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/neuron.cpp.s
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/neuron.cpp.s
 .PHONY : neuron.cpp.s
+
+neuron_unitTest.o: neuron_unitTest.cpp.o
+.PHONY : neuron_unitTest.o
+
+# target to build an object file
+neuron_unitTest.cpp.o:
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/neuron_unitTest.cpp.o
+.PHONY : neuron_unitTest.cpp.o
+
+neuron_unitTest.i: neuron_unitTest.cpp.i
+.PHONY : neuron_unitTest.i
+
+# target to preprocess a source file
+neuron_unitTest.cpp.i:
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/neuron_unitTest.cpp.i
+.PHONY : neuron_unitTest.cpp.i
+
+neuron_unitTest.s: neuron_unitTest.cpp.s
+.PHONY : neuron_unitTest.s
+
+# target to generate assembly for a file
+neuron_unitTest.cpp.s:
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/neuron_unitTest.cpp.s
+.PHONY : neuron_unitTest.cpp.s
 
 # Help Target
 help:
@@ -171,12 +247,19 @@ help:
 	@echo "... neuron"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... neuron_unitTest"
+	@echo "... test"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
 	@echo "... neuron.o"
 	@echo "... neuron.i"
 	@echo "... neuron.s"
+	@echo "... neuron_unitTest.o"
+	@echo "... neuron_unitTest.i"
+	@echo "... neuron_unitTest.s"
 .PHONY : help
 
 
