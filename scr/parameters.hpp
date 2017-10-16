@@ -30,12 +30,11 @@ constexpr double MEMBRANE_POTENTIAL_THRESHOLD(20);	//value of mambrane potential
 constexpr double RESET_MEMBRANE_POTENTIAL(0); //value that the membrane potential takes just after the spike
 constexpr unsigned int REFRACTION_TIME(2);	//period after spike during which the neuron is insenstitive to stimulation, in steps
 
-constexpr unsigned int TIME_CONSTANT_TAU(20);	//Tau = membrane resistance * Number of Connections from neurons, in milliseconds?
-constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_NEURONS_C(1);	//each neuron receives C randomly chosen connections from other neurons in the network //to be altered? Becomes important when a whole network is simulated
+constexpr unsigned int TIME_CONSTANT_TAU(20);	//Tau = membrane resistance * Number of Connections from neurons, MUST NOT BE ZERO FOR THIS RESULTS IN UNDEFINED BEHAVIOUR, DIVISION BY ZERO!
+constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_NEURONS_C(1);	//each neuron receives C randomly chosen connections from other neurons in the network //to be altered? Becomes important when a whole network is simulated , MUST NOT BE ZERO FOR THIS RESULTS IN UNDEFINED BEHAVIOUR, DIVISION BY ZERO!
 
-//assert(NUMBER_OF_CONNECTIONS_FROM_NEURONS_C != 0);
+
 constexpr double MEMBRANE_RESISTANCE_R(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C);	//the neuron can be thought of as a simple electrical circuit
-//assert(TIME_CONSTANT_TAU != 0);
 constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU));	//an expression that has to be calculated multiple times when updating the membrane potential that is constant
 
 #endif

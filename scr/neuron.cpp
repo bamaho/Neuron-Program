@@ -29,22 +29,15 @@ using namespace std;
 	void Neuron::update()	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
 	{
 		updateRingBuffer();
-		if(not isRefractory(internalTime))
+		if(not isRefractory())
 		{
 			if(getMembranePotential() >= MEMBRANE_POTENTIAL_THRESHOLD)
 			{
-				spike(internalTime);
+				spike();
 			}
 			
 			else
 			{
-				/* double inputCurrent(0);
-				
-				if ( BEGINN_EXTERNAL_CURRENT <= simulationTime and simulationTime < END_EXTERNAL_CURRENT ) //if the time is in the interval in which an external current is applied, the current is non zero, might come from the main
-				{
-					inputCurrent = EXTERNAL_CURRENT;
-				}*/
-				
 				updateMembranePotential();
 				
 			}
@@ -54,16 +47,16 @@ using namespace std;
 		
 	}
 	
-	bool Neuron::isRefractory(unsigned int currentSimulationTime) const	//If there haven't occured any spikes yet or the latest spike took place and the neuron has in the meantime undergone a complete refractory state, then the neuron isn't refractory
-	{	if(spikes.empty() or ((currentSimulationTime - spikes.back())>=	REFRACTION_TIME))//do I account for one point in time twice? 
+	bool Neuron::isRefractory() const	//If there haven't occured any spikes yet or the latest spike took place and the neuron has in the meantime undergone a complete refractory state, then the neuron isn't refractory
+	{	if(spikes.empty() or ((internalTime - spikes.back())>=	REFRACTION_TIME))//do I account for one point in time twice? 
 		{	return false;	}
 		else { return true; }
 	}
 	
-	void Neuron::spike(unsigned int currentSimulationTime)	//stores the spiking time, sets the membrane potential to sends a signal to the connected neurons
+	void Neuron::spike()	//stores the spiking time, sets the membrane potential to sends a signal to the connected neurons
 	{
 		//cerr << "Debug Ring Buffer: spike at time " << currentSimulationTime << endl;
-		spikes.push_back(currentSimulationTime);
+		spikes.push_back(internalTime);
 		membranePotential = RESET_MEMBRANE_POTENTIAL;
 		if(not targets.empty())
 		{

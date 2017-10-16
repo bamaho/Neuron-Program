@@ -1,7 +1,7 @@
 #include "neuron.hpp"
-//#include "gtest/src/gtest-all.cc"
 #include "gtest/gtest.h"
 #include "parameters.hpp"
+
 #include <vector>
 #include <cmath>
 
@@ -30,9 +30,6 @@ TEST(neuron, ringBuffer) //tests if spikes arrive with the right delay
 		
 		simulationTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;
 	}
-
-	//std::vector<unsigned int> v1(n2.getArrivingSpikesTimes());
-	//std::vector<unsigned int> v2(n1.getSpikeTime());
 	
 	for(size_t i(0); i < n2.getArrivingSpikesTimes().size() ; i++)
 	{
@@ -41,7 +38,7 @@ TEST(neuron, ringBuffer) //tests if spikes arrive with the right delay
 	
 }
 
-TEST(neuron, updateMembranePotentialWithExternalCurrent)
+TEST(neuron, updateMembranePotentialWithExternalCurrent) //tests if the membrane potential is correctly updated if the neuron doesn't receive any spike but with stimulation through an external current after one time step
 {
 	Neuron neuron;
 	neuron.setInputCurrent(EXTERNAL_CURRENT);

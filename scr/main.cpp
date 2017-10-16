@@ -3,6 +3,7 @@
 #include "neuron.hpp"
 #include "parameters.hpp"
 //#include <vector>
+#include <cassert>
 
 using namespace std;
 
@@ -25,6 +26,8 @@ int main()
 					inputCurrent = EXTERNAL_CURRENT;
 				}
 		neuron.setInputCurrent(inputCurrent);
+		
+		
 		
 		neuron.update();	//update neurons, a container will be required to simulate a network, is the simulation time still required as an argument?
 		neuron2.update();
