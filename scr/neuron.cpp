@@ -13,6 +13,7 @@ using namespace std;
 
 	Neuron::Neuron()
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
+	,inputCurrent(0)
 	,internalTime(INITIAL_TIME) //Might be more appropriate to use the time of creation as an argument by default. Otherwise the assumption is, that it gets created at the beginning of the simulation
 	//,numberOfSpikes(SIGNAL_DELAY_D + 1,0) //until the delay arrives it takes 1.5 milliseconds...and the time step of the simulation is 0.1
 	,currentIndexRingBuffer(0)
@@ -25,26 +26,26 @@ using namespace std;
 	size_t Neuron::getNumberOfSpikes() const
 	{	return spikes.size();	}
 	
-	void Neuron::update(unsigned int simulationTime)	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
+	void Neuron::update()	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
 	{
 		updateRingBuffer();
-		if(not isRefractory(simulationTime))
+		if(not isRefractory(internalTime))
 		{
 			if(getMembranePotential() >= MEMBRANE_POTENTIAL_THRESHOLD)
 			{
-				spike(simulationTime);
+				spike(internalTime);
 			}
 			
 			else
 			{
-				double inputCurrent(0);
+				/* double inputCurrent(0);
 				
 				if ( BEGINN_EXTERNAL_CURRENT <= simulationTime and simulationTime < END_EXTERNAL_CURRENT ) //if the time is in the interval in which an external current is applied, the current is non zero, might come from the main
 				{
 					inputCurrent = EXTERNAL_CURRENT;
-				}
+				}*/
 				
-				updateMembranePotential(inputCurrent);
+				updateMembranePotential();
 				
 			}
 		}
@@ -100,7 +101,7 @@ using namespace std;
 		
 	}
 
-	void Neuron::updateMembranePotential(double inputCurrent)	//adding a second argument "int numberOfSpikes" would be another option
+	void Neuron::updateMembranePotential()	//adding a second argument "int numberOfSpikes" would be another option
 	{
 		//The following lines are useful for testing only, store the times of arriving spikes, that have an impact on membrane potential, testing functions should be implemented by getters
 		for(size_t i(0); i<incomingSpikes[currentIndexRingBuffer]; i++)
@@ -133,8 +134,12 @@ using namespace std;
 		incomingSpikes[currentIndexRingBuffer] = 0;
 	}
 	
-	bool Neuron::indexReachedEndOfRingBuffer()
+	bool Neuron::indexReachedEndOfRingBuffer() const
 	{return (currentIndexRingBuffer + 2) > (incomingSpikes.size());}
+	
+	void Neuron::setInputCurrent(double externalCurrent)
+	{inputCurrent = externalCurrent;}
+	
 	
 	void Neuron::printSpikingTimes(const string& nameOfFile) const //prints the registered times when spikes ocurred into a file with a name to indicate
 	{

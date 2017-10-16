@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 #include "parameters.hpp"
 #include <vector>
+#include <cmath>
 
 TEST(neuron, ringBuffer) //tests if spikes arrive with the right delay
 {
@@ -16,8 +17,16 @@ TEST(neuron, ringBuffer) //tests if spikes arrive with the right delay
 	
 	while (simulationTime < FINAL_TIME)	// "<" because the time scale is defined as each interval step going from [t to t+h), t+h isn't in the interval otherwise I would account twice for certain points in time
 	{
-		n1.update(simulationTime);	//update neurons, a container will be required to simulate a network
-		n2.update(simulationTime);
+		 double inputCurrent(0);
+				
+				if ( BEGINN_EXTERNAL_CURRENT <= simulationTime and simulationTime < END_EXTERNAL_CURRENT ) //if the time is in the interval in which an external current is applied, the current is non zero, might come from the main
+				{
+					inputCurrent = EXTERNAL_CURRENT;
+				}
+		n1.setInputCurrent(inputCurrent);
+		
+		n1.update();	//update neurons, a container will be required to simulate a network
+		n2.update();
 		
 		simulationTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;
 	}
@@ -29,6 +38,16 @@ TEST(neuron, ringBuffer) //tests if spikes arrive with the right delay
 	{
 		EXPECT_EQ((n2.getArrivingSpikesTimes()[i])-SIGNAL_DELAY_D, n1.getSpikeTime()[i]);//compares the arrival times of spikes with the emission times, there should be a fixed delay in between
 	}
+	
+}
+
+TEST(neuron, updateMembranePotentialWithExternalCurrent)
+{
+	Neuron neuron;
+	neuron.setInputCurrent(EXTERNAL_CURRENT);
+	neuron.update();
+	
+	EXPECT_DOUBLE_EQ(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)*INITIAL_MEMBRANE_POTENTIAL + (TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C)*EXTERNAL_CURRENT*(1-exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)),neuron.getMembranePotential());
 	
 }
 

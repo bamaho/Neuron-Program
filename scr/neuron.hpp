@@ -21,15 +21,17 @@ class Neuron
 	size_t getNumberOfSpikes() const;
 	
 	//update
-	void update(unsigned int simulationTime);	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
+	void update();	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
 	
 	bool isRefractory(unsigned int currentSimulationTime) const; 	//returns, as a function of the current simulation time, if the neuron is in a refractory state by comparing it to the time of the last spike and the refraction time
 	void spike(unsigned int currentSimulationTime);	//stores the spikeing time and sets the membrane potential to zero
 	void receiveSpike(unsigned int localTimeOfSpikingNeuron); //this function of a connected neuron is called, if the neuron spikes
-	void updateMembranePotential(double inputCurrent);	//Calculates and alters the new membrane Potential as a function of the current membrane potential and the input current
+	void updateMembranePotential();	//Calculates and alters the new membrane Potential as a function of the current membrane potential and the input current
 	void updateRingBuffer(); //updates the ring buffer, deletes the last element and adds an empty one in the front
 	void reinitializeCurrentRingBufferElement();
-	bool indexReachedEndOfRingBuffer();
+	bool indexReachedEndOfRingBuffer() const;
+	void setInputCurrent(double externalCurrent);
+	
 	//print data
 	void printSpikingTimes(const std::string& nameOfFile) const;	//stores the values of the attribute "spikes" in a file
 	
@@ -43,6 +45,7 @@ class Neuron
 	private:
 	
 	double membranePotential;
+	double inputCurrent;
 	std::vector<unsigned int> spikes; //a container to store the spiking times, a vector is not the appropriate choice...a list would provide the required functions as well
 	std::vector<Neuron*> targets;	//Neurons on which an eventual spike of the current neuron has an impact
 	
