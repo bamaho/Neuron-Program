@@ -8,6 +8,7 @@
 #include <fstream>
 #include <list>
 #include <array>
+#include <cassert>
 
 using namespace std;
 
@@ -28,7 +29,7 @@ using namespace std;
 	
 	void Neuron::update()	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
 	{
-		updateRingBuffer();
+		//updateRingBuffer();
 		if(not isRefractory())
 		{
 			if(getMembranePotential() >= MEMBRANE_POTENTIAL_THRESHOLD)
@@ -39,7 +40,6 @@ using namespace std;
 			else
 			{
 				updateMembranePotential();
-				
 			}
 		}
 		reinitializeCurrentRingBufferElement();
@@ -74,7 +74,7 @@ using namespace std;
 	{
 
 		
-		if(not abs(localTimeOfSpikingNeuron-internalTime) < EPSILON_VERY_SMALL)
+		/*if(not abs(localTimeOfSpikingNeuron-internalTime) < EPSILON_VERY_SMALL)
 		{	if(currentIndexRingBuffer == 0)
 			{incomingSpikes.back()++;}
 				//cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element -1 = end in ring buffer is : " << incomingSpikes[0] << endl;
@@ -86,14 +86,19 @@ using namespace std;
 		{
 			incomingSpikes[currentIndexRingBuffer]++;
 			//cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element in ring buffer is : " << incomingSpikes[currentIndexRingBuffer] << endl;
-		}
+		}*/
+		
+		const size_t outputTime((SIGNAL_DELAY_D+localTimeOfSpikingNeuron)%(SIGNAL_DELAY_D+1));
+		assert(outputTime < incomingSpikes.size());
+		incomingSpikes[outputTime] += 1;	//to be altered
+		
 		
 	}
 
 	void Neuron::updateMembranePotential()	//adding a second argument "int numberOfSpikes" would be another option
 	{
 		//The following lines are useful for testing only, store the times of arriving spikes, that have an impact on membrane potential, testing functions should be implemented by getters
-		for(size_t i(0); i<incomingSpikes[currentIndexRingBuffer]; i++)
+		for(size_t i(0); i<incomingSpikes[internalTime%(SIGNAL_DELAY_D+1)]; i++)
 		{
 			arrivingSpikesTimes.push_back(internalTime);
 		}
@@ -101,7 +106,7 @@ using namespace std;
 		
 		
 		
-		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+SPIKE_AMPLITUDE_J*incomingSpikes[currentIndexRingBuffer]);
+		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+SPIKE_AMPLITUDE_J*readRingBuffer());
 	}
 
 	
@@ -118,9 +123,14 @@ using namespace std;
 		{ currentIndexRingBuffer ++ ;}
 	}
 	
+	unsigned int Neuron::readRingBuffer() const //reads the current entry, could be reinitialized here
+	{
+		return incomingSpikes[internalTime%(SIGNAL_DELAY_D+1)];
+	}
+	
 	void Neuron::reinitializeCurrentRingBufferElement()
 	{
-		incomingSpikes[currentIndexRingBuffer] = 0;
+		incomingSpikes[internalTime%(SIGNAL_DELAY_D+1)] = 0;
 	}
 	
 	bool Neuron::indexReachedEndOfRingBuffer() const
