@@ -301,17 +301,17 @@ cassert
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
 parameters.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
-iostream
--
-vector
--
-string
+array
 -
 fstream
 -
+iostream
+-
 list
 -
-array
+string
+-
+vector
 -
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron_unitTest.cpp
