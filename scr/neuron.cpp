@@ -72,11 +72,7 @@ using namespace std;
 	
 	void Neuron::receiveSpike(unsigned int localTimeOfSpikingNeuron)
 	{
-		/*auto temporaryIterator = numberOfSpikes.begin();
-		if(not abs(localTimeOfSpikingNeuron-internalTime) < EPSILON_VERY_SMALL)
-		{++temporaryIterator;}
-		(*temporaryIterator)++;*/
-		//cerr << "Debug receiving neuron : " << localTimeOfSpikingNeuron << " " << internalTime << "current element in ring buffer is : " << incomingSpikes[currentIndexRingBuffer] << endl;
+
 		
 		if(not abs(localTimeOfSpikingNeuron-internalTime) < EPSILON_VERY_SMALL)
 		{	if(currentIndexRingBuffer == 0)

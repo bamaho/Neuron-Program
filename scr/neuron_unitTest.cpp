@@ -5,7 +5,7 @@
 #include <vector>
 #include <cmath>
 
-TEST(neuron, ringBuffer) //tests if spikes arrive with the right delay
+TEST(neuron, ringBuffer) //tests if spikes arrive with the right delay during the whole simulation
 {
 	Neuron n1;
 	Neuron n2;
