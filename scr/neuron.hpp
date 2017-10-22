@@ -30,7 +30,7 @@ class Neuron
 	
 	bool isRefractory() const; 	//returns if the neuron is in a refractory state by comparing internal time to the time of the last spike and the refraction time
 	void spike();	//stores the spikeing time and sets the membrane potential to zero
-	void receiveSpike(unsigned int localTimeOfSpikingNeuron); //this function of a connected neuron is called, if the neuron spikes. The spike gets stored in its ring buffer in order to be read at the appropriate time.
+	void receiveSpike(unsigned int localTimeOfSpikingNeuron, double spikeAmplitude); //this function of a connected neuron is called, if the neuron spikes. The spike gets stored in its ring buffer in order to be read at the appropriate time.
 	void updateMembranePotential();	//Calculates and sets the new membrane potential as a function of the current membrane potential and the input current
 	unsigned int readRingBuffer() const; //reads the current entry
 	void reinitializeCurrentRingBufferElement(); //sets the current ring buffer element to zero
@@ -44,8 +44,7 @@ class Neuron
 	void addTarget(Neuron* target);	//allows to establish a connection between the neuron and another neuron, so that the other one receives its spikes
 	
 	//Testing, these function aren't necessary otherwise
-	std::vector<unsigned int> getSpikeTime() const;
-	std::vector<unsigned int> getArrivingSpikesTimes() const;
+	//std::vector<unsigned int> getSpikeTime() const;
 	
 	private:
 	
@@ -56,10 +55,7 @@ class Neuron
 	
 	unsigned int internalTime;	//second clock, allows to synchronize the times between the neurons, otherwise a problem arises when it comes to distinguishing between alrady updated and not yet updated neurons in neuron interactions
 	
-	std::array<unsigned int, SIGNAL_DELAY_D + 1> incomingSpikes; //ring buffer, one additional element is required for the neuron to arrive with the right delay, in this version J is always constant
-	
-	//Testing of ring buffer, fulfills no other function
-	std::vector<unsigned int> arrivingSpikesTimes;
+	std::array<double, SIGNAL_DELAY_D + 1> incomingSpikes; //ring buffer, one additional element is required for the neuron to arrive with the right delay, in this version J is always constant
 };
 
 

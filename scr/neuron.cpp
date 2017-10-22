@@ -58,7 +58,6 @@ using namespace std;
 	
 	void Neuron::spike()	//stores the spiking time, sets the membrane potential to sends a signal to the connected neurons
 	{
-		//cerr << "Debug Ring Buffer: spike at time " << currentSimulationTime << endl;
 		spikes.push_back(internalTime);
 		membranePotential = RESET_MEMBRANE_POTENTIAL;
 		if(not targets.empty())
@@ -66,28 +65,22 @@ using namespace std;
 			for(auto& targetNeuron: targets)
 			{
 				if(targetNeuron != nullptr) {
-                targetNeuron->receiveSpike(internalTime);
+                targetNeuron->receiveSpike(internalTime, SPIKE_AMPLITUDE_J); //once two types of neurons are possible, this line isn't adequate anymore
 				}
 			
 			}
 		}
 	}
 	
-	void Neuron::receiveSpike(unsigned int localTimeOfSpikingNeuron)
+	void Neuron::receiveSpike(unsigned int localTimeOfSpikingNeuron, double spikeAmplitude)
 	{	
-		incomingSpikes[timeToRingBufferIndex(SIGNAL_DELAY_D+localTimeOfSpikingNeuron)] += 1;	//writes the incoming spike at curent time + the signal delay into the ring buffer, to be altered
+		incomingSpikes[timeToRingBufferIndex(SIGNAL_DELAY_D+localTimeOfSpikingNeuron)] += spikeAmplitude;	//writes the incoming spike at curent time + the signal delay into the ring buffer, to be altered
 	}	
 		
 
 
 	void Neuron::updateMembranePotential()	//adding a second argument "int numberOfSpikes" would be another option
 	{
-		//The following lines are useful for testing only, store the times of arriving spikes, that have an impact on membrane potential, testing functions should be implemented by getters
-		for(size_t i(0); i<incomingSpikes[timeToRingBufferIndex(internalTime)]; i++)
-		{
-			arrivingSpikesTimes.push_back(internalTime);
-		}
-		//cerr << "Debug Ring Buffer : number of Spikes in the Ring Buffer element that is read " <<incomingSpikes[currentIndexRingBuffer] << " at time " << internalTime << endl;
 		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+SPIKE_AMPLITUDE_J*readRingBuffer());
 	}
 	
@@ -139,9 +132,6 @@ using namespace std;
 	
 	//Testing
 	
-		std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
-	{	return spikes;	}
-	
-	std::vector<unsigned int> Neuron::getArrivingSpikesTimes() const	//registers when spikes arrive, has except forr testing no other pu
-	{	return arrivingSpikesTimes;	}
+	/*	std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
+	{	return spikes;	}*/
 	

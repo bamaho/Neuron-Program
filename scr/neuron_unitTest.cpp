@@ -5,37 +5,39 @@
 #include <vector>
 #include <cmath>
 
-TEST(neuron, ringBuffer) //tests if spikes arrive with the right delay during the whole simulation
+TEST(neuron, ringBuffer) //tests if a spike arrive with the right delay and amplitude, tests that the order in which the neurons are updated is incidetal
 {
+	//part one - spiking neuron gets updated before receiving one, one spike
 	Neuron n1;
 	Neuron n2;
 	
 	n1.addTarget(&n2);	//establishing a connection between the neurons
-	n2.addTarget(&n1);
-	
-	unsigned int simulationTime(INITIAL_TIME);	//initializing the simulation time
-	
-	while (simulationTime < FINAL_TIME)	// "<" because the time scale is defined as each interval step going from [t to t+h), t+h isn't in the interval otherwise I would account twice for certain points in time
-	{
-		 double inputCurrent(0);
-				
-				if ( BEGINN_EXTERNAL_CURRENT <= simulationTime and simulationTime < END_EXTERNAL_CURRENT ) //if the time is in the interval in which an external current is applied, the current is non zero, might come from the main
-				{
-					inputCurrent = EXTERNAL_CURRENT;
-				}
-		n1.setInputCurrent(inputCurrent);
+	n1.spike();	//neuron_1 spikes and thus sends a signal to the second
 		
-		n1.update();	//update neurons, a container will be required to simulate a network
+	for(size_t i(0);i < SIGNAL_DELAY_D;i++)
+	{
 		n2.update();
-		
-		simulationTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;
 	}
+	EXPECT_DOUBLE_EQ(n2.readRingBuffer(),SPIKE_AMPLITUDE_J);
 	
-	for(size_t i(0); i < n2.getArrivingSpikesTimes().size() ; i++)
+	//part two - receiving neuron gets updated before receiving one, n spikes
+	Neuron n3;
+	Neuron n4;
+	constexpr unsigned int n(100);
+	
+	n3.addTarget(&n4);
+	n4.update();
+	
+	for(size_t i(0); i < n; i++) //spiking n times
 	{
-		EXPECT_EQ((n2.getArrivingSpikesTimes()[i])-SIGNAL_DELAY_D, n1.getSpikeTime()[i]);//compares the arrival times of spikes with the emission times, there should be a fixed delay in between
+		n3.spike();
 	}
 	
+	for(size_t i(0); i < (SIGNAL_DELAY_D-1); i++)
+	{
+		n4.update();
+	}
+	EXPECT_DOUBLE_EQ(n4.readRingBuffer(),SPIKE_AMPLITUDE_J*n);
 }
 
 TEST(neuron, updateMembranePotentialWithExternalCurrent) //tests if the membrane potential is correctly updated if the neuron doesn't receive any spike but with stimulation through an external current after one time step
