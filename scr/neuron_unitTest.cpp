@@ -6,7 +6,20 @@
 #include <cmath>
 #include <iostream>
 
-/*
+
+
+ 
+ void updateNeuronNTimes(Neuron& neuron, const unsigned int n) //auxilliary function that allows to update a neuron n times
+{
+	
+	for(size_t i(0);i < n;++i)
+	{
+		neuron.update();
+	}
+	
+}
+ 
+ /*
  * Tests that require certain parameters to have precisely the indicated values:
  * - initial membrane potential = 0 mV
  * - membrane potential threshold = 20 mV
@@ -17,16 +30,22 @@
  * - and thus the membrane resistance R = 20 GΩ (=tau/C)
  * */
  
- void updateNeuronNTimes(Neuron& neuron, const unsigned int n) //auxilliary function that allows to update a neuron n times
-{
+ TEST(oneNeuron, spikeTimes)	//with an external input current of 1.01 mV neuron spikes after 92.4ms
+ {
+	Neuron neuron;
+	neuron.setInputCurrent(1.01);
 	
-	for(size_t i(0);i < n;i++)
-	{
-		neuron.update();
-	}
+	updateNeuronNTimes(neuron, 924);
+	EXPECT_TRUE(neuron.getSpikeTime().empty());
+	neuron.update();
+	updateNeuronNTimes(neuron, 1);
+	EXPECT_FALSE(neuron.getSpikeTime().empty());
+	updateNeuronNTimes(neuron, 950);
+	
+	std::vector<unsigned int> calculatedSpikeTimes({924,1850});//to verify!!
+	EXPECT_EQ(calculatedSpikeTimes,neuron.getSpikeTime());
 	
 }
- 
  
  
  TEST(oneNeuron, membranePotentialTendsToVthr)	//with an external input current of 1 mV the membrane potential tends asymtotically to V_Threshold without reaching it
@@ -43,8 +62,6 @@
 	
 	
 }
- 
- 
  
  /*
   * Tests of more general nature, independent of parameter
@@ -99,6 +116,8 @@ TEST(twoNeurons, ringBuffer) //tests if a spike arrive with the right delay and 
 	}
 	EXPECT_NEAR(n4.readRingBuffer(),SPIKE_AMPLITUDE_J*n,0.00001);
 }
+
+
 
 
 

@@ -19,6 +19,8 @@ using namespace std;
 	,internalTime(INITIAL_TIME) //Might be more appropriate to use the time of creation as an argument by default. Otherwise the assumption is, that it gets created at the beginning of the simulation
 	{ for (auto& element: incomingSpikes){element =0;} }	//Initialized the ring buffer entries to zero
 	
+	Neuron:: ~Neuron()
+	{}
 	
 	
 	double Neuron::getMembranePotential() const
@@ -137,15 +139,10 @@ using namespace std;
 	
 	//Testing
 	
-	/*	std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
-	{	return spikes;	}*/
+		std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
+	{	return spikes;	}
 	
 	
 	/*random_device rdm;
 	mt19937 generator(rdm());
-	poisson_distribution<> d(0.02);
-	map<int, int> hist;
-	for(int n=0;n<10000;++n)
-	{
-		cout <<
-	}*/
+	poisson_distribution<> d(0.02);*/

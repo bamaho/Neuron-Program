@@ -75,8 +75,14 @@ network.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.hpp
 neuron.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
+excitatoryNeuron.hpp
+/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/excitatoryNeuron.hpp
+inhibitoryNeuron.hpp
+/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.hpp
 parameters.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
+random
+-
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.hpp
 parameters.hpp

@@ -37,7 +37,7 @@ constexpr unsigned int NUMBER_OF_INHIBITORY_NEURONS_Ni(2500);
 
 constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_NEURONS_C(1);	//each neuron receives C randomly chosen connections from other neurons in the network //to be altered? Becomes important when a whole network is simulated , MUST NOT BE ZERO FOR THIS RESULTS IN UNDEFINED BEHAVIOUR, DIVISION BY ZERO!
 constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_EXCITATORY_NEURONS_Ce(1000);
-constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_INHIBITORY_NEURONS_Ce(250);
+constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_INHIBITORY_NEURONS_Ci(250);
 
 
 //Membrane Potential

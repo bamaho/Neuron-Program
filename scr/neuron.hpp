@@ -17,6 +17,7 @@ class Neuron
 	
 	//constructor
 	Neuron();
+	virtual ~Neuron();	//has to be virtual, since otherwise the object might not get properly destroyed
 	
 	//getters
 	double getMembranePotential() const;
@@ -44,7 +45,7 @@ class Neuron
 	void addTarget(Neuron* target);	//allows to establish a connection between the neuron and another neuron, so that the other one receives its spikes
 	
 	//Testing, these function aren't necessary otherwise
-	//std::vector<unsigned int> getSpikeTime() const;
+	std::vector<unsigned int> getSpikeTime() const;
 	
 	//Random Generator
 	

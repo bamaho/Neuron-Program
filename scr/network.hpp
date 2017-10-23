@@ -19,6 +19,8 @@ class Network
 	Network();
 	~Network();
 	
+	void update();
+	
 	private:
 	std::array<Neuron*, TOTAL_NUMBER_OF_NEURONS_N> neurons;
 	
