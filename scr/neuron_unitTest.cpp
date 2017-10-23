@@ -72,13 +72,15 @@ TEST(twoNeurons, ringBuffer) //tests if a spike arrive with the right delay and 
 		
 	for(size_t i(0);i < SIGNAL_DELAY_D;i++)
 	{
+		EXPECT_NEAR(n2.readRingBuffer(),0,0.00001); //Verifies that the spike doesn't arrive before it is supposed to
 		n2.update();
-		EXPECT_DOUBLE_EQ(n2.readRingBuffer(),0);
+		
 	}
 	
-	EXPECT_DOUBLE_EQ(n2.readRingBuffer(), SPIKE_AMPLITUDE_J);
+
+	EXPECT_NEAR(n2.readRingBuffer(),SPIKE_AMPLITUDE_J,0.00001); //Verifies that the spike arrives when it should
 	n2.update();
-	EXPECT_DOUBLE_EQ(n2.readRingBuffer(), 0);
+	EXPECT_NEAR(n2.readRingBuffer(),0,0.00001); //Verifies that the spike doesn't arrive later it is supposed to
 	
 	//part two - receiving neuron gets updated before receiving one, n spikes
 	Neuron n3;
@@ -97,7 +99,7 @@ TEST(twoNeurons, ringBuffer) //tests if a spike arrive with the right delay and 
 	{
 		n4.update();
 	}
-	EXPECT_DOUBLE_EQ(n4.readRingBuffer(),SPIKE_AMPLITUDE_J*n);
+	EXPECT_NEAR(n4.readRingBuffer(),SPIKE_AMPLITUDE_J*n,0.00001);
 }
 
 
