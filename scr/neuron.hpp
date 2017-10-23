@@ -32,7 +32,7 @@ class Neuron
 	void spike();	//stores the spikeing time and sets the membrane potential to zero
 	void receiveSpike(unsigned int localTimeOfSpikingNeuron, double spikeAmplitude); //this function of a connected neuron is called, if the neuron spikes. The spike gets stored in its ring buffer in order to be read at the appropriate time.
 	void updateMembranePotential();	//Calculates and sets the new membrane potential as a function of the current membrane potential and the input current
-	unsigned int readRingBuffer() const; //reads the current entry
+	double readRingBuffer() const; //reads the current entry
 	void reinitializeCurrentRingBufferElement(); //sets the current ring buffer element to zero
 	size_t timeToRingBufferIndex(unsigned int time) const; //auxilliary method, yields the associated ring buffer index to a a given time and checks if it is licit
 	

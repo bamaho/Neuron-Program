@@ -325,6 +325,8 @@ vector
 -
 cmath
 -
+iostream
+-
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
 cmath

@@ -53,7 +53,7 @@ using namespace std;
 	
 	bool Neuron::isRefractory() const	//If there haven't occured any spikes yet or the latest spike took place and the neuron has in the meantime undergone a complete refractory state, then the neuron isn't refractory
 	{	
-		return not(spikes.empty() or ((internalTime - spikes.back())>=	REFRACTION_TIME));//do I account for one point in time twice? 
+		return not(spikes.empty() or ((internalTime - spikes.back())>=	REFRACTION_PERIOD));//do I account for one point in time twice? 
 	}
 	
 	void Neuron::spike()	//stores the spiking time, sets the membrane potential to sends a signal to the connected neurons
@@ -84,7 +84,7 @@ using namespace std;
 		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+SPIKE_AMPLITUDE_J*readRingBuffer());
 	}
 	
-	unsigned int Neuron::readRingBuffer() const //reads the current entry
+	double Neuron::readRingBuffer() const //reads the current entry
 	{
 		return incomingSpikes[timeToRingBufferIndex(internalTime)];
 	}
