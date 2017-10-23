@@ -9,6 +9,7 @@
 #include <list>
 #include <array>
 #include <cassert>
+#include <random>
 
 using namespace std;
 
@@ -74,7 +75,7 @@ using namespace std;
 	
 	void Neuron::receiveSpike(unsigned int localTimeOfSpikingNeuron, double spikeAmplitude)
 	{	
-		incomingSpikes[timeToRingBufferIndex(SIGNAL_DELAY_D+localTimeOfSpikingNeuron)] += spikeAmplitude;	//writes the incoming spike at curent time + the signal delay into the ring buffer, to be altered
+		incomingSpikes[timeToRingBufferIndex(SIGNAL_DELAY_D+localTimeOfSpikingNeuron)] += spikeAmplitude;	//writes the incoming spike at curent time + the signal delay into the ring buffer, to be altered, if one drops the simplification that D is uniform, d should be added by the spiking neuron
 	}	
 		
 
@@ -101,6 +102,10 @@ using namespace std;
 		return index;
 	}
 	
+	double Neuron::getSpikeAmplitude() const
+	{
+		return SPIKE_AMPLITUDE_J;
+	}
 	
 	void Neuron::printSpikingTimes(const string& nameOfFile) const //prints the registered times when spikes ocurred into a file with a name to indicate
 	{
@@ -135,3 +140,12 @@ using namespace std;
 	/*	std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
 	{	return spikes;	}*/
 	
+	
+	/*random_device rdm;
+	mt19937 generator(rdm());
+	poisson_distribution<> d(0.02);
+	map<int, int> hist;
+	for(int n=0;n<10000;++n)
+	{
+		cout <<
+	}*/

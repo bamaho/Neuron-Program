@@ -2,6 +2,7 @@
 
 #include "neuron.hpp"
 #include "parameters.hpp"
+#include "network.hpp"
 //#include <vector>
 #include <cassert>
 
@@ -9,7 +10,8 @@ using namespace std;
 
 int main()
 {
-	assert(NUMBER_OF_CONNECTIONS_FROM_NEURONS_C !=0 and TIME_CONSTANT_TAU !=0);	//Beware division by zero in parameter file!
+	Network network;
+	/*assert(NUMBER_OF_CONNECTIONS_FROM_NEURONS_C !=0 and TIME_CONSTANT_TAU !=0);	//Beware division by zero in parameter file!
 	
 	Neuron neuron;	//initialization of neuron
 	Neuron neuron2;
@@ -40,7 +42,7 @@ int main()
 	neuron.printSpikingTimes("spikes.txt"); //Printing the  spiking times into a file of name spikes.txt
 	neuron2.printSpikingTimes("spikes.txt");
 	
-	cout << "DEBUG: End of Program"<< endl; //DEBUG
-
+	 */
+cout << "DEBUG: End of Program"<< endl; //DEBUG
 	
 }

@@ -12,3 +12,8 @@
 #include <cassert>*/
 
 using namespace std;
+
+double InhibitoryNeuron::getSpikeAmplitude() const
+{
+	return -SPIKE_AMPLITUDE_J_INHIBITORY_NEURON;
+}

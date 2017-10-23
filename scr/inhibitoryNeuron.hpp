@@ -15,15 +15,17 @@
 class InhibitoryNeuron : public Neuron
 {
 	public:
-	/*
-	//constructor
-	Neuron();
 	
+	//constructor
+	InhibitoryNeuron();
+	
+	double getSpikeAmplitude() const override;
 	
 	private:
 	
 	
-	*/
+	
+	
 };
 
 

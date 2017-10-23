@@ -36,7 +36,7 @@ class Neuron
 	void reinitializeCurrentRingBufferElement(); //sets the current ring buffer element to zero
 	size_t timeToRingBufferIndex(unsigned int time) const; //auxilliary method, yields the associated ring buffer index to a a given time and checks if it is licit
 	
-	
+	virtual double getSpikeAmplitude() const; //differs between the different types of neurons, to make sure that the old tests are still functional, if is defined for neurons in general as well, otherwise it were virtual pure
 	//print data
 	void printSpikingTimes(const std::string& nameOfFile) const;	//stores the values of the attribute "spikes" in a file
 	
@@ -45,6 +45,9 @@ class Neuron
 	
 	//Testing, these function aren't necessary otherwise
 	//std::vector<unsigned int> getSpikeTime() const;
+	
+	//Random Generator
+	
 	
 	private:
 	

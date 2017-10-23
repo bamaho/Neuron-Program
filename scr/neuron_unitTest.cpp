@@ -47,9 +47,7 @@
  
  
  /*
-  * Tests of more general nature
-  * 
-  * 
+  * Tests of more general nature, independent of parameter
   * */
 TEST(oneNeuron, updateMembranePotentialWithPosExternalCurrent) //tests if the membrane potential is correctly updated after one step if the neuron doesn't receive any spike but with stimulation through an external current after one time step
 {

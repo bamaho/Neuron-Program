@@ -163,6 +163,54 @@ gtest_main/fast:
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+excitatoryNeuron.o: excitatoryNeuron.cpp.o
+.PHONY : excitatoryNeuron.o
+
+# target to build an object file
+excitatoryNeuron.cpp.o:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o
+.PHONY : excitatoryNeuron.cpp.o
+
+excitatoryNeuron.i: excitatoryNeuron.cpp.i
+.PHONY : excitatoryNeuron.i
+
+# target to preprocess a source file
+excitatoryNeuron.cpp.i:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/excitatoryNeuron.cpp.i
+.PHONY : excitatoryNeuron.cpp.i
+
+excitatoryNeuron.s: excitatoryNeuron.cpp.s
+.PHONY : excitatoryNeuron.s
+
+# target to generate assembly for a file
+excitatoryNeuron.cpp.s:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/excitatoryNeuron.cpp.s
+.PHONY : excitatoryNeuron.cpp.s
+
+inhibitoryNeuron.o: inhibitoryNeuron.cpp.o
+.PHONY : inhibitoryNeuron.o
+
+# target to build an object file
+inhibitoryNeuron.cpp.o:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o
+.PHONY : inhibitoryNeuron.cpp.o
+
+inhibitoryNeuron.i: inhibitoryNeuron.cpp.i
+.PHONY : inhibitoryNeuron.i
+
+# target to preprocess a source file
+inhibitoryNeuron.cpp.i:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.i
+.PHONY : inhibitoryNeuron.cpp.i
+
+inhibitoryNeuron.s: inhibitoryNeuron.cpp.s
+.PHONY : inhibitoryNeuron.s
+
+# target to generate assembly for a file
+inhibitoryNeuron.cpp.s:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.s
+.PHONY : inhibitoryNeuron.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -186,6 +234,30 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+network.o: network.cpp.o
+.PHONY : network.o
+
+# target to build an object file
+network.cpp.o:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/network.cpp.o
+.PHONY : network.cpp.o
+
+network.i: network.cpp.i
+.PHONY : network.i
+
+# target to preprocess a source file
+network.cpp.i:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/network.cpp.i
+.PHONY : network.cpp.i
+
+network.s: network.cpp.s
+.PHONY : network.s
+
+# target to generate assembly for a file
+network.cpp.s:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/network.cpp.s
+.PHONY : network.cpp.s
 
 neuron.o: neuron.cpp.o
 .PHONY : neuron.o
@@ -251,9 +323,18 @@ help:
 	@echo "... test"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... excitatoryNeuron.o"
+	@echo "... excitatoryNeuron.i"
+	@echo "... excitatoryNeuron.s"
+	@echo "... inhibitoryNeuron.o"
+	@echo "... inhibitoryNeuron.i"
+	@echo "... inhibitoryNeuron.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... network.o"
+	@echo "... network.i"
+	@echo "... network.s"
 	@echo "... neuron.o"
 	@echo "... neuron.i"
 	@echo "... neuron.s"

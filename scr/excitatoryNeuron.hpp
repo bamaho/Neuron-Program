@@ -2,7 +2,7 @@
 #define EXCITATORY_NEURON_H
 
 #include "parameters.hpp"
-#include "excitatoryNeuron.hpp"
+#include "neuron.hpp"
 
 //#include <array>
 //#include <fstream>

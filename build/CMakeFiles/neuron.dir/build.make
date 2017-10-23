@@ -72,9 +72,78 @@ CMakeFiles/neuron.dir/neuron.cpp.o.provides: CMakeFiles/neuron.dir/neuron.cpp.o.
 
 CMakeFiles/neuron.dir/neuron.cpp.o.provides.build: CMakeFiles/neuron.dir/neuron.cpp.o
 
+CMakeFiles/neuron.dir/network.cpp.o: CMakeFiles/neuron.dir/flags.make
+CMakeFiles/neuron.dir/network.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/neuron.dir/network.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neuron.dir/network.cpp.o -c /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.cpp
+
+CMakeFiles/neuron.dir/network.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neuron.dir/network.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.cpp > CMakeFiles/neuron.dir/network.cpp.i
+
+CMakeFiles/neuron.dir/network.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neuron.dir/network.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.cpp -o CMakeFiles/neuron.dir/network.cpp.s
+
+CMakeFiles/neuron.dir/network.cpp.o.requires:
+.PHONY : CMakeFiles/neuron.dir/network.cpp.o.requires
+
+CMakeFiles/neuron.dir/network.cpp.o.provides: CMakeFiles/neuron.dir/network.cpp.o.requires
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/network.cpp.o.provides.build
+.PHONY : CMakeFiles/neuron.dir/network.cpp.o.provides
+
+CMakeFiles/neuron.dir/network.cpp.o.provides.build: CMakeFiles/neuron.dir/network.cpp.o
+
+CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o: CMakeFiles/neuron.dir/flags.make
+CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/excitatoryNeuron.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o -c /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/excitatoryNeuron.cpp
+
+CMakeFiles/neuron.dir/excitatoryNeuron.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neuron.dir/excitatoryNeuron.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/excitatoryNeuron.cpp > CMakeFiles/neuron.dir/excitatoryNeuron.cpp.i
+
+CMakeFiles/neuron.dir/excitatoryNeuron.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neuron.dir/excitatoryNeuron.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/excitatoryNeuron.cpp -o CMakeFiles/neuron.dir/excitatoryNeuron.cpp.s
+
+CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o.requires:
+.PHONY : CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o.requires
+
+CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o.provides: CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o.requires
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o.provides.build
+.PHONY : CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o.provides
+
+CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o.provides.build: CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o
+
+CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o: CMakeFiles/neuron.dir/flags.make
+CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o -c /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.cpp
+
+CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.cpp > CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.i
+
+CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.cpp -o CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.s
+
+CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o.requires:
+.PHONY : CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o.requires
+
+CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o.provides: CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o.requires
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o.provides.build
+.PHONY : CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o.provides
+
+CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o.provides.build: CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o
+
 CMakeFiles/neuron.dir/main.cpp.o: CMakeFiles/neuron.dir/flags.make
 CMakeFiles/neuron.dir/main.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/neuron.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neuron.dir/main.cpp.o -c /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/main.cpp
 
@@ -98,12 +167,18 @@ CMakeFiles/neuron.dir/main.cpp.o.provides.build: CMakeFiles/neuron.dir/main.cpp.
 # Object files for target neuron
 neuron_OBJECTS = \
 "CMakeFiles/neuron.dir/neuron.cpp.o" \
+"CMakeFiles/neuron.dir/network.cpp.o" \
+"CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o" \
+"CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o" \
 "CMakeFiles/neuron.dir/main.cpp.o"
 
 # External object files for target neuron
 neuron_EXTERNAL_OBJECTS =
 
 neuron: CMakeFiles/neuron.dir/neuron.cpp.o
+neuron: CMakeFiles/neuron.dir/network.cpp.o
+neuron: CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o
+neuron: CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o
 neuron: CMakeFiles/neuron.dir/main.cpp.o
 neuron: CMakeFiles/neuron.dir/build.make
 neuron: CMakeFiles/neuron.dir/link.txt
@@ -115,6 +190,9 @@ CMakeFiles/neuron.dir/build: neuron
 .PHONY : CMakeFiles/neuron.dir/build
 
 CMakeFiles/neuron.dir/requires: CMakeFiles/neuron.dir/neuron.cpp.o.requires
+CMakeFiles/neuron.dir/requires: CMakeFiles/neuron.dir/network.cpp.o.requires
+CMakeFiles/neuron.dir/requires: CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o.requires
+CMakeFiles/neuron.dir/requires: CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o.requires
 CMakeFiles/neuron.dir/requires: CMakeFiles/neuron.dir/main.cpp.o.requires
 .PHONY : CMakeFiles/neuron.dir/requires
 
