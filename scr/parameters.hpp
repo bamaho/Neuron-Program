@@ -51,4 +51,7 @@ constexpr unsigned int TIME_CONSTANT_TAU(20);	//Tau = membrane resistance * Numb
 constexpr double MEMBRANE_RESISTANCE_R(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C);	//in GΩ, the neuron can be thought of as a simple electrical circuit
 constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU));	//an expression which has to be calculated multiple times when updating the membrane potential and that is constant
 
+//Activity of the rest of the brain
+constexpr unsigned int RATIO_V_EXTERNAL_OVER_V_THRESHOLD(2);
+
 #endif

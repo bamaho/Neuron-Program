@@ -84,7 +84,7 @@ using namespace std;
 
 	void Neuron::updateMembranePotential()	//adding a second argument "int numberOfSpikes" would be another option
 	{
-		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+SPIKE_AMPLITUDE_J*readRingBuffer());
+		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+readRingBuffer()+getBackgroundNoise());
 	}
 	
 	double Neuron::readRingBuffer() const //reads the current entry
@@ -137,12 +137,19 @@ using namespace std;
 		}
 	}
 	
+	//Random Generator
+	double Neuron::getBackgroundNoise() const
+	{
+		random_device randomDevice;
+		mt19937 generator(randomDevice());
+		poisson_distribution<> distribution(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*NUMBER_OF_CONNECTIONS_FROM_EXCITATORY_NEURONS_Ce);//V_EXT*J_EXT*h*Ce
+		return distribution(generator);
+	}
+	
 	//Testing
 	
 		std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
 	{	return spikes;	}
 	
 	
-	/*random_device rdm;
-	mt19937 generator(rdm());
-	poisson_distribution<> d(0.02);*/
+	

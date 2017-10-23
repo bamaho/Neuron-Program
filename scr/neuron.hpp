@@ -9,6 +9,7 @@
 #include <list>
 #include <string>
 #include <vector>
+#include <random>
 
 
 class Neuron
@@ -48,6 +49,7 @@ class Neuron
 	std::vector<unsigned int> getSpikeTime() const;
 	
 	//Random Generator
+	double getBackgroundNoise() const;
 	
 	
 	private:
@@ -60,6 +62,7 @@ class Neuron
 	unsigned int internalTime;	//second clock, allows to synchronize the times between the neurons, otherwise a problem arises when it comes to distinguishing between alrady updated and not yet updated neurons in neuron interactions
 	
 	std::array<double, SIGNAL_DELAY_D + 1> incomingSpikes; //ring buffer, one additional element is required for the neuron to arrive with the right delay, in this version J is always constant
+
 };
 
 
