@@ -16,34 +16,95 @@ class Neuron
 {
 	public:
 	
-	//constructor
+	//constructor and deconstructor
+	/// A constructor.
 	Neuron();
+	/// A destructor.
 	virtual ~Neuron();	//has to be virtual, since otherwise the object might not get properly destroyed
 	
 	//getters
+	/// A getter for the neuron's membrane potential.
+	/**
+	 * @return the neuron's membrane potential, a double
+	 */
 	double getMembranePotential() const;
+	/// A getter for the number of times the neuron spiked in the course of time
+	/**
+	 * Uses the size of the vector storing the spike times.
+	 * @return the number of times the neuon spiked, a size_t
+	 */
 	size_t getNumberOfSpikes() const;
 	
 	//setters
+	/// A setter for the external input current.
+	/**
+	 * A method allowing to simulate the stimulation of the neuron by an external current.
+	 * Is invoked in the main loop of the simulation in order to indicate the strength of the external stimulus.
+	 * @param externalCurrent, the external input current, a double.
+	 */
 	void setInputCurrent(double externalCurrent);
 	
 	//update and related functions
-	void update();	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
+	///Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time.
+	/**Advances the neuron one step as a function of its current state by eventual spiking 
+	   if the membrane potential has reached a threshold, resting inactive during the refractory period after a spike or 
+	   updating the membrane potential and finally handling the ring buffer as well as incrementing the neuron's internal clock.	*/
+	void update();
 	
-	bool isRefractory() const; 	//returns if the neuron is in a refractory state by comparing internal time to the time of the last spike and the refraction time
-	void spike();	//stores the spikeing time and sets the membrane potential to zero
-	void receiveSpike(unsigned int localTimeOfSpikingNeuron, double spikeAmplitude); //this function of a connected neuron is called, if the neuron spikes. The spike gets stored in its ring buffer in order to be read at the appropriate time.
-	void updateMembranePotential();	//Calculates and sets the new membrane potential as a function of the current membrane potential and the input current
-	double readRingBuffer() const; //reads the current entry
-	void reinitializeCurrentRingBufferElement(); //sets the current ring buffer element to zero
-	size_t timeToRingBufferIndex(unsigned int time) const; //auxilliary method, yields the associated ring buffer index to a a given time and checks if it is licit
 	
-	virtual double getSpikeAmplitude() const; //differs between the different types of neurons, to make sure that the old tests are still functional, if is defined for neurons in general as well, otherwise it were virtual pure
+	/**Compares the neuron's internal time to the time of the last spike and the refraction time in order to test if the neuron is in a refractory period.
+	 * @see update()
+	 * @return if the neuron is in a refractory state, a bool	*/
+	bool isRefractory() const;
+	
+	/**Stores the spiking time and sets the membrane potential to zero and sends an electrical impulse to the connected neurons.
+	 * @see update()	*/ 
+	void spike();
+	
+	/**This method of a connected neuron is called when the neuron spikes. The spike gets stored in its ring buffer in order to be read at the appropriate time.
+	 * @see spike()
+	 * @param localTimeOfSpikingNeuron, an unsigned integer
+	 * @param spikeAmplitude, defining the strength of the signal
+	 * @return if the neuron is in a refractory state, a bool	*/ 
+	void receiveSpike(unsigned int localTimeOfSpikingNeuron, double spikeAmplitude);
+	
+	/**Calculates and sets the new membrane potential as a function of the current membrane potential, the external input current, the spikes that arrived with a signal delay and the random background noise arriving from the rest of the brain.
+	 * @see update()	*/
+	void updateMembranePotential();	
+	
+	/**Reads the ring buffer's current entry to receive the spikes arriving with a delay that where emmited by presynaptic neurons
+	 * @see updateMembranePotential()
+	 * @return the sum of spike amplitudes of spikes from connected neurons that are currently arriving, a double	*/
+	double readRingBuffer() const;
+	
+	/**Sets the current ring buffer element to zero and makes it thus ready to record new arriving spikes in another cycle to come.
+	 * @see update()	*/
+	void reinitializeCurrentRingBufferElement();
+	
+	/**Auxilliary method that yields the associated ring buffer index to a a given time by means of the modulo operator and checks if it is licit.
+	 * @see receiveSpike()
+	 * @see readRingBuffer()
+	 * @see reinitializeCurrentRingBufferElement()
+	 * @param the time of which one wants to know the corresponding ring buffer index, an unsigned integer
+	 * @return the ring buffer index corresponding to the given time, a size_t
+	 * 	*/
+	size_t timeToRingBufferIndex(unsigned int time) const; 
+	
+	/**A virtual method which reads the constant spike amplitude, that differs between inhibitory and excitatory neurons, from the parameter file.
+	   (The method is defined for unspecified neurons as well so that the tests of previous versions of the program are still functional, otherwise it could be virtual pure.).
+	 * @see updateMembranePotential()
+	 * @return the spike amplitudes of the presynaptic neuron, a double	*/
+	virtual double getSpikeAmplitude() const;
+	
 	//print data
-	void printSpikingTimes(const std::string& nameOfFile) const;	//stores the values of the attribute "spikes" in a file
+	/**Converts the times when the neuron spiked to milliseconds and stores these values in a file. 
+	 * @param nameOfFile, a string*/
+	void printSpikingTimes(const std::string& nameOfFile) const;
 	
 	//Network
-	void addTarget(Neuron* target);	//allows to establish a connection between the neuron and another neuron, so that the other one receives its spikes
+	/**Establishes a connection to a postsynaptic neuron, by adding it to its target.
+	 * @param target, a pointer to a neuron that shall receive signals*/
+	void addTarget(Neuron* target);
 	
 	//Testing, these function aren't necessary otherwise
 	std::vector<unsigned int> getSpikeTime() const;

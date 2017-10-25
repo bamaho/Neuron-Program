@@ -84,7 +84,7 @@ using namespace std;
 
 	void Neuron::updateMembranePotential()	//adding a second argument "int numberOfSpikes" would be another option
 	{
-		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+readRingBuffer()/*+getBackgroundNoise()*/);
+		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+readRingBuffer()+getBackgroundNoise());
 	}
 	
 	double Neuron::readRingBuffer() const //reads the current entry
@@ -150,6 +150,3 @@ using namespace std;
 	
 		std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
 	{	return spikes;	}
-	
-	
-	
