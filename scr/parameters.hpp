@@ -44,7 +44,7 @@ constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_INHIBITORY_NEURONS_Ci(250);
 constexpr double INITIAL_MEMBRANE_POTENTIAL(0);	//initial membrane portential in mV
 constexpr double MEMBRANE_POTENTIAL_THRESHOLD(20);	//value in mV of mambrane potential that, once reached, causes the neuron to spike
 constexpr double RESET_MEMBRANE_POTENTIAL(0); //value in mV that the membrane potential takes just after the spike
-constexpr unsigned int REFRACTION_PERIOD(2);	//period after spike during which the neuron is insenstitive to stimulation, in steps
+constexpr unsigned int REFRACTION_PERIOD(20);	//period after spike during which the neuron is insenstitive to stimulation, in steps
 
 constexpr unsigned int TIME_CONSTANT_TAU(20);	//Tau = membrane resistance * Number of Connections from neurons, in milliseconds (!), MUST NOT BE ZERO FOR THIS RESULTS IN UNDEFINED BEHAVIOUR, DIVISION BY ZERO WHEN THE MEMBRANE POTENTIAL IS UPDATED!
 

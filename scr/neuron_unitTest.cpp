@@ -40,9 +40,9 @@
 	neuron.update();
 	updateNeuronNTimes(neuron, 1);
 	EXPECT_FALSE(neuron.getSpikeTime().empty());
-	updateNeuronNTimes(neuron, 950);
+	updateNeuronNTimes(neuron, 3000);
 	
-	std::vector<unsigned int> calculatedSpikeTimes({924,1850});//to verify!!
+	std::vector<unsigned int> calculatedSpikeTimes({924,1868,2812,3756});//to verify!!
 	EXPECT_EQ(calculatedSpikeTimes,neuron.getSpikeTime());
 	
 }
