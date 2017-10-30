@@ -15,7 +15,9 @@
 \hypertarget{classNetwork_a618d267c0962f59027c0d063aa2b4533}{std\-::vector$<$ std\-::vector\\*
 $<$ unsigned int $>$ $>$ \hyperlink{classNetwork_a618d267c0962f59027c0d063aa2b4533}{get\-Spike\-Times} ()}\label{classNetwork_a618d267c0962f59027c0d063aa2b4533}
 
-\begin{DoxyCompactList}\small\item\em A getter of the spiking times of all neurons, allows to retreive data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A getter of the spiking times of all neurons, allows to retreive data. \end{DoxyCompactList}\item 
+void \hyperlink{classNetwork_a222e084554183af355833cda07a83877}{print\-Simulation\-Data} (const std\-::string \&name\-Of\-File) const 
+\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -31,6 +33,21 @@ $<$ unsigned int $>$ $>$ \hyperlink{classNetwork_a618d267c0962f59027c0d063aa2b45
 A constructor. 
 
 Initializes a neuron network by creating 12'500 neurons among those 2'500 are inhibitory and the other 10'000 exitatory. Each one of them receives a fixed number of connections from both inhibitory and excitatory presynaptic neuron that are chosen randomly. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classNetwork_a222e084554183af355833cda07a83877}{\index{Network@{Network}!print\-Simulation\-Data@{print\-Simulation\-Data}}
+\index{print\-Simulation\-Data@{print\-Simulation\-Data}!Network@{Network}}
+\subsubsection[{print\-Simulation\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::print\-Simulation\-Data (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name\-Of\-File}
+\end{DoxyParamCaption}
+) const}}\label{classNetwork_a222e084554183af355833cda07a83877}
+Prints each neuron's spike times and neuron id in a file of given name. 
+\begin{DoxyParams}{Parameters}
+{\em name\-Of\-File,a} & string \\
+\hline
+\end{DoxyParams}
+
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 

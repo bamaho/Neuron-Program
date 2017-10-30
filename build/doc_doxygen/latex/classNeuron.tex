@@ -45,6 +45,8 @@ void \hyperlink{classNeuron_a15b3eaa67535301e011d5cd8d53a61d1}{print\-Spiking\-T
 void \hyperlink{classNeuron_a9bf071c800e76fa7fbd611cee7cd76d6}{add\-Target} (\hyperlink{classNeuron}{Neuron} $\ast$target)
 \item 
 std\-::vector$<$ unsigned int $>$ \hyperlink{classNeuron_a5e14b82bebab09904d558298f343061c}{get\-Spike\-Time} () const 
+\item 
+double \hyperlink{classNeuron_a5487631e8982ae2368da0917535a9001}{get\-Background\-Noise} () const 
 \end{DoxyCompactItemize}
 
 
@@ -61,6 +63,19 @@ Establishes a connection to a postsynaptic neuron, by adding it to its target.
 {\em target,a} & pointer to a neuron that shall receive signals \\
 \hline
 \end{DoxyParams}
+\hypertarget{classNeuron_a5487631e8982ae2368da0917535a9001}{\index{Neuron@{Neuron}!get\-Background\-Noise@{get\-Background\-Noise}}
+\index{get\-Background\-Noise@{get\-Background\-Noise}!Neuron@{Neuron}}
+\subsubsection[{get\-Background\-Noise}]{\setlength{\rightskip}{0pt plus 5cm}double Neuron\-::get\-Background\-Noise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classNeuron_a5487631e8982ae2368da0917535a9001}
+Creates a value which accounts for the contribution of the rest of the brain. This contribution is modeled by Cext excitatory neurons that fire randomly according to a poisson distribution at a frequency vext. \begin{DoxySeeAlso}{See Also}
+\hyperlink{classNeuron_a41a81d8527734e59bae39f73fece887f}{update\-Membrane\-Potential()} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+a randomly generated value representing the background noise coming from the rest of the brain, a double 
+\end{DoxyReturn}
 \hypertarget{classNeuron_a86341dee7a81765fe4840777a008c688}{\index{Neuron@{Neuron}!get\-Membrane\-Potential@{get\-Membrane\-Potential}}
 \index{get\-Membrane\-Potential@{get\-Membrane\-Potential}!Neuron@{Neuron}}
 \subsubsection[{get\-Membrane\-Potential}]{\setlength{\rightskip}{0pt plus 5cm}double Neuron\-::get\-Membrane\-Potential (

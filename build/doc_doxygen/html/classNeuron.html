@@ -143,6 +143,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="separator:a9bf071c800e76fa7fbd611cee7cd76d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e14b82bebab09904d558298f343061c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a5e14b82bebab09904d558298f343061c">getSpikeTime</a> () const </td></tr>
 <tr class="separator:a5e14b82bebab09904d558298f343061c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5487631e8982ae2368da0917535a9001"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a5487631e8982ae2368da0917535a9001">getBackgroundNoise</a> () const </td></tr>
+<tr class="separator:a5487631e8982ae2368da0917535a9001"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a9bf071c800e76fa7fbd611cee7cd76d6"></a>
@@ -165,6 +167,24 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a5487631e8982ae2368da0917535a9001"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Neuron::getBackgroundNoise </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a value which accounts for the contribution of the rest of the brain. This contribution is modeled by Cext excitatory neurons that fire randomly according to a poisson distribution at a frequency vext. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classNeuron.html#a41a81d8527734e59bae39f73fece887f">updateMembranePotential()</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a randomly generated value representing the background noise coming from the rest of the brain, a double </dd></dl>
 
 </div>
 </div>
@@ -475,7 +495,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 30 2017 11:16:33 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 30 2017 21:02:57 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

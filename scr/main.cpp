@@ -20,7 +20,7 @@ int main()
 	neuron2.addTarget(&neuron);*/
 	
 	unsigned int simulationTime(INITIAL_TIME);	//initializing the simulation time
-	
+	cerr << "Debug: RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU)" << RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU) << endl;
 	Network network;
 	
 	while (simulationTime < FINAL_TIME)	// "<" because the time scale is defined as each interval step going from [t to t+h), t+h isn't in the interval otherwise I would account twice for certain points in time
@@ -48,6 +48,7 @@ int main()
 	
 	/*neuron.printSpikingTimes("spikes.txt"); //Printing the  spiking times into a file of name spikes.txt
 	neuron2.printSpikingTimes("spikes.txt");*/
+	network.printSimulationData("simulationData.txt");
 	
 	 
 cout << "DEBUG: End of Program"<< endl; //DEBUG

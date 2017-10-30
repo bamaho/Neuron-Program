@@ -11,5 +11,5 @@ InhibitoryNeuron::InhibitoryNeuron()
 
 double InhibitoryNeuron::getSpikeAmplitude() const
 {
-	return -SPIKE_AMPLITUDE_J_INHIBITORY_NEURON;
+	return -(SPIKE_AMPLITUDE_J_INHIBITORY_NEURON);
 }

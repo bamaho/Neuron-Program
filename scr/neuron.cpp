@@ -17,7 +17,9 @@ using namespace std;
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
 	,inputCurrent(0)
 	,internalTime(INITIAL_TIME) //Might be more appropriate to use the time of creation as an argument by default. Otherwise the assumption is, that it gets created at the beginning of the simulation
-	{ for (auto& element: incomingSpikes){element =0;} }	//Initialized the ring buffer entries to zero
+	{ for (auto& element: incomingSpikes){element =0;} 
+		
+		}	//Initialized the ring buffer entries to zero
 	
 	Neuron:: ~Neuron(){}
 	
@@ -68,7 +70,7 @@ using namespace std;
 			for(auto& targetNeuron: targets)
 			{
 				if(targetNeuron != nullptr) {
-                targetNeuron->receiveSpike(internalTime, SPIKE_AMPLITUDE_J); //once two types of neurons are possible, this line isn't adequate anymore
+                targetNeuron->receiveSpike(internalTime, getSpikeAmplitude()); //once two types of neurons are possible, this line isn't adequate anymore
 				}
 			
 			}

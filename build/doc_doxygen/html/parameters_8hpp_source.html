@@ -99,19 +99,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="comment">//Time</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> INITIAL_TIME(0); <span class="comment">//starting time of the simulation, in steps</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> FINAL_TIME(1000);    <span class="comment">//time when the simulation ends, in steps</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> FINAL_TIME(10000);   <span class="comment">//time when the simulation ends, in steps</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;constexpr <span class="keywordtype">double</span> MIN_TIME_INTERVAL_H(0.1);  <span class="comment">//minimal time interval in milliseconds, duration of one time step, H*(number of steps) gives the actual time in milliseconds</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE(1);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> SIGNAL_DELAY_D(15); <span class="comment">//delay that the signal undergoes between emission and reception, for the sake of convenience uniform, in steps</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">//Current</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;constexpr <span class="keywordtype">double</span> EXTERNAL_CURRENT(5); <span class="comment">//current applied to the neuron from the outside in piktoampere</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;constexpr <span class="keywordtype">double</span> EXTERNAL_CURRENT(0); <span class="comment">//current applied to the neuron from the outside in piktoampere</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> BEGINN_EXTERNAL_CURRENT(100);    <span class="comment">//begin of time interval in which the external current is applied</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> END_EXTERNAL_CURRENT(1000);  <span class="comment">//end of time interval in which the external current is applied</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;constexpr <span class="keywordtype">double</span> SPIKE_AMPLITUDE_J_EXCITATORY_NEURON(0.1);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;constexpr <span class="keywordtype">double</span> SPIKE_AMPLITUDE_J_INHIBITORY_NEURON(0.5);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;constexpr <span class="keywordtype">double</span> SPIKE_AMPLITUDE_J_INHIBITORY_NEURON(0.45);</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;constexpr <span class="keywordtype">int</span> g(5); <span class="comment">//J_INHIBATORY/J_EXCITATORY</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;constexpr <span class="keywordtype">double</span> SPIKE_AMPLITUDE_J(0.1);    <span class="comment">//PSP (spike response) amplitude, defines the impact of one received spike on the membrane potential, changed for later version</span></div>
@@ -141,13 +141,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">//Activity of the rest of the brain</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;constexpr <span class="keywordtype">bool</span> BACKGROUND_NOISE_ON(<span class="keyword">true</span>); <span class="comment">//regulates if there&#39;s a contribution from the rest of the brain. That this parameter is false is a prerequisite tfor certain tests to work</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> RATIO_V_EXTERNAL_OVER_V_THRESHOLD(2);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> RATIO_V_EXTERNAL_OVER_V_THRESHOLD(1);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 30 2017 11:16:32 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 30 2017 21:02:56 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

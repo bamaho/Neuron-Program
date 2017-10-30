@@ -11,19 +11,19 @@ constexpr double EPSILON_VERY_SMALL(0.000001);	//comparison of floating point nu
 
 	//Time
 constexpr unsigned int INITIAL_TIME(0);	//starting time of the simulation, in steps
-constexpr unsigned int FINAL_TIME(1000);	//time when the simulation ends, in steps
+constexpr unsigned int FINAL_TIME(10000);	//time when the simulation ends, in steps
 constexpr double MIN_TIME_INTERVAL_H(0.1);	//minimal time interval in milliseconds, duration of one time step, H*(number of steps) gives the actual time in milliseconds
 constexpr unsigned int NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE(1);
 constexpr unsigned int SIGNAL_DELAY_D(15); //delay that the signal undergoes between emission and reception, for the sake of convenience uniform, in steps
 
 
 	//Current
-constexpr double EXTERNAL_CURRENT(5); //current applied to the neuron from the outside in piktoampere
+constexpr double EXTERNAL_CURRENT(0); //current applied to the neuron from the outside in piktoampere
 constexpr unsigned int BEGINN_EXTERNAL_CURRENT(100);	//begin of time interval in which the external current is applied
 constexpr unsigned int END_EXTERNAL_CURRENT(1000);	//end of time interval in which the external current is applied
 
 constexpr double SPIKE_AMPLITUDE_J_EXCITATORY_NEURON(0.1);
-constexpr double SPIKE_AMPLITUDE_J_INHIBITORY_NEURON(0.5);
+constexpr double SPIKE_AMPLITUDE_J_INHIBITORY_NEURON(0.45);
 constexpr int g(5); //J_INHIBATORY/J_EXCITATORY
 
 constexpr double SPIKE_AMPLITUDE_J(0.1); 	//PSP (spike response) amplitude, defines the impact of one received spike on the membrane potential, changed for later version
@@ -53,6 +53,6 @@ constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(exp(-MIN_TIME_INTERVAL_H/T
 
 //Activity of the rest of the brain
 constexpr bool BACKGROUND_NOISE_ON(true); //regulates if there's a contribution from the rest of the brain. That this parameter is false is a prerequisite tfor certain tests to work
-constexpr unsigned int RATIO_V_EXTERNAL_OVER_V_THRESHOLD(2);
+constexpr unsigned int RATIO_V_EXTERNAL_OVER_V_THRESHOLD(1);
 
 #endif

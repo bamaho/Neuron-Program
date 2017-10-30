@@ -6,6 +6,10 @@
 #include "parameters.hpp"
 
 #include <random>
+#include <fstream>
+
+
+#include <iostream>
 
 using namespace std;
 
@@ -14,12 +18,12 @@ Network::Network()
 	//creation of neurons
 		for(size_t i(0); i < NUMBER_OF_EXCITATORY_NEURONS_Ne; i++)
 		{
-			neurons[i] = new Neuron;
+			neurons[i] = new ExcitatoryNeuron;
 		}
 		
 		for(size_t i(NUMBER_OF_EXCITATORY_NEURONS_Ne);i < TOTAL_NUMBER_OF_NEURONS_N; i++)
 		{
-			neurons[i] = new Neuron;
+			neurons[i] = new InhibitoryNeuron;
 		}
 	//establishing connections
 	
@@ -58,6 +62,7 @@ void Network::update()
 		assert(neuron!=nullptr);
 		neuron->update();
 	}
+	 cerr<< neurons[100]->readRingBuffer() << " " << neurons[100]->getBackgroundNoise() << endl;
 }
 
 vector<vector<unsigned int> > Network::getSpikeTimes()
@@ -71,5 +76,29 @@ vector<vector<unsigned int> > Network::getSpikeTimes()
 	}
 	return spikeTimes;
 }
+
+void Network::printSimulationData(const std::string& nameOfFile) const
+{
+	ofstream out(nameOfFile);
+		
+		if(out.fail())
+		{
+			cerr << "Error: impossible to write in file " << nameOfFile << endl;//(Too) simplistic solution!
+		}
+		
+		else
+		{
+			
+			for(size_t i(0); i < TOTAL_NUMBER_OF_NEURONS_N; i++)
+			{
+				for(auto const& spike: neurons[i]->getSpikeTime())
+				{
+					out << spike*MIN_TIME_INTERVAL_H << '\t'<< i << '\n' ; //prints the times, not in number of steps, but converted milliseconds
+				}
+			}
+		}
+		out.close();
+}
+
 
 
