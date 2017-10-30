@@ -2,13 +2,13 @@
 #include "parameters.hpp"
 
 
-/*#include <vector>
-#include <cmath>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <list>
-#include <array>
-#include <cassert>*/
-
 using namespace std;
+
+ExcitatoryNeuron::ExcitatoryNeuron()
+:Neuron()
+{}
+
+double ExcitatoryNeuron::getSpikeAmplitude() const
+{
+	return SPIKE_AMPLITUDE_J_EXCITATORY_NEURON;
+}

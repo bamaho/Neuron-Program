@@ -1,4 +1,5 @@
 #include "neuron.hpp"
+//#include "network.hpp"
 #include "gtest/gtest.h"
 #include "parameters.hpp"
 
@@ -117,7 +118,10 @@ TEST(twoNeurons, ringBuffer) //tests if a spike arrive with the right delay and 
 	EXPECT_NEAR(n4.readRingBuffer(),SPIKE_AMPLITUDE_J*n,0.00001);
 }
 
-
+/*TEST(neuronalNetwork, initialisation) //tests if each neuron receives the correct number of spikes and is thus properly connected
+{
+	Network network;
+}*/
 
 
 

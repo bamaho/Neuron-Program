@@ -11,20 +11,6 @@ excitatoryNeuron.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/excitatoryNeuron.hpp
 parameters.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
-cmath
--
-string
--
-iostream
--
-fstream
--
-list
--
-array
--
-cassert
--
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/excitatoryNeuron.hpp
 parameters.hpp
@@ -37,20 +23,6 @@ inhibitoryNeuron.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.hpp
 parameters.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
-cmath
--
-string
--
-iostream
--
-fstream
--
-list
--
-array
--
-cassert
--
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.hpp
 parameters.hpp
@@ -87,8 +59,6 @@ random
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.hpp
 parameters.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
-network.hpp
-/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.hpp
 neuron.hpp
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
 iostream
@@ -116,8 +86,6 @@ string
 iostream
 -
 fstream
--
-list
 -
 array
 -

@@ -41,6 +41,7 @@ int main()
 		
 		*/
 		network.update();
+
 		
 		simulationTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;
 	}

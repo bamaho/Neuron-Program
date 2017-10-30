@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include <list>
+//#include <list>
 #include <array>
 #include <cassert>
 #include <random>
@@ -19,8 +19,8 @@ using namespace std;
 	,internalTime(INITIAL_TIME) //Might be more appropriate to use the time of creation as an argument by default. Otherwise the assumption is, that it gets created at the beginning of the simulation
 	{ for (auto& element: incomingSpikes){element =0;} }	//Initialized the ring buffer entries to zero
 	
-	Neuron:: ~Neuron()
-	{}
+	Neuron:: ~Neuron(){}
+	
 	
 	
 	double Neuron::getMembranePotential() const
@@ -56,7 +56,7 @@ using namespace std;
 	
 	bool Neuron::isRefractory() const	//If there haven't occured any spikes yet or the latest spike took place and the neuron has in the meantime undergone a complete refractory state, then the neuron isn't refractory
 	{	
-		return not(spikes.empty() or ((internalTime - spikes.back())>=	REFRACTION_PERIOD));//do I account for one point in time twice? 
+		return not(spikes.empty() or ((internalTime - spikes.back())>=	REFRACTION_PERIOD));
 	}
 	
 	void Neuron::spike()	//stores the spiking time, sets the membrane potential to sends a signal to the connected neurons
@@ -132,7 +132,7 @@ using namespace std;
 
 	void Neuron:: addTarget(Neuron* target)	//not the most elegant of solutions, since with this conception it is the users oblication to allocate space in the memory, the usage of unique pointers might have been more appropriate
 	{
-		if(target != nullptr) {
+		if(target != nullptr) { //unpredictible
 			targets.push_back(target);
 		}
 	}
@@ -140,10 +140,13 @@ using namespace std;
 	//Random Generator
 	double Neuron::getBackgroundNoise() const
 	{
-		random_device randomDevice;
-		mt19937 generator(randomDevice());
-		poisson_distribution<> distribution(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*NUMBER_OF_CONNECTIONS_FROM_EXCITATORY_NEURONS_Ce);//V_EXT*J_EXT*h*Ce
-		return distribution(generator);
+		if (BACKGROUND_NOISE_ON)
+		{static random_device randomDevice;
+		 mt19937 generator(randomDevice());
+		 poisson_distribution<> distribution(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU));//V_EXT*J_EXT*h*Cext, "The number of connections from outside the network is taken to be equal to the number of recurrent excitatory ones, Cext = Ce"
+		 return SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*distribution(generator);}
+		 else
+		 {return 0;} //no contribution of the rest of the brain if background noise is not activated in the parameter file, for certain tests the activity must be turned off
 	}
 	
 	//Testing

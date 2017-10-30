@@ -72,7 +72,7 @@ class Neuron
 	 * @see update()	*/
 	void updateMembranePotential();	
 	
-	/**Reads the ring buffer's current entry to receive the spikes arriving with a delay that where emmited by presynaptic neurons
+	/**Reads the ring buffer's current entry to receive the spikes arriving with a delay that where emmited by presynaptic neurons.
 	 * @see updateMembranePotential()
 	 * @return the sum of spike amplitudes of spikes from connected neurons that are currently arriving, a double	*/
 	double readRingBuffer() const;
@@ -107,23 +107,31 @@ class Neuron
 	void addTarget(Neuron* target);
 	
 	//Testing, these function aren't necessary otherwise
+	/** A getter for the neuron's spike times.
+	 * @return the neuron's spiking times in simulation steps, a vector of unsigned integers	*/
 	std::vector<unsigned int> getSpikeTime() const;
 	
-	//Random Generator
-	double getBackgroundNoise() const;
+	
 	
 	
 	private:
 	
-	double membranePotential;
-	double inputCurrent; //is zero if not altered by means of the setter altered in the main
-	std::vector<unsigned int> spikes; //a container to store the spiking times, a vector is not the appropriate choice...a list would provide the required functions as well
-	std::vector<Neuron*> targets;	//Neurons on which an eventual spike of the current neuron has an impact
+	double membranePotential; ///< The neuron's most important variable, a double.
+	double inputCurrent; ///< The external current that is applied to the neuron, a double, is zero if not altered in the main using its the setter.
+	std::vector<unsigned int> spikes; ///< A container that stores the spiking times in the course of time, a vector !!!!!!is not the appropriate choice...a list would provide the required functions as well.
+	std::vector<Neuron*> targets; ///< A container containing the postsynaptic neurons, the neurons on which an eventual spike of the current neuron has an impact.
 	
-	unsigned int internalTime;	//second clock, allows to synchronize the times between the neurons, otherwise a problem arises when it comes to distinguishing between alrady updated and not yet updated neurons in neuron interactions
+	/** Another clock which allows to synchronize the times between the neurons, otherwise a problem arises when it comes to distinguishing between alrady updated and not yet updated neurons in neuron interactions. */
+	unsigned int internalTime; ///< A clock keeping track of the neuron's local time, an unsigned integer. 
 	
-	std::array<double, SIGNAL_DELAY_D + 1> incomingSpikes; //ring buffer, one additional element is required for the neuron to arrive with the right delay, in this version J is always constant
+	/** An array containing one more element than the uniform signal delay which allows to record all the incoming spike amplitudes and them being read at the right time. */
+	std::array<double, SIGNAL_DELAY_D + 1> incomingSpikes; /// A ring buffer ensuring spikes arrive with the right signal delay, an array of doubles.
 
+	//Random Generator
+	/** Creates .
+	 * @see updateMembranePotential()
+	 * @return a randomly generated  value representing the background noise coming from the rest of the brain, a double	*/
+	double getBackgroundNoise() const;
 };
 
 

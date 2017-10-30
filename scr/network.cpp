@@ -33,7 +33,7 @@ Network::Network()
 		{
 			for(size_t i(0); i < NUMBER_OF_CONNECTIONS_FROM_EXCITATORY_NEURONS_Ce; i++)
 			{
-				neurons[distributionExcitatoryNeurons(randomGenerator)]->addTarget(neuron);
+				neurons[distributionExcitatoryNeurons(randomGenerator)]->addTarget(neuron);	//Can stimulate itself???
 			}
 			
 			for(size_t i(0); i < NUMBER_OF_CONNECTIONS_FROM_INHIBITORY_NEURONS_Ci; i++)
@@ -41,6 +41,14 @@ Network::Network()
 				neurons[distributionInhibitoryNeurons(randomGenerator)]->addTarget(neuron);
 			}
 		}
+}
+
+Network::~Network() //neurons can't exist without a network
+{
+    for (auto& neuron : neurons) {
+        delete neuron;
+        neuron = nullptr;
+    }
 }
 
 void Network::update()
@@ -52,10 +60,16 @@ void Network::update()
 	}
 }
 
-Network::~Network() //neurons can't exist without a network
+vector<vector<unsigned int> > Network::getSpikeTimes()
 {
-    for (auto& neuron : neurons) {
-        delete neuron;
-        neuron = nullptr;
-    }
+	std::vector< std::vector<unsigned int> > spikeTimes;
+	
+	for(auto& neuron: neurons)
+	{
+		assert(neuron!=nullptr);
+		spikeTimes.push_back(neuron->getSpikeTime());
+	}
+	return spikeTimes;
 }
+
+

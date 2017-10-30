@@ -15,16 +15,18 @@
 class ExcitatoryNeuron : public Neuron
 {
 	public:
-	/*
-	//constructor
-	Neuron();
 	
-	/
+	//constructor
+	ExcitatoryNeuron();
+	
+	double getSpikeAmplitude() const;
+	
+	
 	
 	private:
 	
 	
-	*/
+	
 };
 
 
