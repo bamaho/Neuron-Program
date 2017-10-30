@@ -10,6 +10,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.2.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.2.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.2.3/CMakeSystem.cmake"
+  "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/../docs/Doxyfile.in"
   "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/CMakeLists.txt"
   "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/gtest/CMakeLists.txt"
   "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/gtest/cmake/internal_utils.cmake"
@@ -26,6 +27,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/share/cmake-3.2/Modules/Compiler/GNU-C.cmake"
   "/usr/local/share/cmake-3.2/Modules/Compiler/GNU-CXX.cmake"
   "/usr/local/share/cmake-3.2/Modules/Compiler/GNU.cmake"
+  "/usr/local/share/cmake-3.2/Modules/FindDoxygen.cmake"
   "/usr/local/share/cmake-3.2/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/local/share/cmake-3.2/Modules/FindPackageMessage.cmake"
   "/usr/local/share/cmake-3.2/Modules/FindPythonInterp.cmake"
@@ -45,6 +47,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "Doxyfile"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
@@ -53,6 +56,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/neuron.dir/DependInfo.cmake"
   "CMakeFiles/neuron_unitTest.dir/DependInfo.cmake"
+  "CMakeFiles/doc_doxygen.dir/DependInfo.cmake"
   "gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
   "gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )

@@ -128,7 +128,7 @@ class Neuron
 	std::array<double, SIGNAL_DELAY_D + 1> incomingSpikes; /// A ring buffer ensuring spikes arrive with the right signal delay, an array of doubles.
 
 	//Random Generator
-	/** Creates .
+	/** Creates a value which accounts for the contribution of the rest of the brain. This contribution is modeled by Cext excitatory neurons that fire randomly at a frequency vext.
 	 * @see updateMembranePotential()
 	 * @return a randomly generated  value representing the background noise coming from the rest of the brain, a double	*/
 	double getBackgroundNoise() const;

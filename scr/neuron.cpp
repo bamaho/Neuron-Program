@@ -142,8 +142,8 @@ using namespace std;
 	{
 		if (BACKGROUND_NOISE_ON)
 		{static random_device randomDevice;
-		 mt19937 generator(randomDevice());
-		 poisson_distribution<> distribution(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU));//V_EXT*J_EXT*h*Cext, "The number of connections from outside the network is taken to be equal to the number of recurrent excitatory ones, Cext = Ce"
+		 static mt19937 generator(randomDevice());
+		 static poisson_distribution<> distribution(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU));//V_EXT*J_EXT*h*Cext, "The number of connections from outside the network is taken to be equal to the number of recurrent excitatory ones, Cext = Ce"
 		 return SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*distribution(generator);}
 		 else
 		 {return 0;} //no contribution of the rest of the brain if background noise is not activated in the parameter file, for certain tests the activity must be turned off
