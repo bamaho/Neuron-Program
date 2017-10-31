@@ -123,6 +123,27 @@ TEST(twoNeurons, ringBuffer) //tests if a spike arrive with the right delay and 
 	Network network;
 }*/
 
+TEST(oneNeuron, randomBackgroundNoise) //tests if the variance
+{
+	Neuron neuron;
+	
+	std::vector<double> backgroundNoise;
+	
+	for(size_t i(0);i<10000;i++)
+	{
+		backgroundNoise.push_back(neuron.getBackgroundNoise());
+	}
+	
+	EXPECT_NEAR(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU,std::accumulate(backgroundNoise.begin(), backgroundNoise.end(), 0.0) / backgroundNoise.size(),0.0001);//tests if the expected value is the right one
+	for(auto& element:backgroundNoise)
+	{
+		element*=element;
+	}
+	EXPECT_NEAR(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H*SPIKE_AMPLITUDE_J/TIME_CONSTANT_TAU,std::accumulate(backgroundNoise.begin(), backgroundNoise.end(), 0.0) / backgroundNoise.size(),0.0001);
+	
+}
+
+
 
 
 int main(int argc, char **argv)
