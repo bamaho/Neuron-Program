@@ -34,14 +34,25 @@ class Network
 	//print data
 	/**Prints each neuron's spike times and neuron id in a file of given name. 
 	 * @param nameOfFile, a string*/
+	
 	void printSimulationData(const std::string& nameOfFile) const;
+	void printSimulationDataWithinTimeInterval(const std::string& nameOfFile) const;
 	
-	void printSimulationData(const std::string& nameOfFile, unsigned int startingTimeOfDataStoring) const;
-	
+	//void printSimulationData(const std::string& nameOfFile, unsigned int startingTimeOfDataStoring) const;
+	//void printSimulationData(const std::string& nameOfFile, std::const_iterator itBegin, std::const_iterator itEnd) const;	
 	double getMeanSpikeRateInInterval(unsigned int beginInterval, unsigned int endInterval) const;
 	
 	private:
 	std::array<Neuron*, TOTAL_NUMBER_OF_NEURONS_N> neurons; ///< A container carrying the neurons forming the network, an array of pointers to neurons.
+	
+	void printSimulationData(const std::string& nameOfFile, std::vector<unsigned int>::const_iterator (Network::*getIteratorToBegin)(unsigned int) const /*= &Network::getIteratorToBegin*/, std::vector<unsigned int>::const_iterator (Network::*getIteratorToEnd)(unsigned int) const /*= &Network::getIteratorToEnd*/) const;
+	
+
+	std::vector<unsigned int>::const_iterator getIteratorToBegin(unsigned int i) const;
+	std::vector<unsigned int>::const_iterator getIteratorToEnd(unsigned int i) const;
+	
+	std::vector<unsigned int>::const_iterator getIteratorToBeginInterval(unsigned int i) const;
+	std::vector<unsigned int>::const_iterator getIteratorToEndInterval(unsigned int i) const;
 	
 };
 

@@ -79,32 +79,13 @@ vector<vector<unsigned int> > Network::getSpikeTimes()
 	return spikeTimes;
 }
 
-void Network::printSimulationData(const std::string& nameOfFile) const
-{
-	ofstream out(nameOfFile);
-		
-		if(out.fail())
-		{
-			cerr << "Error: impossible to write in file " << nameOfFile << endl;//(Too) simplistic solution!
-		}
-		
-		else
-		{
-			
-			for(size_t i(0); i < TOTAL_NUMBER_OF_NEURONS_N; i++)
-			{
-				for(auto const& spike: neurons[i]->getSpikeTime())
-				{
-					out << spike*MIN_TIME_INTERVAL_H << '\t'<< i << '\n' ; //prints the times, not in number of steps, but converted milliseconds
-				}
-			}
-		}
-		out.close();
-}
 
-void Network::printSimulationData(const std::string& nameOfFile, unsigned int startingTimeOfDataStoring) const //allows to write only spikes in a certain interval into a file
+void Network::printSimulationData(const std::string& nameOfFile) const //allows to write only spikes in a certain interval into a file
 {
-	ofstream out(nameOfFile);
+	printSimulationData(nameOfFile,&Network::getIteratorToBegin,&Network::getIteratorToEnd);
+	
+	
+	/*ofstream out(nameOfFile);
 		
 		if(out.fail())
 		{
@@ -127,8 +108,10 @@ void Network::printSimulationData(const std::string& nameOfFile, unsigned int st
 			}
 			}
 		}
-		out.close();
+		out.close();*/
 }
+
+
 double Network::getMeanSpikeRateInInterval(unsigned int beginInterval, unsigned int endInterval) const
 {
 	assert(endInterval >= beginInterval and endInterval<=FINAL_TIME);
@@ -147,4 +130,78 @@ double Network::getMeanSpikeRateInInterval(unsigned int beginInterval, unsigned 
 		return meanFrequency/=(neurons.size()*(endInterval-beginInterval)*MIN_TIME_INTERVAL_H*0.001);
 }
 
+void Network::printSimulationDataWithinTimeInterval(const std::string& nameOfFile) const
+{
+	printSimulationData(nameOfFile,&Network::getIteratorToBeginInterval,&Network::getIteratorToEndInterval);
+}
+void Network::printSimulationData(const std::string& nameOfFile, vector<unsigned int>::const_iterator (Network::*getIteratorToBegin)(unsigned int) const, vector<unsigned int>::const_iterator (Network::*getIteratorToEnd)(unsigned int) const) const
+{
+	ofstream out(nameOfFile);
+		
+		if(out.fail())
+		{
+			cerr << "Error: impossible to write in file " << nameOfFile << endl;//(Too) simplistic solution!
+		}
+		
+		else
+		{
+			
+			for(size_t i(0); i < TOTAL_NUMBER_OF_NEURONS_N; i++)
+			{
+				
+				if(not neurons[i]->getSpikeTime().empty() )
+				{
+					for(vector<unsigned int>::const_iterator it = (this->*getIteratorToBegin)(i) ; it !=(this->*getIteratorToEnd)(i); ++it)
+					{
+						out << *it*MIN_TIME_INTERVAL_H << '\t'<< i << '\n' ; //prints the times, not in number of steps, but converted milliseconds
+					}
+				}
+			}
+		}
+		out.close();
+}
+
+
+
+vector<unsigned int>::const_iterator Network::getIteratorToBeginInterval(unsigned int i) const
+	{
+		return lower_bound(neurons[i]->getSpikeTime().begin(), neurons[i]->getSpikeTime().end(), TIME_BEGIN_PRINT_TO_TXT_FILE);
+	}
+
+vector<unsigned int>::const_iterator Network::getIteratorToEndInterval(unsigned int i) const
+	{
+		return upper_bound(neurons[i]->getSpikeTime().begin(), neurons[i]->getSpikeTime().end(), TIME_END_PRINT_TO_TXT_FILE);
+	}
+	
+vector<unsigned int>::const_iterator Network::getIteratorToEnd(unsigned int i) const
+	{
+		return neurons[i]->getSpikeTime().end();
+	}
+vector<unsigned int>::const_iterator Network::getIteratorToBegin(unsigned int i) const
+	{
+		return neurons[i]->getSpikeTime().end();
+	}
+
+/*void Network::printSimulationData(const std::string& nameOfFile) const
+{
+	ofstream out(nameOfFile);
+		
+		if(out.fail())
+		{
+			cerr << "Error: impossible to write in file " << nameOfFile << "." << endl;//(Too) simplistic solution!
+		}
+		
+		else
+		{
+			
+			for(size_t i(0); i < TOTAL_NUMBER_OF_NEURONS_N; i++)
+			{
+				for(auto const& spike: neurons[i]->getSpikeTime())
+				{
+					out << spike*MIN_TIME_INTERVAL_H << '\t'<< i << '\n' ; //prints the times, not in number of steps, but converted milliseconds
+				}
+			}
+		}
+		out.close();
+}*/
 

@@ -53,4 +53,8 @@ constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(exp(-MIN_TIME_INTERVAL_H/T
 constexpr bool BACKGROUND_NOISE_ON(true); //regulates if there's a contribution from the rest of the brain. That this parameter is false is a prerequisite for certain tests to work
 constexpr unsigned int RATIO_V_EXTERNAL_OVER_V_THRESHOLD(2);
 
+//Fetch Data
+constexpr unsigned int TIME_BEGIN_PRINT_TO_TXT_FILE(10000);//assert that it is than smaller
+constexpr unsigned int TIME_END_PRINT_TO_TXT_FILE(15000);
+
 #endif

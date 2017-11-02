@@ -141,11 +141,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;constexpr <span class="keywordtype">bool</span> BACKGROUND_NOISE_ON(<span class="keyword">true</span>); <span class="comment">//regulates if there&#39;s a contribution from the rest of the brain. That this parameter is false is a prerequisite for certain tests to work</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> RATIO_V_EXTERNAL_OVER_V_THRESHOLD(2);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">//Fetch Data</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> TIME_BEGIN_PRINT_TO_TXT_FILE(10000);<span class="comment">//assert that it is than smaller</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> TIME_END_PRINT_TO_TXT_FILE(15000);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 2 2017 08:58:12 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 2 2017 21:32:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
