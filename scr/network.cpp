@@ -10,6 +10,8 @@
 
 
 #include <iostream>
+#include <algorithm>
+#include <cassert>
 
 using namespace std;
 
@@ -62,7 +64,7 @@ void Network::update()
 		assert(neuron!=nullptr);
 		neuron->update();
 	}
-	 cerr<< neurons[100]->readRingBuffer() << " " << neurons[100]->getBackgroundNoise() << endl;
+	 //cerr<< neurons[100]->readRingBuffer() << " " << neurons[100]->getBackgroundNoise() << endl;
 }
 
 vector<vector<unsigned int> > Network::getSpikeTimes()
@@ -100,5 +102,49 @@ void Network::printSimulationData(const std::string& nameOfFile) const
 		out.close();
 }
 
+void Network::printSimulationData(const std::string& nameOfFile, unsigned int startingTimeOfDataStoring) const //allows to write only spikes in a certain interval into a file
+{
+	ofstream out(nameOfFile);
+		
+		if(out.fail())
+		{
+			cerr << "Error: impossible to write in file " << nameOfFile << endl;//(Too) simplistic solution!
+		}
+		
+		else
+		{
+			
+			for(size_t i(0); i < TOTAL_NUMBER_OF_NEURONS_N; i++)
+			{
+				//for(auto const& spike: neurons[i]->getSpikeTime())
+				
+				if(not neurons[i]->getSpikeTime().empty() )
+				{
+				for(vector<unsigned int>::const_iterator it = lower_bound(neurons[i]->getSpikeTime().begin(), neurons[i]->getSpikeTime().end(), startingTimeOfDataStoring); it !=neurons[i]->getSpikeTime().end(); ++it)
+				{
+					out << *it*MIN_TIME_INTERVAL_H << '\t'<< i << '\n' ; //prints the times, not in number of steps, but converted milliseconds
+				}
+			}
+			}
+		}
+		out.close();
+}
+double Network::getMeanSpikeRateInInterval(unsigned int beginInterval, unsigned int endInterval) const
+{
+	assert(endInterval >= beginInterval and endInterval<=FINAL_TIME);
+	double meanFrequency(0);
+	for(auto const& neuron: neurons)
+			{
+				
+				if(not neuron->getSpikeTime().empty() )
+				{
+					for(vector<unsigned int>::const_iterator it = lower_bound(neuron->getSpikeTime().begin(), neuron->getSpikeTime().end(), beginInterval); it != upper_bound(neuron->getSpikeTime().begin(), neuron->getSpikeTime().end(), endInterval); ++it)
+					{
+						meanFrequency ++;
+					}
+			}
+		}
+		return meanFrequency/=(neurons.size()*(endInterval-beginInterval)*MIN_TIME_INTERVAL_H*0.001);
+}
 
 

@@ -52,7 +52,7 @@ using namespace std;
 			}
 		}
 		reinitializeCurrentRingBufferElement();
-		internalTime += NUMBER_OF_TIME_STEPS_PER_SIMULATION_CYCLE;
+		internalTime ++;
 	}
 
 	
@@ -153,5 +153,7 @@ using namespace std;
 	
 	//Testing
 	
-		std::vector<unsigned int> Neuron::getSpikeTime() const	//Vector is not the appropriate choice
-	{	return spikes;	}
+		const vector<unsigned int>& Neuron::getSpikeTime() const	//Vector is not the appropriate choice
+	{	
+		const vector<unsigned int> & sTimes(spikes);
+		return sTimes;	}

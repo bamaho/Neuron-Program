@@ -146,7 +146,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a9bf071c800e76fa7fbd611cee7cd76d6">addTarget</a>(<a class="code" href="classNeuron.html">Neuron</a>* target);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">//Testing, these function aren&#39;t necessary otherwise</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span>    std::vector&lt;unsigned int&gt; <a class="code" href="classNeuron.html#a5e14b82bebab09904d558298f343061c">getSpikeTime</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span>    <span class="keyword">const</span> std::vector&lt;unsigned int&gt;&amp; <a class="code" href="classNeuron.html#ae87bb09d99e4e9c2185be8b73fc242ba">getSpikeTime</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">//Random Generator</span></div>
@@ -170,7 +170,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classNeuron_html_a41a81d8527734e59bae39f73fece887f"><div class="ttname"><a href="classNeuron.html#a41a81d8527734e59bae39f73fece887f">Neuron::updateMembranePotential</a></div><div class="ttdeci">void updateMembranePotential()</div><div class="ttdef"><b>Definition:</b> neuron.cpp:87</div></div>
 <div class="ttc" id="classNeuron_html"><div class="ttname"><a href="classNeuron.html">Neuron</a></div><div class="ttdef"><b>Definition:</b> neuron.hpp:15</div></div>
-<div class="ttc" id="classNeuron_html_a5e14b82bebab09904d558298f343061c"><div class="ttname"><a href="classNeuron.html#a5e14b82bebab09904d558298f343061c">Neuron::getSpikeTime</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; getSpikeTime() const </div><div class="ttdef"><b>Definition:</b> neuron.cpp:156</div></div>
 <div class="ttc" id="classNeuron_html_a823487d01615fadb8ac19a2768dd9d96"><div class="ttname"><a href="classNeuron.html#a823487d01615fadb8ac19a2768dd9d96">Neuron::Neuron</a></div><div class="ttdeci">Neuron()</div><div class="ttdoc">A constructor. </div><div class="ttdef"><b>Definition:</b> neuron.cpp:16</div></div>
 <div class="ttc" id="classNeuron_html_a86341dee7a81765fe4840777a008c688"><div class="ttname"><a href="classNeuron.html#a86341dee7a81765fe4840777a008c688">Neuron::getMembranePotential</a></div><div class="ttdeci">double getMembranePotential() const </div><div class="ttdoc">A getter for the neuron&#39;s membrane potential. </div><div class="ttdef"><b>Definition:</b> neuron.cpp:28</div></div>
 <div class="ttc" id="classNeuron_html_aec2283fbfaba764cd088e6d16b0a74bb"><div class="ttname"><a href="classNeuron.html#aec2283fbfaba764cd088e6d16b0a74bb">Neuron::getSpikeAmplitude</a></div><div class="ttdeci">virtual double getSpikeAmplitude() const </div><div class="ttdef"><b>Definition:</b> neuron.cpp:109</div></div>
@@ -180,6 +179,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classNeuron_html_ae77210c7b0bf3739b01ec2e3dba96827"><div class="ttname"><a href="classNeuron.html#ae77210c7b0bf3739b01ec2e3dba96827">Neuron::setInputCurrent</a></div><div class="ttdeci">void setInputCurrent(double externalCurrent)</div><div class="ttdoc">A setter for the external input current. </div><div class="ttdef"><b>Definition:</b> neuron.cpp:36</div></div>
 <div class="ttc" id="classNeuron_html_aa40fbb2b025efb1db420da32e16741c1"><div class="ttname"><a href="classNeuron.html#aa40fbb2b025efb1db420da32e16741c1">Neuron::isRefractory</a></div><div class="ttdeci">bool isRefractory() const </div><div class="ttdef"><b>Definition:</b> neuron.cpp:59</div></div>
 <div class="ttc" id="classNeuron_html_a41dd9577d84a48bd427201b4b8234150"><div class="ttname"><a href="classNeuron.html#a41dd9577d84a48bd427201b4b8234150">Neuron::reinitializeCurrentRingBufferElement</a></div><div class="ttdeci">void reinitializeCurrentRingBufferElement()</div><div class="ttdef"><b>Definition:</b> neuron.cpp:97</div></div>
+<div class="ttc" id="classNeuron_html_ae87bb09d99e4e9c2185be8b73fc242ba"><div class="ttname"><a href="classNeuron.html#ae87bb09d99e4e9c2185be8b73fc242ba">Neuron::getSpikeTime</a></div><div class="ttdeci">const std::vector&lt; unsigned int &gt; &amp; getSpikeTime() const </div><div class="ttdef"><b>Definition:</b> neuron.cpp:156</div></div>
 <div class="ttc" id="classNeuron_html_a5487631e8982ae2368da0917535a9001"><div class="ttname"><a href="classNeuron.html#a5487631e8982ae2368da0917535a9001">Neuron::getBackgroundNoise</a></div><div class="ttdeci">double getBackgroundNoise() const </div><div class="ttdef"><b>Definition:</b> neuron.cpp:143</div></div>
 <div class="ttc" id="classNeuron_html_a9bf071c800e76fa7fbd611cee7cd76d6"><div class="ttname"><a href="classNeuron.html#a9bf071c800e76fa7fbd611cee7cd76d6">Neuron::addTarget</a></div><div class="ttdeci">void addTarget(Neuron *target)</div><div class="ttdef"><b>Definition:</b> neuron.cpp:135</div></div>
 <div class="ttc" id="classNeuron_html_a94a250ce7e167760e593979b899745b1"><div class="ttname"><a href="classNeuron.html#a94a250ce7e167760e593979b899745b1">Neuron::~Neuron</a></div><div class="ttdeci">virtual ~Neuron()</div><div class="ttdoc">A destructor. </div><div class="ttdef"><b>Definition:</b> neuron.cpp:24</div></div>
@@ -190,7 +190,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 31 2017 17:47:24 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Nov 2 2017 08:58:12 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

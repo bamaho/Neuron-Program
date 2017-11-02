@@ -59,6 +59,10 @@ fstream
 -
 iostream
 -
+algorithm
+-
+cassert
+-
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.hpp
 parameters.hpp

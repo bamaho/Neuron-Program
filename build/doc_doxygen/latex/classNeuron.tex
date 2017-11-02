@@ -44,7 +44,7 @@ void \hyperlink{classNeuron_a15b3eaa67535301e011d5cd8d53a61d1}{print\-Spiking\-T
 \item 
 void \hyperlink{classNeuron_a9bf071c800e76fa7fbd611cee7cd76d6}{add\-Target} (\hyperlink{classNeuron}{Neuron} $\ast$target)
 \item 
-std\-::vector$<$ unsigned int $>$ \hyperlink{classNeuron_a5e14b82bebab09904d558298f343061c}{get\-Spike\-Time} () const 
+const std\-::vector$<$ unsigned int $>$ \& \hyperlink{classNeuron_ae87bb09d99e4e9c2185be8b73fc242ba}{get\-Spike\-Time} () const 
 \item 
 double \hyperlink{classNeuron_a5487631e8982ae2368da0917535a9001}{get\-Background\-Noise} () const 
 \end{DoxyCompactItemize}
@@ -121,13 +121,13 @@ the spike amplitudes of the presynaptic neuron, a double
 
 Reimplemented in \hyperlink{classExcitatoryNeuron_a7d38213943753c84022c52db84601e67}{Excitatory\-Neuron}, and \hyperlink{classInhibitoryNeuron_a762e2b7bcf64962f764031d991911b7a}{Inhibitory\-Neuron}.
 
-\hypertarget{classNeuron_a5e14b82bebab09904d558298f343061c}{\index{Neuron@{Neuron}!get\-Spike\-Time@{get\-Spike\-Time}}
+\hypertarget{classNeuron_ae87bb09d99e4e9c2185be8b73fc242ba}{\index{Neuron@{Neuron}!get\-Spike\-Time@{get\-Spike\-Time}}
 \index{get\-Spike\-Time@{get\-Spike\-Time}!Neuron@{Neuron}}
-\subsubsection[{get\-Spike\-Time}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ unsigned int $>$ Neuron\-::get\-Spike\-Time (
+\subsubsection[{get\-Spike\-Time}]{\setlength{\rightskip}{0pt plus 5cm}const vector$<$ unsigned int $>$ \& Neuron\-::get\-Spike\-Time (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}}\label{classNeuron_a5e14b82bebab09904d558298f343061c}
+) const}}\label{classNeuron_ae87bb09d99e4e9c2185be8b73fc242ba}
 A getter for the neuron's spike times. \begin{DoxyReturn}{Returns}
 the neuron's spiking times in simulation steps, a vector of unsigned integers 
 \end{DoxyReturn}

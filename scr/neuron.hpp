@@ -109,7 +109,7 @@ class Neuron
 	//Testing, these function aren't necessary otherwise
 	/** A getter for the neuron's spike times.
 	 * @return the neuron's spiking times in simulation steps, a vector of unsigned integers	*/
-	std::vector<unsigned int> getSpikeTime() const;
+	const std::vector<unsigned int>& getSpikeTime() const;
 	
 	
 		//Random Generator

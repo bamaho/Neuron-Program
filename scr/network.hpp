@@ -36,6 +36,10 @@ class Network
 	 * @param nameOfFile, a string*/
 	void printSimulationData(const std::string& nameOfFile) const;
 	
+	void printSimulationData(const std::string& nameOfFile, unsigned int startingTimeOfDataStoring) const;
+	
+	double getMeanSpikeRateInInterval(unsigned int beginInterval, unsigned int endInterval) const;
+	
 	private:
 	std::array<Neuron*, TOTAL_NUMBER_OF_NEURONS_N> neurons; ///< A container carrying the neurons forming the network, an array of pointers to neurons.
 	
