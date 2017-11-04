@@ -19,7 +19,7 @@ constexpr double EXTERNAL_CURRENT(0); //current applied to the neuron from the o
 /*constexpr unsigned int BEGINN_EXTERNAL_CURRENT(100);	//begin of time interval in which the external current is applied
 constexpr unsigned int END_EXTERNAL_CURRENT(1000);	//end of time interval in which the external current is applied	*/
 
-constexpr int J_INHIBATORY_OVER_J_EXCITATORY_G(5); //J_INHIBATORY/J_EXCITATORY
+constexpr double J_INHIBATORY_OVER_J_EXCITATORY_G(4.5); //J_INHIBATORY/J_EXCITATORY
 
 constexpr double SPIKE_AMPLITUDE_J_EXCITATORY_NEURON(0.1);	//spike amplitude of an excitatory neuron
 constexpr double SPIKE_AMPLITUDE_J_INHIBITORY_NEURON(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*J_INHIBATORY_OVER_J_EXCITATORY_G);	//spike amplitude of an inhibitory neuron
@@ -50,8 +50,7 @@ constexpr double MEMBRANE_RESISTANCE_R(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_F
 constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU));	//an expression which has to be calculated multiple times when updating the membrane potential and that is constant
 
 //Activity of the rest of the brain
-constexpr bool BACKGROUND_NOISE_ON(true); //regulates if there's a contribution from the rest of the brain. That this parameter is false is a prerequisite for certain tests to work
-constexpr unsigned int RATIO_V_EXTERNAL_OVER_V_THRESHOLD(2);
+constexpr double RATIO_V_EXTERNAL_OVER_V_THRESHOLD(0.9);
 
 //Fetch Data
 constexpr unsigned int TIME_BEGIN_PRINT_TO_TXT_FILE(10000);//assert that it is than smaller
