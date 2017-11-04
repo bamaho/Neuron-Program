@@ -50,6 +50,10 @@ class Neuron
 	   if the membrane potential has reached a threshold, resting inactive during the refractory period after a spike or 
 	   updating the membrane potential and finally handling the ring buffer as well as incrementing the neuron's internal clock.	*/
 	void update();
+	void updateWithoutBackgroundNoise();
+	
+	void update(void (Neuron::*membranePotentialUpdate)());
+
 	
 	
 	/**Compares the neuron's internal time to the time of the last spike and the refraction time in order to test if the neuron is in a refractory period.
@@ -71,6 +75,8 @@ class Neuron
 	/**Calculates and sets the new membrane potential as a function of the current membrane potential, the external input current, the spikes that arrived with a signal delay and the random background noise arriving from the rest of the brain.
 	 * @see update()	*/
 	void updateMembranePotential();	
+	
+	void updateMembranePotentialWithoutBackgroundNoise();
 	
 	/**Reads the ring buffer's current entry to receive the spikes arriving with a delay that where emmited by presynaptic neurons.
 	 * @see updateMembranePotential()

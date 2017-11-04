@@ -15,7 +15,7 @@
 	
 	for(size_t i(0);i < n;++i)
 	{
-		neuron.update();
+		neuron.updateWithoutBackgroundNoise();
 	}
 	
 }
@@ -53,7 +53,7 @@
  {
 	Neuron neuron;
 	neuron.setInputCurrent(1);
-	neuron.update();
+	neuron.updateWithoutBackgroundNoise();
 	
 	//cerr(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C)*(1-exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)
 	EXPECT_DOUBLE_EQ( (TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C)*(1-exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)),neuron.getMembranePotential()); //tests if the first update of the membrane potential one correct
@@ -72,7 +72,7 @@ TEST(oneNeuron, updateMembranePotentialWithPosExternalCurrent) //tests if the me
 {
 	Neuron neuron;
 	neuron.setInputCurrent(EXTERNAL_CURRENT);
-	neuron.update();
+	neuron.updateWithoutBackgroundNoise();
 	
 	EXPECT_DOUBLE_EQ(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)*INITIAL_MEMBRANE_POTENTIAL + (TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C)*EXTERNAL_CURRENT*(1-exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)),neuron.getMembranePotential());
 	

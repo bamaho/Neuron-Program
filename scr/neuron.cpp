@@ -36,11 +36,27 @@ using namespace std;
 	void Neuron::setInputCurrent(double externalCurrent)
 	{inputCurrent = externalCurrent;}
 	
-	
+	void Neuron::update(void (Neuron::*membranePotentialUpdate)() )
+	{
+		if(not isRefractory())
+		{
+			if(getMembranePotential() >= MEMBRANE_POTENTIAL_THRESHOLD)
+			{
+				spike();
+			}
+			else
+			{
+				(this->*membranePotentialUpdate)();
+			}
+		}
+		reinitializeCurrentRingBufferElement();
+		internalTime ++;
+	}
 	
 	void Neuron::update()	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
 	{
-		if(not isRefractory())
+		update(&Neuron::updateMembranePotential);
+		/*if(not isRefractory())
 		{
 			if(getMembranePotential() >= MEMBRANE_POTENTIAL_THRESHOLD)
 			{
@@ -52,9 +68,10 @@ using namespace std;
 			}
 		}
 		reinitializeCurrentRingBufferElement();
-		internalTime ++;
+		internalTime ++;*/
 	}
-
+	void Neuron::updateWithoutBackgroundNoise()
+	{update(&Neuron::updateMembranePotentialWithoutBackgroundNoise);}
 	
 	bool Neuron::isRefractory() const	//If there haven't occured any spikes yet or the latest spike took place and the neuron has in the meantime undergone a complete refractory state, then the neuron isn't refractory
 	{	
@@ -82,11 +99,15 @@ using namespace std;
 		incomingSpikes[timeToRingBufferIndex(SIGNAL_DELAY_D+localTimeOfSpikingNeuron)] += spikeAmplitude;	//writes the incoming spike at curent time + the signal delay into the ring buffer, to be altered, if one drops the simplification that D is uniform, d should be added by the spiking neuron
 	}	
 		
-
+	void Neuron::updateMembranePotentialWithoutBackgroundNoise()
+	{
+		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+readRingBuffer());
+	}
 
 	void Neuron::updateMembranePotential()	//adding a second argument "int numberOfSpikes" would be another option
 	{
-		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+readRingBuffer()+getBackgroundNoise());
+		updateMembranePotentialWithoutBackgroundNoise();
+		membranePotential += getBackgroundNoise();
 	}
 	
 	double Neuron::readRingBuffer() const //reads the current entry
