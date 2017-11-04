@@ -38,6 +38,8 @@ class Network
 	/**Prints each neuron's spike times that are in an interval defined in the simulation's parameter file and neuron id in a file of given name using the private function print simulation data.
 	 * @param nameOfFile, a string*/
 	void printSimulationDataWithinTimeInterval(const std::string& nameOfFile) const;
+	
+	//void printSimulationDataWithinTimeInterval(const std::string& nameOfFile, unsigned int beginInterval, unsigned int endInterval) const;
 		
 	/**Calculates the mean spike rate of the network's neurons in an interval to indicate.
 	 * @param begin of the interval to investigate in steps, an unsigned int

@@ -17,6 +17,7 @@ using namespace std;
 
 Network::Network()
 {
+	
 	//creation of neurons
 		for(size_t i(0); i < NUMBER_OF_EXCITATORY_NEURONS_Ne; i++)
 		{
@@ -134,6 +135,14 @@ void Network::printSimulationDataWithinTimeInterval(const std::string& nameOfFil
 {
 	printSimulationData(nameOfFile,&Network::getIteratorToBeginInterval,&Network::getIteratorToEndInterval);
 }
+
+/*void Network::printSimulationDataWithinTimeInterval(const std::string& nameOfFile, unsigned int beginInterval, unsigned int endInterval) const
+{
+	unsigned int TIME_BEGIN_PRINT_TO_TXT_FILE = beginInterval;//masking
+	unsigned int TIME_END_PRINT_TO_TXT_FILE = endInterval;//masking
+	printSimulationData(nameOfFile,&Network::getIteratorToBeginInterval,&Network::getIteratorToEndInterval);
+}*/
+
 void Network::printSimulationData(const std::string& nameOfFile, vector<unsigned int>::const_iterator (Network::*getIteratorBegin)(unsigned int) const, vector<unsigned int>::const_iterator (Network::*getIteratorEnd)(unsigned int) const) const
 {
 	ofstream out(nameOfFile);

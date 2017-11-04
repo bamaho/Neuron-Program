@@ -13,6 +13,8 @@
 
 using namespace std;
 
+double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
+
 	Neuron::Neuron()
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
 	,inputCurrent(0)
@@ -165,8 +167,13 @@ using namespace std;
 	{
 		 static random_device randomDevice;
 		 static mt19937 generator(randomDevice());
-		 static poisson_distribution<> distribution(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU));//V_EXT*J_EXT*h*Cext, "The number of connections from outside the network is taken to be equal to the number of recurrent excitatory ones, Cext = Ce"
+		 static poisson_distribution<> distribution(ratioVextOverVthr*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU));//V_EXT*J_EXT*h*Cext, "The number of connections from outside the network is taken to be equal to the number of recurrent excitatory ones, Cext = Ce"
 		 return SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*distribution(generator);
+	}
+	
+	void Neuron::setRatioVextOverVthr(double ratioVextOverVthr_)
+	{
+		ratioVextOverVthr = ratioVextOverVthr_;
 	}
 	
 	//Testing

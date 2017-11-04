@@ -12,6 +12,7 @@
 //#include <vector>
 
 
+
 class InhibitoryNeuron : public Neuron
 {
 	public:
@@ -21,8 +22,11 @@ class InhibitoryNeuron : public Neuron
 	
 	double getSpikeAmplitude() const override;
 	
+	static void setRatioJinoverJexG(double ratioJinoverJexG_);
+	
 	private:
 	
+	static double ratioJinoverJexG;
 	
 	
 	

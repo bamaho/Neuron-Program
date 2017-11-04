@@ -15,6 +15,7 @@ CMakeFiles/neuron.dir/main.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/seco
 CMakeFiles/neuron.dir/main.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.hpp
 CMakeFiles/neuron.dir/main.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
 CMakeFiles/neuron.dir/main.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
+CMakeFiles/neuron.dir/main.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/simulation.hpp
 
 CMakeFiles/neuron.dir/network.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/excitatoryNeuron.hpp
 CMakeFiles/neuron.dir/network.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.hpp
@@ -26,4 +27,11 @@ CMakeFiles/neuron.dir/network.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/s
 CMakeFiles/neuron.dir/neuron.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.cpp
 CMakeFiles/neuron.dir/neuron.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
 CMakeFiles/neuron.dir/neuron.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
+
+CMakeFiles/neuron.dir/simulation.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/inhibitoryNeuron.hpp
+CMakeFiles/neuron.dir/simulation.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.hpp
+CMakeFiles/neuron.dir/simulation.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
+CMakeFiles/neuron.dir/simulation.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
+CMakeFiles/neuron.dir/simulation.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/simulation.cpp
+CMakeFiles/neuron.dir/simulation.cpp.o: /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/simulation.hpp
 

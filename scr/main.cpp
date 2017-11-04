@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "simulation.hpp"
 #include "neuron.hpp"
 #include "parameters.hpp"
 #include "network.hpp"
@@ -13,11 +14,14 @@ int main()
 	
 	assert(NUMBER_OF_CONNECTIONS_FROM_NEURONS_C !=0 and TIME_CONSTANT_TAU !=0);	//Beware division by zero in parameter file!
 	
+	Simulation simulation;
+	simulation.run();
+	
 	/*Neuron neuron;	//initialization of neuron
 	Neuron neuron2;
 	
 	neuron.addTarget(&neuron2);	//establishing a connection between the neurons, temporary, non systematic solution, better means are required to simulate a network
-	neuron2.addTarget(&neuron);*/
+	neuron2.addTarget(&neuron);
 	
 	unsigned int simulationTime(INITIAL_TIME);	//initializing the simulation time
 	
@@ -39,7 +43,7 @@ int main()
 		neuron2.update();
 		//cerr << "DEBUG: membrane potential at time " << simulationTime << " is " << neuron.getMembranePotential() << endl;	//DEBUG: membrane potential developement
 		
-		*/
+		
 		network.update();
 
 		
@@ -47,13 +51,13 @@ int main()
 	}
 	
 	/*neuron.printSpikingTimes("spikes.txt"); //Printing the  spiking times into a file of name spikes.txt
-	neuron2.printSpikingTimes("spikes.txt");*/
+	neuron2.printSpikingTimes("spikes.txt");
 	//network.printSimulationData("simulationData.txt");
-	network.printSimulationDataWithinTimeInterval("simulationData.txt");
+	network.printSimulationDataWithinTimeInterval("simulationData.txt",2000,4000);
 	cout << "mean firing frequency " << network.getMeanSpikeRateInInterval(0,10000) << endl;
 	
 	system("python ../scr/pyscript.py");
 	
-cout << "DEBUG: End of Program"<< endl; //DEBUG
+cout << "DEBUG: End of Program"<< endl; //DEBUG*/
 	
 }

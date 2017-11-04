@@ -124,7 +124,11 @@ class Neuron
 	 * @return a randomly generated  value representing the background noise coming from the rest of the brain, a double	*/
 	double getBackgroundNoise() const;
 	
+	static void setRatioVextOverVthr(double ratioVextOverVthr_);
+	
 	private:
+	
+	static double ratioVextOverVthr;
 	
 	double membranePotential; ///< The neuron's most important variable, a double.
 	double inputCurrent; ///< The external current that is applied to the neuron, a double, is zero if not altered in the main using its the setter.

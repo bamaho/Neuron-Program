@@ -2,6 +2,7 @@
 #define SIMULATION_H
 
 #include "parameters.hpp"
+#include "network.hpp"
 
 #include <array>
 #include <fstream>
@@ -19,11 +20,22 @@ class Simulation
 	//constructor and deconstructor
 	/// A constructor.
 	Simulation();
+	
+	void setRatioJinoverJexG(double ratioJinoverJexG) const;
+	void setRatioVextOverVthr(double ratioVextOverVthr)const;
+	
 	/// A destructor.
 	//virtual ~Neuron();	//has to be virtual, since otherwise the object might not get properly destroyed
+	void run(unsigned int durationOfSimulation = FINAL_TIME);
+	void run(double ratioJinoverJexG, double ratioVextOverVthr, unsigned int durationOfSimulation = FINAL_TIME);
+	//void run(unsigned int durationOfSimulation = FINAL_TIME, unsigned int timeBeginPrintData = TIME_BEGIN_PRINT_TO_TXT_FILE, unsigned int timeEndPrintData = TIME_END_PRINT_TO_TXT_FILE);
 	
-	
+
 	private:
+	
+	//static unsigned int timeBeginPrintToTxtFile;
+	//static unsigned int timeEndPrintToTxtFile;
+	Network network;
 	
 
 };

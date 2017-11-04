@@ -5,11 +5,18 @@
 
 using namespace std;
 
+double InhibitoryNeuron::ratioJinoverJexG(J_INHIBATORY_OVER_J_EXCITATORY_G);
+
 InhibitoryNeuron::InhibitoryNeuron()
 :Neuron()
 {}
 
 double InhibitoryNeuron::getSpikeAmplitude() const
 {
-	return -(SPIKE_AMPLITUDE_J_INHIBITORY_NEURON);
+	return -(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*ratioJinoverJexG);
+}
+
+void InhibitoryNeuron::setRatioJinoverJexG(double ratioJinoverJexG_)
+{
+	ratioJinoverJexG = ratioJinoverJexG_;
 }
