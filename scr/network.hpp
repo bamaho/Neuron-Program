@@ -29,7 +29,7 @@ class Network
 	void update();
 	
 	/// A getter of the spiking times of all neurons, allows to retreive data
-	std::vector< std::vector<unsigned int> > getSpikeTimes();
+	//std::vector< std::vector<unsigned int> > getSpikeTimes();
 	
 	//print data
 	/**Prints each neuron's spike times and neuron id in a file of given name using the private function print simulation data.

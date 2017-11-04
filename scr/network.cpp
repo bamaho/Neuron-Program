@@ -1,17 +1,14 @@
-#include "network.hpp"
-#include "neuron.hpp"
 #include "excitatoryNeuron.hpp"
 #include "inhibitoryNeuron.hpp"
-
+#include "network.hpp"
+#include "neuron.hpp"
 #include "parameters.hpp"
 
-#include <random>
-#include <fstream>
-
-
-#include <iostream>
 #include <algorithm>
 #include <cassert>
+#include <fstream>
+#include <iostream>
+#include <random>
 
 using namespace std;
 
@@ -68,7 +65,7 @@ void Network::update()
 	 //cerr<< neurons[100]->readRingBuffer() << " " << neurons[100]->getBackgroundNoise() << endl;
 }
 
-vector<vector<unsigned int> > Network::getSpikeTimes()
+/*vector<vector<unsigned int> > Network::getSpikeTimes()
 {
 	std::vector< std::vector<unsigned int> > spikeTimes;
 	
@@ -78,7 +75,7 @@ vector<vector<unsigned int> > Network::getSpikeTimes()
 		spikeTimes.push_back(neuron->getSpikeTime());
 	}
 	return spikeTimes;
-}
+}*/
 
 
 void Network::printSimulationData(const std::string& nameOfFile) const //allows to write only spikes in a certain interval into a file
@@ -136,12 +133,6 @@ void Network::printSimulationDataWithinTimeInterval(const std::string& nameOfFil
 	printSimulationData(nameOfFile,&Network::getIteratorToBeginInterval,&Network::getIteratorToEndInterval);
 }
 
-/*void Network::printSimulationDataWithinTimeInterval(const std::string& nameOfFile, unsigned int beginInterval, unsigned int endInterval) const
-{
-	unsigned int TIME_BEGIN_PRINT_TO_TXT_FILE = beginInterval;//masking
-	unsigned int TIME_END_PRINT_TO_TXT_FILE = endInterval;//masking
-	printSimulationData(nameOfFile,&Network::getIteratorToBeginInterval,&Network::getIteratorToEndInterval);
-}*/
 
 void Network::printSimulationData(const std::string& nameOfFile, vector<unsigned int>::const_iterator (Network::*getIteratorBegin)(unsigned int) const, vector<unsigned int>::const_iterator (Network::*getIteratorEnd)(unsigned int) const) const
 {
@@ -160,7 +151,7 @@ void Network::printSimulationData(const std::string& nameOfFile, vector<unsigned
 				
 				if(not neurons[i]->getSpikeTime().empty() )
 				{
-					for(vector<unsigned int>::const_iterator it = (this->*getIteratorBegin)(i) ; it !=(this->*getIteratorEnd)(i); ++it)
+					for(vector<unsigned int>::const_iterator it = (this->*getIteratorBegin)(i) ; it !=(this->*getIteratorEnd)(i); ++it)//could be solved much easier by calling a function in neuron that prints its data into a file and/or treating data after printing it to a text file
 					{
 						out << *it*MIN_TIME_INTERVAL_H << '\t'<< i << '\n' ; //prints the times, not in number of steps, but converted milliseconds
 					}

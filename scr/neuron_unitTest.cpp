@@ -1,15 +1,13 @@
-#include "neuron.hpp"
-//#include "network.hpp"
 #include "gtest/gtest.h"
+#include "network.hpp"
+#include "neuron.hpp"
 #include "parameters.hpp"
+#include "simulation.hpp"
 
-#include <vector>
 #include <cmath>
 #include <iostream>
+#include <vector> 
 
-
-
- 
  void updateNeuronNTimes(Neuron& neuron, const unsigned int n) //auxilliary function that allows to update a neuron n times
 {
 	
@@ -85,38 +83,49 @@ TEST(twoNeurons, ringBuffer) //tests if a spike arrive with the right delay and 
 	Neuron n2;
 	
 	n1.addTarget(&n2);	//establishing a connection between the neurons
-	n1.spike();	//neuron_1 spikes and thus sends a signal to the second
+	
+	n1.setInputCurrent(1.01);
+	updateNeuronNTimes(n1, 924);	//neuron_1 spikes and thus sends a signal to the second
+	updateNeuronNTimes(n2, 924);
+	EXPECT_TRUE(n1.getSpikeTime().empty());
+	n1.updateWithoutBackgroundNoise();
+	EXPECT_FALSE(n1.getSpikeTime().empty());//tests if it spiked
 		
 	for(size_t i(0);i < SIGNAL_DELAY_D;i++)
 	{
-		EXPECT_NEAR(n2.readRingBuffer(),0,0.00001); //Verifies that the spike doesn't arrive before it is supposed to
-		n2.update();
-		
+		n2.updateWithoutBackgroundNoise();
+		EXPECT_NEAR(n2.getMembranePotential(),0,0.00001); //Verifies that the spike doesn't arrive before it is supposed to
 	}
 	
-
-	EXPECT_NEAR(n2.readRingBuffer(),SPIKE_AMPLITUDE_J,0.00001); //Verifies that the spike arrives when it should
-	n2.update();
-	EXPECT_NEAR(n2.readRingBuffer(),0,0.00001); //Verifies that the spike doesn't arrive later it is supposed to
+	n2.updateWithoutBackgroundNoise();
+	EXPECT_NEAR(n2.getMembranePotential(),SPIKE_AMPLITUDE_J,0.00001); //Verifies that the spike arrives when it should
+	n2.updateWithoutBackgroundNoise();
+	EXPECT_NEAR(n2.getMembranePotential(),SPIKE_AMPLITUDE_J * INTERMEDIATE_RESULT_UPDATE_POTENTIAL,0.00001); //Verifies that the spike doesn't arrive later it is supposed to
 	
 	//part two - receiving neuron gets updated before receiving one, n spikes
 	Neuron n3;
 	Neuron n4;
 	constexpr unsigned int n(100);
 	
-	n3.addTarget(&n4);
-	n4.update();
-	
 	for(size_t i(0); i < n; i++) //spiking n times
 	{
-		n3.spike();
+		n3.addTarget(&n4);
 	}
+
+	updateNeuronNTimes(n4,925);
 	
-	for(size_t i(0); i < (SIGNAL_DELAY_D-1); i++)
+	n3.setInputCurrent(1.01);	//make neuron spike
+	updateNeuronNTimes(n3,925);
+	
+	EXPECT_FALSE(n3.getSpikeTime().empty());
+	
+	
+	for(size_t i(0); i < SIGNAL_DELAY_D; i++)
 	{
-		n4.update();
+		n4.updateWithoutBackgroundNoise();
 	}
-	EXPECT_NEAR(n4.readRingBuffer(),SPIKE_AMPLITUDE_J*n,0.00001);
+	EXPECT_NEAR(n4.getMembranePotential(),SPIKE_AMPLITUDE_J*n,0.00001);
+	
 }
 
 /*TEST(neuronalNetwork, initialisation) //tests if each neuron receives the correct number of spikes and is thus properly connected
@@ -145,6 +154,13 @@ TEST(oneNeuron, randomBackgroundNoise) //tests if the variance resp. the expecte
 	EXPECT_NEAR(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H*SPIKE_AMPLITUDE_J/TIME_CONSTANT_TAU,std::accumulate(backgroundNoise.begin(), backgroundNoise.end(), 0.0) / backgroundNoise.size(),0.001);
 	
 }
+
+/*TEST(simulation, averageSpikeRate) //tests if the variance resp. the expected value of the expression a*poissson(x) is equal to a*a*var(poisson(x)) resp. a*mean(poisson(x)) as expected
+{
+	Simulation simulation;
+	EXPECT_NEAR(simulation.getMeanSpikeRateInInterval(6,4,2000,12000),55.8,1);
+	
+}*/
 
 
 

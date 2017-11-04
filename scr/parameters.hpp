@@ -15,9 +15,7 @@ constexpr unsigned int SIGNAL_DELAY_D(15); //delay that the signal undergoes bet
 
 
 	//Current
-constexpr double EXTERNAL_CURRENT(0); //current applied to the neuron from the outside in piktoampere
-/*constexpr unsigned int BEGINN_EXTERNAL_CURRENT(100);	//begin of time interval in which the external current is applied
-constexpr unsigned int END_EXTERNAL_CURRENT(1000);	//end of time interval in which the external current is applied	*/
+constexpr double EXTERNAL_CURRENT(0); //current applied to the neuron from the outside in piktoampere, by default zero since its not required for simulating an entire network
 
 constexpr double J_INHIBATORY_OVER_J_EXCITATORY_G(4.5); //J_INHIBATORY/J_EXCITATORY
 

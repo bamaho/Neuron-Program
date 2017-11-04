@@ -182,6 +182,7 @@ excitatoryNeuron.o: excitatoryNeuron.cpp.o
 # target to build an object file
 excitatoryNeuron.cpp.o:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/excitatoryNeuron.cpp.o
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/excitatoryNeuron.cpp.o
 .PHONY : excitatoryNeuron.cpp.o
 
 excitatoryNeuron.i: excitatoryNeuron.cpp.i
@@ -190,6 +191,7 @@ excitatoryNeuron.i: excitatoryNeuron.cpp.i
 # target to preprocess a source file
 excitatoryNeuron.cpp.i:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/excitatoryNeuron.cpp.i
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/excitatoryNeuron.cpp.i
 .PHONY : excitatoryNeuron.cpp.i
 
 excitatoryNeuron.s: excitatoryNeuron.cpp.s
@@ -198,6 +200,7 @@ excitatoryNeuron.s: excitatoryNeuron.cpp.s
 # target to generate assembly for a file
 excitatoryNeuron.cpp.s:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/excitatoryNeuron.cpp.s
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/excitatoryNeuron.cpp.s
 .PHONY : excitatoryNeuron.cpp.s
 
 inhibitoryNeuron.o: inhibitoryNeuron.cpp.o
@@ -206,6 +209,7 @@ inhibitoryNeuron.o: inhibitoryNeuron.cpp.o
 # target to build an object file
 inhibitoryNeuron.cpp.o:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.o
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/inhibitoryNeuron.cpp.o
 .PHONY : inhibitoryNeuron.cpp.o
 
 inhibitoryNeuron.i: inhibitoryNeuron.cpp.i
@@ -214,6 +218,7 @@ inhibitoryNeuron.i: inhibitoryNeuron.cpp.i
 # target to preprocess a source file
 inhibitoryNeuron.cpp.i:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.i
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/inhibitoryNeuron.cpp.i
 .PHONY : inhibitoryNeuron.cpp.i
 
 inhibitoryNeuron.s: inhibitoryNeuron.cpp.s
@@ -222,6 +227,7 @@ inhibitoryNeuron.s: inhibitoryNeuron.cpp.s
 # target to generate assembly for a file
 inhibitoryNeuron.cpp.s:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/inhibitoryNeuron.cpp.s
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/inhibitoryNeuron.cpp.s
 .PHONY : inhibitoryNeuron.cpp.s
 
 main.o: main.cpp.o
@@ -254,6 +260,7 @@ network.o: network.cpp.o
 # target to build an object file
 network.cpp.o:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/network.cpp.o
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/network.cpp.o
 .PHONY : network.cpp.o
 
 network.i: network.cpp.i
@@ -262,6 +269,7 @@ network.i: network.cpp.i
 # target to preprocess a source file
 network.cpp.i:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/network.cpp.i
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/network.cpp.i
 .PHONY : network.cpp.i
 
 network.s: network.cpp.s
@@ -270,6 +278,7 @@ network.s: network.cpp.s
 # target to generate assembly for a file
 network.cpp.s:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/network.cpp.s
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/network.cpp.s
 .PHONY : network.cpp.s
 
 neuron.o: neuron.cpp.o
@@ -329,6 +338,7 @@ simulation.o: simulation.cpp.o
 # target to build an object file
 simulation.cpp.o:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/simulation.cpp.o
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/simulation.cpp.o
 .PHONY : simulation.cpp.o
 
 simulation.i: simulation.cpp.i
@@ -337,6 +347,7 @@ simulation.i: simulation.cpp.i
 # target to preprocess a source file
 simulation.cpp.i:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/simulation.cpp.i
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/simulation.cpp.i
 .PHONY : simulation.cpp.i
 
 simulation.s: simulation.cpp.s
@@ -345,6 +356,7 @@ simulation.s: simulation.cpp.s
 # target to generate assembly for a file
 simulation.cpp.s:
 	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/simulation.cpp.s
+	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/simulation.cpp.s
 .PHONY : simulation.cpp.s
 
 # Help Target
