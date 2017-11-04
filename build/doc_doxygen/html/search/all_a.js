@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7enetwork',['~Network',['../classNetwork.html#a7a4e19cdb4bf0c7ecf82baa643831492',1,'Network']]],
-  ['_7eneuron',['~Neuron',['../classNeuron.html#a94a250ce7e167760e593979b899745b1',1,'Neuron']]]
+  ['update',['update',['../classNetwork.html#ab07bb6f6d9020b9eb230551083ea929f',1,'Network::update()'],['../classNeuron.html#a782b3b728eee5097ab205a7a7990225b',1,'Neuron::update()']]],
+  ['updatemembranepotential',['updateMembranePotential',['../classNeuron.html#a41a81d8527734e59bae39f73fece887f',1,'Neuron']]]
 ];

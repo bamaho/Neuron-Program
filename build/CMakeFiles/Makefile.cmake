@@ -10,8 +10,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.2.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.2.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.2.3/CMakeSystem.cmake"
-  "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/../docs/Doxyfile.in"
   "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/CMakeLists.txt"
+  "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/Doxyfile.in"
   "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/gtest/CMakeLists.txt"
   "/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/gtest/cmake/internal_utils.cmake"
   "/usr/local/share/cmake-3.2/Modules/CMakeCInformation.cmake"
@@ -56,7 +56,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/neuron.dir/DependInfo.cmake"
   "CMakeFiles/neuron_unitTest.dir/DependInfo.cmake"
-  "CMakeFiles/doc_doxygen.dir/DependInfo.cmake"
+  "CMakeFiles/doc.dir/DependInfo.cmake"
   "gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
   "gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )

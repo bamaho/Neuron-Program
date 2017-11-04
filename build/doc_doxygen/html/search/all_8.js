@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['timetoringbufferindex',['timeToRingBufferIndex',['../classNeuron.html#af1c7b80b5e70e906734ce710d37b1fd7',1,'Neuron']]]
+  ['setinputcurrent',['setInputCurrent',['../classNeuron.html#ae77210c7b0bf3739b01ec2e3dba96827',1,'Neuron']]],
+  ['spike',['spike',['../classNeuron.html#a955ecfd2984f75c18664bd370c34af1d',1,'Neuron']]],
+  ['spikes',['spikes',['../classNeuron.html#ab358994e1a6e4d3a1399906471657b4b',1,'Neuron']]]
 ];

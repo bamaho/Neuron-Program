@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['printsimulationdata',['printSimulationData',['../classNetwork.html#a222e084554183af355833cda07a83877',1,'Network']]],
-  ['printsimulationdatawithintimeinterval',['printSimulationDataWithinTimeInterval',['../classNetwork.html#a8909c07d0e6e292f5ca54e56a797ebe0',1,'Network']]],
-  ['printspikingtimes',['printSpikingTimes',['../classNeuron.html#a15b3eaa67535301e011d5cd8d53a61d1',1,'Neuron']]]
+  ['network',['Network',['../classNetwork.html',1,'Network'],['../classNetwork.html#a3cc2fb4f8fa4d507077e8da85ce5a1c8',1,'Network::Network()']]],
+  ['neuron',['Neuron',['../classNeuron.html',1,'Neuron'],['../classNeuron.html#a823487d01615fadb8ac19a2768dd9d96',1,'Neuron::Neuron()']]],
+  ['neurons',['neurons',['../classNetwork.html#a11dac461892218c2653fccdb761a99aa',1,'Network']]]
 ];

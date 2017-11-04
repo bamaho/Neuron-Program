@@ -57,6 +57,26 @@ const std\-::vector$<$ unsigned int $>$ \& \hyperlink{classNeuron_ae87bb09d99e4e
 \item 
 double \hyperlink{classNeuron_a5487631e8982ae2368da0917535a9001}{get\-Background\-Noise} () const 
 \end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeuron_a311f3321f19462c0aef8cbd68c60df67}{double \hyperlink{classNeuron_a311f3321f19462c0aef8cbd68c60df67}{membrane\-Potential}}\label{classNeuron_a311f3321f19462c0aef8cbd68c60df67}
+
+\begin{DoxyCompactList}\small\item\em The neuron's most important variable, a double. \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_a50505e8dcb655170bfc9562465fd907f}{double \hyperlink{classNeuron_a50505e8dcb655170bfc9562465fd907f}{input\-Current}}\label{classNeuron_a50505e8dcb655170bfc9562465fd907f}
+
+\begin{DoxyCompactList}\small\item\em The external current that is applied to the neuron, a double, is zero if not altered in the main using its the setter. \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_ab358994e1a6e4d3a1399906471657b4b}{std\-::vector$<$ unsigned int $>$ \hyperlink{classNeuron_ab358994e1a6e4d3a1399906471657b4b}{spikes}}\label{classNeuron_ab358994e1a6e4d3a1399906471657b4b}
+
+\begin{DoxyCompactList}\small\item\em A container that stores the spiking times in the course of time, a vector !!!!!!is not the appropriate choice...a list would provide the required functions as well. \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_a5c97843cd38dd8c5ff2d861d25e18473}{std\-::vector$<$ \hyperlink{classNeuron}{Neuron} $\ast$ $>$ \hyperlink{classNeuron_a5c97843cd38dd8c5ff2d861d25e18473}{targets}}\label{classNeuron_a5c97843cd38dd8c5ff2d861d25e18473}
+
+\begin{DoxyCompactList}\small\item\em A container containing the postsynaptic neurons, the neurons on which an eventual spike of the current neuron has an impact. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classNeuron_adb1a016b5d339ba3ba95367bb66f391a}{internal\-Time}
+\begin{DoxyCompactList}\small\item\em A clock keeping track of the neuron's local time, an unsigned integer. \end{DoxyCompactList}\item 
+std\-::array$<$ double, \\*
+S\-I\-G\-N\-A\-L\-\_\-\-D\-E\-L\-A\-Y\-\_\-\-D+1 $>$ \hyperlink{classNeuron_a15160c28823ad0e63f171af31fd6b1ea}{incoming\-Spikes}
+\end{DoxyCompactItemize}
 
 
 \subsection{Member Function Documentation}
@@ -280,7 +300,20 @@ Calculates and sets the new membrane potential as a function of the current memb
 \end{DoxySeeAlso}
 
 
+\subsection{Member Data Documentation}
+\hypertarget{classNeuron_a15160c28823ad0e63f171af31fd6b1ea}{\index{Neuron@{Neuron}!incoming\-Spikes@{incoming\-Spikes}}
+\index{incoming\-Spikes@{incoming\-Spikes}!Neuron@{Neuron}}
+\subsubsection[{incoming\-Spikes}]{\setlength{\rightskip}{0pt plus 5cm}std\-::array$<$double, S\-I\-G\-N\-A\-L\-\_\-\-D\-E\-L\-A\-Y\-\_\-\-D + 1$>$ Neuron\-::incoming\-Spikes\hspace{0.3cm}{\ttfamily [private]}}}\label{classNeuron_a15160c28823ad0e63f171af31fd6b1ea}
+An array containing one more element than the uniform signal delay which allows to record all the incoming spike amplitudes and them being read at the right time. \hypertarget{classNeuron_adb1a016b5d339ba3ba95367bb66f391a}{\index{Neuron@{Neuron}!internal\-Time@{internal\-Time}}
+\index{internal\-Time@{internal\-Time}!Neuron@{Neuron}}
+\subsubsection[{internal\-Time}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Neuron\-::internal\-Time\hspace{0.3cm}{\ttfamily [private]}}}\label{classNeuron_adb1a016b5d339ba3ba95367bb66f391a}
+
+
+A clock keeping track of the neuron's local time, an unsigned integer. 
+
+Another clock which allows to synchronize the times between the neurons, otherwise a problem arises when it comes to distinguishing between alrady updated and not yet updated neurons in neuron interactions. 
+
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/bmarty/\-Desktop/myfiles/cpp/second\-Year/second\-Week/\-Neuron-\/\-Program/scr/neuron.\-hpp\item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/bmarty/\-Desktop/myfiles/cpp/second\-Year/second\-Week/\-Neuron-\/\-Program/scr/neuron.\-cpp\end{DoxyCompactItemize}
+neuron.\-hpp\item 
+neuron.\-cpp\end{DoxyCompactItemize}

@@ -22,6 +22,31 @@ void \hyperlink{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}{print\-Simulatio
 \item 
 double \hyperlink{classNetwork_ac82435bb56bf5eabfdd3e3f4afadea2b}{get\-Mean\-Spike\-Rate\-In\-Interval} (unsigned int begin\-Interval, unsigned int end\-Interval) const 
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classNetwork_ad28d5206f20213eba2143222c566fb00}{print\-Simulation\-Data} (const std\-::string \&name\-Of\-File, std\-::vector$<$ unsigned int $>$\-::const\-\_\-iterator(Network\-::$\ast$get\-Iterator\-Begin)(unsigned int) const , std\-::vector$<$ unsigned int $>$\-::const\-\_\-iterator(Network\-::$\ast$get\-Iterator\-End)(unsigned int) const ) const 
+\item 
+std\-::vector$<$ unsigned int $>$\\*
+\-::const\-\_\-iterator \hyperlink{classNetwork_a0423144b1411e885884410adb9ff10d4}{get\-Iterator\-To\-Begin} (unsigned int i) const 
+\item 
+std\-::vector$<$ unsigned int $>$\\*
+\-::const\-\_\-iterator \hyperlink{classNetwork_a0289c82fc429d301c1f7b33881b6737d}{get\-Iterator\-To\-End} (unsigned int i) const 
+\item 
+std\-::vector$<$ unsigned int $>$\\*
+\-::const\-\_\-iterator \hyperlink{classNetwork_af437eddac886ac6fced8078885a2cc0a}{get\-Iterator\-To\-Begin\-Interval} (unsigned int i) const 
+\item 
+\hypertarget{classNetwork_a009cca76442a5f847fd1e227b0427313}{std\-::vector$<$ unsigned int $>$\\*
+\-::const\-\_\-iterator {\bfseries get\-Iterator\-To\-End\-Interval} (unsigned int i) const }\label{classNetwork_a009cca76442a5f847fd1e227b0427313}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNetwork_a11dac461892218c2653fccdb761a99aa}{std\-::array$<$ \hyperlink{classNeuron}{Neuron} \\*
+$\ast$, T\-O\-T\-A\-L\-\_\-\-N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-N\-E\-U\-R\-O\-N\-S\-\_\-\-N $>$ \hyperlink{classNetwork_a11dac461892218c2653fccdb761a99aa}{neurons}}\label{classNetwork_a11dac461892218c2653fccdb761a99aa}
+
+\begin{DoxyCompactList}\small\item\em A container carrying the neurons forming the network, an array of pointers to neurons. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -39,6 +64,51 @@ A constructor.
 Initializes a neuron network by creating 12'500 neurons among those 2'500 are inhibitory and the other 10'000 exitatory. Each one of them receives a fixed number of connections from both inhibitory and excitatory presynaptic neuron that are chosen randomly. 
 
 \subsection{Member Function Documentation}
+\hypertarget{classNetwork_a0423144b1411e885884410adb9ff10d4}{\index{Network@{Network}!get\-Iterator\-To\-Begin@{get\-Iterator\-To\-Begin}}
+\index{get\-Iterator\-To\-Begin@{get\-Iterator\-To\-Begin}!Network@{Network}}
+\subsubsection[{get\-Iterator\-To\-Begin}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ unsigned int $>$\-::const\-\_\-iterator Network\-::get\-Iterator\-To\-Begin (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetwork_a0423144b1411e885884410adb9ff10d4}
+An auxiliary function for printing the network's spike times to a file that returns an iterator pointing on neuron i's first spike time. \begin{DoxySeeAlso}{See Also}
+print\-Simulation\-Data(const std\-::string\& name\-Of\-File) 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em neuron} & identifier, an unsigned int \\
+\hline
+\end{DoxyParams}
+\hypertarget{classNetwork_af437eddac886ac6fced8078885a2cc0a}{\index{Network@{Network}!get\-Iterator\-To\-Begin\-Interval@{get\-Iterator\-To\-Begin\-Interval}}
+\index{get\-Iterator\-To\-Begin\-Interval@{get\-Iterator\-To\-Begin\-Interval}!Network@{Network}}
+\subsubsection[{get\-Iterator\-To\-Begin\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ unsigned int $>$\-::const\-\_\-iterator Network\-::get\-Iterator\-To\-Begin\-Interval (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetwork_af437eddac886ac6fced8078885a2cc0a}
+An auxiliary function for printing the network's spike times to a file that returns an iterator pointing on neuron i's first spike time that lies within an interval defined in the parameter file. \begin{DoxySeeAlso}{See Also}
+print\-Simulation\-Data(const std\-::string\& name\-Of\-File) 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em neuron} & identifier, an unsigned int \\
+\hline
+\end{DoxyParams}
+\hypertarget{classNetwork_a0289c82fc429d301c1f7b33881b6737d}{\index{Network@{Network}!get\-Iterator\-To\-End@{get\-Iterator\-To\-End}}
+\index{get\-Iterator\-To\-End@{get\-Iterator\-To\-End}!Network@{Network}}
+\subsubsection[{get\-Iterator\-To\-End}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ unsigned int $>$\-::const\-\_\-iterator Network\-::get\-Iterator\-To\-End (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetwork_a0289c82fc429d301c1f7b33881b6737d}
+An auxiliary function for printing the network's spike times to a file that returns an iterator pointing on neuron i's last spike time. \begin{DoxySeeAlso}{See Also}
+print\-Simulation\-Data(const std\-::string\& name\-Of\-File) 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em neuron} & identifier, an unsigned int \\
+\hline
+\end{DoxyParams}
 \hypertarget{classNetwork_ac82435bb56bf5eabfdd3e3f4afadea2b}{\index{Network@{Network}!get\-Mean\-Spike\-Rate\-In\-Interval@{get\-Mean\-Spike\-Rate\-In\-Interval}}
 \index{get\-Mean\-Spike\-Rate\-In\-Interval@{get\-Mean\-Spike\-Rate\-In\-Interval}!Network@{Network}}
 \subsubsection[{get\-Mean\-Spike\-Rate\-In\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}double Network\-::get\-Mean\-Spike\-Rate\-In\-Interval (
@@ -66,6 +136,29 @@ Prints each neuron's spike times and neuron id in a file of given name using the
 {\em name\-Of\-File,a} & string \\
 \hline
 \end{DoxyParams}
+\hypertarget{classNetwork_ad28d5206f20213eba2143222c566fb00}{\index{Network@{Network}!print\-Simulation\-Data@{print\-Simulation\-Data}}
+\index{print\-Simulation\-Data@{print\-Simulation\-Data}!Network@{Network}}
+\subsubsection[{print\-Simulation\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::print\-Simulation\-Data (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name\-Of\-File, }
+\item[{std\-::vector$<$ unsigned int $>$\-::const\-\_\-iterator(Network\-::$\ast$)(unsigned int) const}]{get\-Iterator\-Begin, }
+\item[{std\-::vector$<$ unsigned int $>$\-::const\-\_\-iterator(Network\-::$\ast$)(unsigned int) const}]{get\-Iterator\-End}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetwork_ad28d5206f20213eba2143222c566fb00}
+An auxiliary function for printing the network's spike times to a file that allows to avoid the duplication of code. \begin{DoxySeeAlso}{See Also}
+print\-Simulation\-Data(const std\-::string\& name\-Of\-File) 
+
+\hyperlink{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}{print\-Simulation\-Data\-Within\-Time\-Interval} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em name\-Of\-File,a} & string \\
+\hline
+{\em a} & member function that yields an iterator on a vector$<$unsigned int$>$ pointing the first element that is printed \\
+\hline
+{\em a} & member function that yields an iterator on a vector$<$unsigned int$>$ pointing the last element that is printed \\
+\hline
+\end{DoxyParams}
 \hypertarget{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}{\index{Network@{Network}!print\-Simulation\-Data\-Within\-Time\-Interval@{print\-Simulation\-Data\-Within\-Time\-Interval}}
 \index{print\-Simulation\-Data\-Within\-Time\-Interval@{print\-Simulation\-Data\-Within\-Time\-Interval}!Network@{Network}}
 \subsubsection[{print\-Simulation\-Data\-Within\-Time\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::print\-Simulation\-Data\-Within\-Time\-Interval (
@@ -82,5 +175,5 @@ Prints each neuron's spike times that are in an interval defined in the simulati
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/bmarty/\-Desktop/myfiles/cpp/second\-Year/second\-Week/\-Neuron-\/\-Program/scr/network.\-hpp\item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/bmarty/\-Desktop/myfiles/cpp/second\-Year/second\-Week/\-Neuron-\/\-Program/scr/network.\-cpp\end{DoxyCompactItemize}
+network.\-hpp\item 
+network.\-cpp\end{DoxyCompactItemize}

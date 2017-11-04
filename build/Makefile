@@ -112,17 +112,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named doc_doxygen
+# Target rules for targets named doc
 
 # Build rule for target.
-doc_doxygen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 doc_doxygen
-.PHONY : doc_doxygen
+doc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 doc
+.PHONY : doc
 
 # fast build rule for target.
-doc_doxygen/fast:
-	$(MAKE) -f CMakeFiles/doc_doxygen.dir/build.make CMakeFiles/doc_doxygen.dir/build
-.PHONY : doc_doxygen/fast
+doc/fast:
+	$(MAKE) -f CMakeFiles/doc.dir/build.make CMakeFiles/doc.dir/build
+.PHONY : doc/fast
 
 #=============================================================================
 # Target rules for targets named neuron
@@ -333,7 +333,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... neuron_unitTest"
-	@echo "... doc_doxygen"
+	@echo "... doc"
 	@echo "... test"
 	@echo "... gtest"
 	@echo "... gtest_main"

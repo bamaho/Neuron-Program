@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>My Project: Network Class Reference</title>
+<title>Neuron Project: Network Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Neuron Project
    </div>
   </td>
  </tr>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -83,6 +83,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classNetwork-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Network Class Reference</div>  </div>
@@ -113,6 +115,32 @@ std::vector&lt; std::vector<br class="typebreak"/>
 <tr class="separator:a8909c07d0e6e292f5ca54e56a797ebe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac82435bb56bf5eabfdd3e3f4afadea2b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#ac82435bb56bf5eabfdd3e3f4afadea2b">getMeanSpikeRateInInterval</a> (unsigned int beginInterval, unsigned int endInterval) const </td></tr>
 <tr class="separator:ac82435bb56bf5eabfdd3e3f4afadea2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ad28d5206f20213eba2143222c566fb00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#ad28d5206f20213eba2143222c566fb00">printSimulationData</a> (const std::string &amp;nameOfFile, std::vector&lt; unsigned int &gt;::const_iterator(Network::*getIteratorBegin)(unsigned int) const , std::vector&lt; unsigned int &gt;::const_iterator(Network::*getIteratorEnd)(unsigned int) const ) const </td></tr>
+<tr class="separator:ad28d5206f20213eba2143222c566fb00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0423144b1411e885884410adb9ff10d4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;<br class="typebreak"/>
+::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a0423144b1411e885884410adb9ff10d4">getIteratorToBegin</a> (unsigned int i) const </td></tr>
+<tr class="separator:a0423144b1411e885884410adb9ff10d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0289c82fc429d301c1f7b33881b6737d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;<br class="typebreak"/>
+::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a0289c82fc429d301c1f7b33881b6737d">getIteratorToEnd</a> (unsigned int i) const </td></tr>
+<tr class="separator:a0289c82fc429d301c1f7b33881b6737d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af437eddac886ac6fced8078885a2cc0a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;<br class="typebreak"/>
+::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#af437eddac886ac6fced8078885a2cc0a">getIteratorToBeginInterval</a> (unsigned int i) const </td></tr>
+<tr class="separator:af437eddac886ac6fced8078885a2cc0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a009cca76442a5f847fd1e227b0427313"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a009cca76442a5f847fd1e227b0427313"></a>
+std::vector&lt; unsigned int &gt;<br class="typebreak"/>
+::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>getIteratorToEndInterval</b> (unsigned int i) const </td></tr>
+<tr class="separator:a009cca76442a5f847fd1e227b0427313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a11dac461892218c2653fccdb761a99aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11dac461892218c2653fccdb761a99aa"></a>
+std::array&lt; <a class="el" href="classNeuron.html">Neuron</a> <br class="typebreak"/>
+*, TOTAL_NUMBER_OF_NEURONS_N &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a11dac461892218c2653fccdb761a99aa">neurons</a></td></tr>
+<tr class="memdesc:a11dac461892218c2653fccdb761a99aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">A container carrying the neurons forming the network, an array of pointers to neurons. <br/></td></tr>
+<tr class="separator:a11dac461892218c2653fccdb761a99aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a3cc2fb4f8fa4d507077e8da85ce5a1c8"></a>
@@ -134,6 +162,102 @@ std::vector&lt; std::vector<br class="typebreak"/>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a0423144b1411e885884410adb9ff10d4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; unsigned int &gt;::const_iterator Network::getIteratorToBegin </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>An auxiliary function for printing the network's spike times to a file that returns an iterator pointing on neuron i's first spike time. </p>
+<dl class="section see"><dt>See Also</dt><dd>printSimulationData(const std::string&amp; nameOfFile) </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">neuron</td><td>identifier, an unsigned int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af437eddac886ac6fced8078885a2cc0a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; unsigned int &gt;::const_iterator Network::getIteratorToBeginInterval </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>An auxiliary function for printing the network's spike times to a file that returns an iterator pointing on neuron i's first spike time that lies within an interval defined in the parameter file. </p>
+<dl class="section see"><dt>See Also</dt><dd>printSimulationData(const std::string&amp; nameOfFile) </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">neuron</td><td>identifier, an unsigned int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0289c82fc429d301c1f7b33881b6737d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; unsigned int &gt;::const_iterator Network::getIteratorToEnd </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>An auxiliary function for printing the network's spike times to a file that returns an iterator pointing on neuron i's last spike time. </p>
+<dl class="section see"><dt>See Also</dt><dd>printSimulationData(const std::string&amp; nameOfFile) </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">neuron</td><td>identifier, an unsigned int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ac82435bb56bf5eabfdd3e3f4afadea2b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -191,6 +315,58 @@ std::vector&lt; std::vector<br class="typebreak"/>
 
 </div>
 </div>
+<a class="anchor" id="ad28d5206f20213eba2143222c566fb00"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Network::printSimulationData </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>nameOfFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; unsigned int &gt;::const_iterator(Network::*)(unsigned int) const&#160;</td>
+          <td class="paramname"><em>getIteratorBegin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; unsigned int &gt;::const_iterator(Network::*)(unsigned int) const&#160;</td>
+          <td class="paramname"><em>getIteratorEnd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>An auxiliary function for printing the network's spike times to a file that allows to avoid the duplication of code. </p>
+<dl class="section see"><dt>See Also</dt><dd>printSimulationData(const std::string&amp; nameOfFile) </dd>
+<dd>
+<a class="el" href="classNetwork.html#a8909c07d0e6e292f5ca54e56a797ebe0">printSimulationDataWithinTimeInterval</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nameOfFile,a</td><td>string </td></tr>
+    <tr><td class="paramname">a</td><td>member function that yields an iterator on a vector&lt;unsigned int&gt; pointing the first element that is printed </td></tr>
+    <tr><td class="paramname">a</td><td>member function that yields an iterator on a vector&lt;unsigned int&gt; pointing the last element that is printed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a8909c07d0e6e292f5ca54e56a797ebe0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -215,13 +391,13 @@ std::vector&lt; std::vector<br class="typebreak"/>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/<a class="el" href="network_8hpp_source.html">network.hpp</a></li>
-<li>/home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.cpp</li>
+<li><a class="el" href="network_8hpp_source.html">network.hpp</a></li>
+<li>network.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 4 2017 11:00:39 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 4 2017 11:52:26 for Neuron Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
