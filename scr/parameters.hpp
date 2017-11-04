@@ -9,7 +9,7 @@
 
 	//Time
 constexpr unsigned int INITIAL_TIME(0);	//starting time of the simulation, in steps
-constexpr unsigned int FINAL_TIME(20000);	//time when the simulation ends, in steps
+constexpr unsigned int FINAL_TIME(12000);	//time when the simulation ends, in steps
 constexpr double MIN_TIME_INTERVAL_H(0.1);	//minimal time interval in milliseconds, duration of one time step, H*(number of steps) gives the actual time in milliseconds
 constexpr unsigned int SIGNAL_DELAY_D(15); //delay that the signal undergoes between emission and reception, for the sake of convenience uniform, in steps
 
@@ -55,6 +55,6 @@ constexpr unsigned int RATIO_V_EXTERNAL_OVER_V_THRESHOLD(2);
 
 //Fetch Data
 constexpr unsigned int TIME_BEGIN_PRINT_TO_TXT_FILE(10000);//assert that it is than smaller
-constexpr unsigned int TIME_END_PRINT_TO_TXT_FILE(15000);
+constexpr unsigned int TIME_END_PRINT_TO_TXT_FILE(12000);
 
 #endif

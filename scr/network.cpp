@@ -134,7 +134,7 @@ void Network::printSimulationDataWithinTimeInterval(const std::string& nameOfFil
 {
 	printSimulationData(nameOfFile,&Network::getIteratorToBeginInterval,&Network::getIteratorToEndInterval);
 }
-void Network::printSimulationData(const std::string& nameOfFile, vector<unsigned int>::const_iterator (Network::*getIteratorToBegin)(unsigned int) const, vector<unsigned int>::const_iterator (Network::*getIteratorToEnd)(unsigned int) const) const
+void Network::printSimulationData(const std::string& nameOfFile, vector<unsigned int>::const_iterator (Network::*getIteratorBegin)(unsigned int) const, vector<unsigned int>::const_iterator (Network::*getIteratorEnd)(unsigned int) const) const
 {
 	ofstream out(nameOfFile);
 		
@@ -151,7 +151,7 @@ void Network::printSimulationData(const std::string& nameOfFile, vector<unsigned
 				
 				if(not neurons[i]->getSpikeTime().empty() )
 				{
-					for(vector<unsigned int>::const_iterator it = (this->*getIteratorToBegin)(i) ; it !=(this->*getIteratorToEnd)(i); ++it)
+					for(vector<unsigned int>::const_iterator it = (this->*getIteratorBegin)(i) ; it !=(this->*getIteratorEnd)(i); ++it)
 					{
 						out << *it*MIN_TIME_INTERVAL_H << '\t'<< i << '\n' ; //prints the times, not in number of steps, but converted milliseconds
 					}
@@ -179,7 +179,7 @@ vector<unsigned int>::const_iterator Network::getIteratorToEnd(unsigned int i) c
 	}
 vector<unsigned int>::const_iterator Network::getIteratorToBegin(unsigned int i) const
 	{
-		return neurons[i]->getSpikeTime().end();
+		return neurons[i]->getSpikeTime().begin();
 	}
 
 /*void Network::printSimulationData(const std::string& nameOfFile) const

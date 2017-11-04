@@ -48,9 +48,11 @@ int main()
 	
 	/*neuron.printSpikingTimes("spikes.txt"); //Printing the  spiking times into a file of name spikes.txt
 	neuron2.printSpikingTimes("spikes.txt");*/
-	//network.printSimulationDataWithinTimeInterval("simulationData.txt");
-	network.printSimulationData("simulationData.txt");
-	cout << "mean firing frequency " << network.getMeanSpikeRateInInterval(10000,20000) << endl;
+	//network.printSimulationData("simulationData.txt");
+	network.printSimulationDataWithinTimeInterval("simulationData.txt");
+	cout << "mean firing frequency " << network.getMeanSpikeRateInInterval(0,10000) << endl;
+	
+	system("python ../scr/pyscript.py");
 	
 cout << "DEBUG: End of Program"<< endl; //DEBUG
 	

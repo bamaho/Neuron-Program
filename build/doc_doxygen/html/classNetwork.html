@@ -109,11 +109,9 @@ std::vector&lt; std::vector<br class="typebreak"/>
 <tr class="separator:a618d267c0962f59027c0d063aa2b4533"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a222e084554183af355833cda07a83877"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a222e084554183af355833cda07a83877">printSimulationData</a> (const std::string &amp;nameOfFile) const </td></tr>
 <tr class="separator:a222e084554183af355833cda07a83877"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8909c07d0e6e292f5ca54e56a797ebe0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8909c07d0e6e292f5ca54e56a797ebe0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printSimulationDataWithinTimeInterval</b> (const std::string &amp;nameOfFile) const </td></tr>
+<tr class="memitem:a8909c07d0e6e292f5ca54e56a797ebe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a8909c07d0e6e292f5ca54e56a797ebe0">printSimulationDataWithinTimeInterval</a> (const std::string &amp;nameOfFile) const </td></tr>
 <tr class="separator:a8909c07d0e6e292f5ca54e56a797ebe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac82435bb56bf5eabfdd3e3f4afadea2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac82435bb56bf5eabfdd3e3f4afadea2b"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getMeanSpikeRateInInterval</b> (unsigned int beginInterval, unsigned int endInterval) const </td></tr>
+<tr class="memitem:ac82435bb56bf5eabfdd3e3f4afadea2b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#ac82435bb56bf5eabfdd3e3f4afadea2b">getMeanSpikeRateInInterval</a> (unsigned int beginInterval, unsigned int endInterval) const </td></tr>
 <tr class="separator:ac82435bb56bf5eabfdd3e3f4afadea2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -136,6 +134,40 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>getMeanSpikeRateInI
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac82435bb56bf5eabfdd3e3f4afadea2b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Network::getMeanSpikeRateInInterval </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>beginInterval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>endInterval</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculates the mean spike rate of the network's neurons in an interval to indicate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>of the interval to investigate in steps, an unsigned int </td></tr>
+    <tr><td class="paramname">begin</td><td>of the interval to investigate in steps, an unsigned int </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a222e084554183af355833cda07a83877"></a>
 <div class="memitem">
 <div class="memproto">
@@ -149,7 +181,30 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>getMeanSpikeRateInI
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Prints each neuron's spike times and neuron id in a file of given name. </p>
+<p>Prints each neuron's spike times and neuron id in a file of given name using the private function print simulation data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nameOfFile,a</td><td>string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8909c07d0e6e292f5ca54e56a797ebe0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Network::printSimulationDataWithinTimeInterval </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>nameOfFile</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Prints each neuron's spike times that are in an interval defined in the simulation's parameter file and neuron id in a file of given name using the private function print simulation data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nameOfFile,a</td><td>string </td></tr>
@@ -166,7 +221,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>getMeanSpikeRateInI
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 2 2017 21:32:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Nov 4 2017 09:57:28 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

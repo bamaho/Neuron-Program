@@ -18,11 +18,9 @@ $<$ unsigned int $>$ $>$ \hyperlink{classNetwork_a618d267c0962f59027c0d063aa2b45
 \begin{DoxyCompactList}\small\item\em A getter of the spiking times of all neurons, allows to retreive data. \end{DoxyCompactList}\item 
 void \hyperlink{classNetwork_a222e084554183af355833cda07a83877}{print\-Simulation\-Data} (const std\-::string \&name\-Of\-File) const 
 \item 
-\hypertarget{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}{void {\bfseries print\-Simulation\-Data\-Within\-Time\-Interval} (const std\-::string \&name\-Of\-File) const }\label{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}
-
+void \hyperlink{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}{print\-Simulation\-Data\-Within\-Time\-Interval} (const std\-::string \&name\-Of\-File) const 
 \item 
-\hypertarget{classNetwork_ac82435bb56bf5eabfdd3e3f4afadea2b}{double {\bfseries get\-Mean\-Spike\-Rate\-In\-Interval} (unsigned int begin\-Interval, unsigned int end\-Interval) const }\label{classNetwork_ac82435bb56bf5eabfdd3e3f4afadea2b}
-
+double \hyperlink{classNetwork_ac82435bb56bf5eabfdd3e3f4afadea2b}{get\-Mean\-Spike\-Rate\-In\-Interval} (unsigned int begin\-Interval, unsigned int end\-Interval) const 
 \end{DoxyCompactItemize}
 
 
@@ -41,6 +39,21 @@ A constructor.
 Initializes a neuron network by creating 12'500 neurons among those 2'500 are inhibitory and the other 10'000 exitatory. Each one of them receives a fixed number of connections from both inhibitory and excitatory presynaptic neuron that are chosen randomly. 
 
 \subsection{Member Function Documentation}
+\hypertarget{classNetwork_ac82435bb56bf5eabfdd3e3f4afadea2b}{\index{Network@{Network}!get\-Mean\-Spike\-Rate\-In\-Interval@{get\-Mean\-Spike\-Rate\-In\-Interval}}
+\index{get\-Mean\-Spike\-Rate\-In\-Interval@{get\-Mean\-Spike\-Rate\-In\-Interval}!Network@{Network}}
+\subsubsection[{get\-Mean\-Spike\-Rate\-In\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}double Network\-::get\-Mean\-Spike\-Rate\-In\-Interval (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{begin\-Interval, }
+\item[{unsigned int}]{end\-Interval}
+\end{DoxyParamCaption}
+) const}}\label{classNetwork_ac82435bb56bf5eabfdd3e3f4afadea2b}
+Calculates the mean spike rate of the network's neurons in an interval to indicate. 
+\begin{DoxyParams}{Parameters}
+{\em begin} & of the interval to investigate in steps, an unsigned int \\
+\hline
+{\em begin} & of the interval to investigate in steps, an unsigned int \\
+\hline
+\end{DoxyParams}
 \hypertarget{classNetwork_a222e084554183af355833cda07a83877}{\index{Network@{Network}!print\-Simulation\-Data@{print\-Simulation\-Data}}
 \index{print\-Simulation\-Data@{print\-Simulation\-Data}!Network@{Network}}
 \subsubsection[{print\-Simulation\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::print\-Simulation\-Data (
@@ -48,7 +61,19 @@ Initializes a neuron network by creating 12'500 neurons among those 2'500 are in
 \item[{const std\-::string \&}]{name\-Of\-File}
 \end{DoxyParamCaption}
 ) const}}\label{classNetwork_a222e084554183af355833cda07a83877}
-Prints each neuron's spike times and neuron id in a file of given name. 
+Prints each neuron's spike times and neuron id in a file of given name using the private function print simulation data. 
+\begin{DoxyParams}{Parameters}
+{\em name\-Of\-File,a} & string \\
+\hline
+\end{DoxyParams}
+\hypertarget{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}{\index{Network@{Network}!print\-Simulation\-Data\-Within\-Time\-Interval@{print\-Simulation\-Data\-Within\-Time\-Interval}}
+\index{print\-Simulation\-Data\-Within\-Time\-Interval@{print\-Simulation\-Data\-Within\-Time\-Interval}!Network@{Network}}
+\subsubsection[{print\-Simulation\-Data\-Within\-Time\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::print\-Simulation\-Data\-Within\-Time\-Interval (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name\-Of\-File}
+\end{DoxyParamCaption}
+) const}}\label{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}
+Prints each neuron's spike times that are in an interval defined in the simulation's parameter file and neuron id in a file of given name using the private function print simulation data. 
 \begin{DoxyParams}{Parameters}
 {\em name\-Of\-File,a} & string \\
 \hline
