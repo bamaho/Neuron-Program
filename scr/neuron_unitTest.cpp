@@ -69,10 +69,11 @@
 TEST(oneNeuron, updateMembranePotentialWithPosExternalCurrent) //tests if the membrane potential is correctly updated after one step if the neuron doesn't receive any spike but with stimulation through an external current after one time step
 {
 	Neuron neuron;
-	neuron.setInputCurrent(EXTERNAL_CURRENT);
+	double externalCurrent(1.01);
+	neuron.setInputCurrent(externalCurrent);
 	neuron.updateWithoutBackgroundNoise();
 	
-	EXPECT_DOUBLE_EQ(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)*INITIAL_MEMBRANE_POTENTIAL + (TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C)*EXTERNAL_CURRENT*(1-exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)),neuron.getMembranePotential());
+	EXPECT_DOUBLE_EQ(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)*INITIAL_MEMBRANE_POTENTIAL + (TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C)*externalCurrent*(1-exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)),neuron.getMembranePotential());
 	
 }
 

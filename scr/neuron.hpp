@@ -112,10 +112,10 @@ class Neuron
 	 * @param membranePotentialUpdate, a member function without return value */
 	void update(void (Neuron::*membranePotentialUpdate)());
 	
-	/**Calculates and sets the new membrane potential as a function of the current membrane potential, the external input current, the spikes that arrived with a signal delay and the random background noise arriving from the rest of the brain.
+	/**Calculates and sets the new membrane potential as a function of the current membrane potential, the spikes that arrived with a signal delay and the random background noise arriving from the rest of the brain.
 	 * @see update()	*/
 	void updateMembranePotential();	
-	/**Calculates and sets the new membrane potential as a function of the current membrane potential, the external input current, the spikes that arrived with a signal delay. Similar to updateMembranePotential() but not considering the random background noise arriving from the rest of the brain.
+	/**Calculates and sets the new membrane potential as a function of the current membrane potential, the external input current, the spikes that arrived with a signal delay. Similar to updateMembranePotential() but not considering the random background noise arriving from the rest of the brain, but an external current instead.
 	 * @see updateWithoutBackgroundNoise()	*/
 	void updateMembranePotentialWithoutBackgroundNoise();
 	

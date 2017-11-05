@@ -20,7 +20,7 @@ double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
 
 	Neuron::Neuron()
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
-	,inputCurrent(0)
+	,inputCurrent(EXTERNAL_CURRENT_BY_DEFAULT)
 	,internalTime(INITIAL_TIME) //Might be more appropriate to use the time of creation as an argument by default. Otherwise the assumption is, that it gets created at the beginning of the simulation
 	{ for (auto& element: incomingSpikes){element =0;} 
 		
@@ -111,8 +111,7 @@ double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
 
 	void Neuron::updateMembranePotential()	//adding a second argument "int numberOfSpikes" would be another option
 	{
-		updateMembranePotentialWithoutBackgroundNoise();
-		membranePotential += getBackgroundNoise();
+		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (readRingBuffer()+getBackgroundNoise());
 	}
 	
 	double Neuron::readRingBuffer() const //reads the current entry

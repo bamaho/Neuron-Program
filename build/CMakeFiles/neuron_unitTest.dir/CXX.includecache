@@ -323,8 +323,6 @@ iostream
 -
 random
 -
-deque
--
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/network.hpp
 parameters.hpp
@@ -342,8 +340,6 @@ fstream
 list
 -
 array
--
-deque
 -
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.cpp
@@ -365,8 +361,6 @@ cassert
 -
 random
 -
-deque
--
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron.hpp
 parameters.hpp
@@ -380,8 +374,6 @@ iostream
 string
 -
 vector
--
-deque
 -
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/neuron_unitTest.cpp
@@ -400,8 +392,6 @@ cmath
 iostream
 -
 vector
--
-deque
 -
 
 /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/scr/parameters.hpp
