@@ -11,6 +11,9 @@
 #include <cassert>
 #include <random>
 
+
+//#include <deque>
+
 using namespace std;
 
 double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);

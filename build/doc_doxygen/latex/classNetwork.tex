@@ -12,12 +12,8 @@
 \hypertarget{classNetwork_ab07bb6f6d9020b9eb230551083ea929f}{void \hyperlink{classNetwork_ab07bb6f6d9020b9eb230551083ea929f}{update} ()}\label{classNetwork_ab07bb6f6d9020b9eb230551083ea929f}
 
 \begin{DoxyCompactList}\small\item\em A method updating all of the network's neuron by one step which is used in the main loop. \end{DoxyCompactList}\item 
-\hypertarget{classNetwork_a618d267c0962f59027c0d063aa2b4533}{std\-::vector$<$ std\-::vector\\*
-$<$ unsigned int $>$ $>$ \hyperlink{classNetwork_a618d267c0962f59027c0d063aa2b4533}{get\-Spike\-Times} ()}\label{classNetwork_a618d267c0962f59027c0d063aa2b4533}
-
-\begin{DoxyCompactList}\small\item\em A getter of the spiking times of all neurons, allows to retreive data. \end{DoxyCompactList}\item 
 void \hyperlink{classNetwork_a222e084554183af355833cda07a83877}{print\-Simulation\-Data} (const std\-::string \&name\-Of\-File) const 
-\item 
+\begin{DoxyCompactList}\small\item\em A getter of the spiking times of all neurons, allows to retreive data. \end{DoxyCompactList}\item 
 void \hyperlink{classNetwork_a8909c07d0e6e292f5ca54e56a797ebe0}{print\-Simulation\-Data\-Within\-Time\-Interval} (const std\-::string \&name\-Of\-File) const 
 \item 
 double \hyperlink{classNetwork_ac82435bb56bf5eabfdd3e3f4afadea2b}{get\-Mean\-Spike\-Rate\-In\-Interval} (unsigned int begin\-Interval, unsigned int end\-Interval) const 
@@ -131,6 +127,10 @@ Calculates the mean spike rate of the network's neurons in an interval to indica
 \item[{const std\-::string \&}]{name\-Of\-File}
 \end{DoxyParamCaption}
 ) const}}\label{classNetwork_a222e084554183af355833cda07a83877}
+
+
+A getter of the spiking times of all neurons, allows to retreive data. 
+
 Prints each neuron's spike times and neuron id in a file of given name using the private function print simulation data. 
 \begin{DoxyParams}{Parameters}
 {\em name\-Of\-File,a} & string \\

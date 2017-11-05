@@ -122,8 +122,8 @@ clean: CMakeFiles/neuron.dir/clean
 # Target rules for target CMakeFiles/neuron_unitTest.dir
 
 # All Build rule for target.
-CMakeFiles/neuron_unitTest.dir/all: gtest/CMakeFiles/gtest.dir/all
 CMakeFiles/neuron_unitTest.dir/all: gtest/CMakeFiles/gtest_main.dir/all
+CMakeFiles/neuron_unitTest.dir/all: gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/depend
 	$(MAKE) -f CMakeFiles/neuron_unitTest.dir/build.make CMakeFiles/neuron_unitTest.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/bmarty/Desktop/myfiles/cpp/secondYear/secondWeek/Neuron-Program/build/CMakeFiles  9 10 11 12 13 14

@@ -15,6 +15,4 @@ int main()
 	
 	Simulation simulation;
 	simulation.run(6,4);
-
-	
 }

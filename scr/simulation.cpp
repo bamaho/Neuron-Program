@@ -41,10 +41,10 @@ using namespace std;
 			network.update();
 			simulationTime ++;
 		}
-
+		cerr << "End::Simulation" << endl;
 		network.printSimulationDataWithinTimeInterval("simulationData.txt");
-		//network.getMeanSpikeRateInInterval(2000,12000);
-		cout << "mean firing frequency " << network.getMeanSpikeRateInInterval(0,10000) << endl;
+		network.getMeanSpikeRateInInterval(2000,12000);
+		//cout << "mean firing frequency " << network.getMeanSpikeRateInInterval(0,10000) << endl;
 		if(system("python ../scr/pyscript.py")==0)
 		{cerr << "command doesn't exist" << endl;
 		}

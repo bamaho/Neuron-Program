@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['targets',['targets',['../classNeuron.html#a5c97843cd38dd8c5ff2d861d25e18473',1,'Neuron']]]
+  ['spikes',['spikes',['../classNeuron.html#ab358994e1a6e4d3a1399906471657b4b',1,'Neuron']]]
 ];

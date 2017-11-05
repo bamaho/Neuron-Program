@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spikes',['spikes',['../classNeuron.html#ab358994e1a6e4d3a1399906471657b4b',1,'Neuron']]]
+  ['ratiovextovervthr',['ratioVextOverVthr',['../classNeuron.html#a1b5bf86e2ff7636a7e944909e19ec0f6',1,'Neuron']]]
 ];
