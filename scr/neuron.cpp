@@ -1,18 +1,16 @@
 #include "neuron.hpp"
 #include "parameters.hpp"
 
-//#include <vector>
+#include <vector>
 #include <cmath>
 #include <string>
 #include <iostream>
-#include <fstream>
-//#include <list>
 #include <array>
 #include <cassert>
 #include <random>
 
+//#include <fstream>
 
-//#include <deque>
 
 using namespace std;
 
@@ -21,11 +19,9 @@ double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
 	Neuron::Neuron()
 	:membranePotential(INITIAL_MEMBRANE_POTENTIAL)
 	,inputCurrent(EXTERNAL_CURRENT_BY_DEFAULT)
-	,internalTime(INITIAL_TIME) //Might be more appropriate to use the time of creation as an argument by default. Otherwise the assumption is, that it gets created at the beginning of the simulation
-	{ for (auto& element: incomingSpikes){element =0;} 
+	,internalTime(INITIAL_TIME) 
+	{ for (auto& element: incomingSpikes){element =0;} }	//Initializes the ring buffer entries to zero
 		
-		}	//Initialized the ring buffer entries to zero
-	
 	Neuron:: ~Neuron(){}
 	
 	
@@ -36,11 +32,71 @@ double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
 	size_t Neuron::getNumberOfSpikes() const
 	{ return spikes.size(); }
 	
+	const vector<unsigned int>& Neuron::getSpikeTime() const	
+	{	
+		const vector<unsigned int> & sTimes(spikes);
+		return sTimes;	
+	}
 	
+	//Testing
+	size_t Neuron::getNumberOfTargets() const
+	{return targets.size();}
+	
+	size_t Neuron::getNumberOfExcitatoryTargets() const
+	{	
+		size_t counterExcitatoryNeurons(0);
+		for(const auto& target :targets)
+		{
+			if(target->getSpikeAmplitude()==SPIKE_AMPLITUDE_J_EXCITATORY_NEURON)
+			{
+				counterExcitatoryNeurons++;
+			}
+		}
+		return counterExcitatoryNeurons;
+	}
 	
 	void Neuron::setInputCurrent(double externalCurrent)
 	{inputCurrent = externalCurrent;}
 	
+	
+	
+	void Neuron::update()	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
+	{	update(&Neuron::updateMembranePotential); }
+	
+	void Neuron::updateWithoutBackgroundNoise()
+	{	update(&Neuron::updateMembranePotentialWithoutBackgroundNoise); }
+	
+	
+	
+	void Neuron::receiveSpike(unsigned int localTimeOfSpikingNeuron, double spikeAmplitude)
+	{	
+		incomingSpikes[timeToRingBufferIndex(SIGNAL_DELAY_D+localTimeOfSpikingNeuron)] += spikeAmplitude;	//writes the incoming spike at curent time + the signal delay into the ring buffer, to be altered, if one drops the simplification that D is uniform, d should be added by the spiking neuron
+	}	
+		
+	
+
+	void Neuron:: addTarget(Neuron* target)	
+	{
+		if(target != nullptr) {
+			targets.push_back(target);
+		}
+	}
+	
+	//Random Generator
+	double Neuron::getBackgroundNoise() const
+	{
+		 static random_device randomDevice;
+		 static mt19937 generator(randomDevice());
+		 static poisson_distribution<> distribution(ratioVextOverVthr*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU));//V_EXT*J_EXT*h*Cext, "The number of connections from outside the network is taken to be equal to the number of recurrent excitatory ones, Cext = Ce"
+		 return SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*distribution(generator);
+	}
+	
+	void Neuron::setRatioVextOverVthr(double ratioVextOverVthr_)
+	{
+		ratioVextOverVthr = ratioVextOverVthr_;
+	}
+	
+
 	void Neuron::update(void (Neuron::*membranePotentialUpdate)() )
 	{
 		if(not isRefractory())
@@ -58,26 +114,6 @@ double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
 		internalTime ++;
 	}
 	
-	void Neuron::update()	//Is invoked at each cycle of the simulation and makes the neutron evolve in the course of time
-	{
-		update(&Neuron::updateMembranePotential);
-		/*if(not isRefractory())
-		{
-			if(getMembranePotential() >= MEMBRANE_POTENTIAL_THRESHOLD)
-			{
-				spike();
-			}
-			else
-			{
-				updateMembranePotential();
-			}
-		}
-		reinitializeCurrentRingBufferElement();
-		internalTime ++;*/
-	}
-	void Neuron::updateWithoutBackgroundNoise()
-	{update(&Neuron::updateMembranePotentialWithoutBackgroundNoise);}
-	
 	bool Neuron::isRefractory() const	//If there haven't occured any spikes yet or the latest spike took place and the neuron has in the meantime undergone a complete refractory state, then the neuron isn't refractory
 	{	
 		return not(spikes.empty() or ((internalTime - spikes.back())>=	REFRACTION_PERIOD));
@@ -92,20 +128,16 @@ double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
 			for(auto& targetNeuron: targets)
 			{
 				if(targetNeuron != nullptr) {
-                targetNeuron->receiveSpike(internalTime, getSpikeAmplitude()); //once two types of neurons are possible, this line isn't adequate anymore
+                targetNeuron->receiveSpike(internalTime, getSpikeAmplitude()); //two types of neurons have to be considered
 				}
-			
 			}
 		}
 	}
-	
-	void Neuron::receiveSpike(unsigned int localTimeOfSpikingNeuron, double spikeAmplitude)
-	{	
-		incomingSpikes[timeToRingBufferIndex(SIGNAL_DELAY_D+localTimeOfSpikingNeuron)] += spikeAmplitude;	//writes the incoming spike at curent time + the signal delay into the ring buffer, to be altered, if one drops the simplification that D is uniform, d should be added by the spiking neuron
-	}	
+		
 		
 	void Neuron::updateMembranePotentialWithoutBackgroundNoise()
 	{
+		
 		(membranePotential *= INTERMEDIATE_RESULT_UPDATE_POTENTIAL) += (inputCurrent*MEMBRANE_RESISTANCE_R*(1-INTERMEDIATE_RESULT_UPDATE_POTENTIAL)+readRingBuffer());
 	}
 
@@ -135,8 +167,9 @@ double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
 	{
 		return SPIKE_AMPLITUDE_J;
 	}
-	
-	void Neuron::printSpikingTimes(const string& nameOfFile) const //prints the registered times when spikes ocurred into a file with a name to indicate
+		
+		
+	/*void Neuron::printSpikingTimes(const string& nameOfFile) const //prints the registered times when spikes ocurred into a file with a name to indicate
 	{
 		ofstream out(nameOfFile);
 		
@@ -155,32 +188,4 @@ double Neuron::ratioVextOverVthr(RATIO_V_EXTERNAL_OVER_V_THRESHOLD);
 			}
 		}
 		out.close();
-	}
-
-	void Neuron:: addTarget(Neuron* target)	//not the most elegant of solutions, since with this conception it is the users oblication to allocate space in the memory, the usage of unique pointers might have been more appropriate
-	{
-		if(target != nullptr) { //unpredictible
-			targets.push_back(target);
-		}
-	}
-	
-	//Random Generator
-	double Neuron::getBackgroundNoise() const
-	{
-		 static random_device randomDevice;
-		 static mt19937 generator(randomDevice());
-		 static poisson_distribution<> distribution(ratioVextOverVthr*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/(SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*TIME_CONSTANT_TAU));//V_EXT*J_EXT*h*Cext, "The number of connections from outside the network is taken to be equal to the number of recurrent excitatory ones, Cext = Ce"
-		 return SPIKE_AMPLITUDE_J_EXCITATORY_NEURON*distribution(generator);
-	}
-	
-	void Neuron::setRatioVextOverVthr(double ratioVextOverVthr_)
-	{
-		ratioVextOverVthr = ratioVextOverVthr_;
-	}
-	
-	//Testing
-	
-		const vector<unsigned int>& Neuron::getSpikeTime() const	//Vector is not the appropriate choice
-	{	
-		const vector<unsigned int> & sTimes(spikes);
-		return sTimes;	}
+	}*/

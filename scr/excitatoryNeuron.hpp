@@ -4,30 +4,23 @@
 #include "parameters.hpp"
 #include "neuron.hpp"
 
-//#include <array>
-//#include <fstream>
-//#include <iostream>
-//#include <list>
-//#include <string>
-//#include <vector>
-
-
+/** A subclass of Neuron.
+ * A class that allows excitatory neurons to adopt specific behaviour, namely having a distinct spike amplitude.*/
 class ExcitatoryNeuron : public Neuron
 {
 	public:
 	
-	//constructor
+	///A constructor, calling the constructor of the superclass Neuron.
 	ExcitatoryNeuron();
-	
-	double getSpikeAmplitude() const;
-	
-	
 	
 	private:
 	
-	
-	
+	///A getter of the excitatory neuron's spike amplitude.
+	/** Reads the excitatory neuron's spike amplitude from the parameter file.
+	 *@see Neuron::spike()
+	 *@see Neuron::getNumberOfExcitatoryTargets()
+	 *@return the excitatory neuron's spike amplitude, a double */
+	double getSpikeAmplitude() const override;
 };
-
 
 #endif

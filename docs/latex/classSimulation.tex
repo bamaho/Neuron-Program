@@ -1,0 +1,165 @@
+\hypertarget{classSimulation}{\section{Simulation Class Reference}
+\label{classSimulation}\index{Simulation@{Simulation}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSimulation_a5b224cc5b36bcc8eb29689aff223de41}{\hyperlink{classSimulation_a5b224cc5b36bcc8eb29689aff223de41}{Simulation} ()}\label{classSimulation_a5b224cc5b36bcc8eb29689aff223de41}
+
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\hypertarget{classSimulation_a73206723f84956e7d54766cec6286a1f}{void \hyperlink{classSimulation_a73206723f84956e7d54766cec6286a1f}{set\-Ratio\-Jinover\-Jex\-G} (double ratio\-Jinover\-Jex\-G) const }\label{classSimulation_a73206723f84956e7d54766cec6286a1f}
+
+\begin{DoxyCompactList}\small\item\em A setter of the simulation parameter Jinhibitory/\-Jexcitatory g. Calls the static setter of the class inhibitory neuron. \end{DoxyCompactList}\item 
+\hypertarget{classSimulation_a1d1100a36280bd45f426c82545f926bc}{void \hyperlink{classSimulation_a1d1100a36280bd45f426c82545f926bc}{set\-Ratio\-Vext\-Over\-Vthr} (double ratio\-Vext\-Over\-Vthr) const }\label{classSimulation_a1d1100a36280bd45f426c82545f926bc}
+
+\begin{DoxyCompactList}\small\item\em A setter of the simulation parameter Vext/\-Vthr. Calls the static setter of the class neuron. \end{DoxyCompactList}\item 
+void \hyperlink{classSimulation_a842b9a8457fec98727ce838a8f165e87}{print\-Data\-For\-Brunel\-Figure\-To\-File} (double ratio\-Jinover\-Jex\-G, double ratio\-Vext\-Over\-Vthr, unsigned int time\-Begin\-Measurement=T\-I\-M\-E\-\_\-\-B\-E\-G\-I\-N\-\_\-\-P\-R\-I\-N\-T\-\_\-\-T\-O\-\_\-\-T\-X\-T\-\_\-\-F\-I\-L\-E\-\_\-\-B\-Y\-\_\-\-D\-E\-F\-A\-U\-L\-T, unsigned int time\-End\-Measurement=T\-I\-M\-E\-\_\-\-E\-N\-D\-\_\-\-P\-R\-I\-N\-T\-\_\-\-T\-O\-\_\-\-T\-X\-T\-\_\-\-F\-I\-L\-E\-\_\-\-B\-Y\-\_\-\-D\-E\-F\-A\-U\-L\-T, const std\-::string \&name\-Of\-File=\char`\"{}simulation\-Data.\-txt\char`\"{})
+\begin{DoxyCompactList}\small\item\em A method allowing to specify the necessary simulation parameters in order to obtain the data required for the reproduction of Brunel's figures. \end{DoxyCompactList}\item 
+double \hyperlink{classSimulation_a48419e2332a7186041433ca3b67fbdab}{print\-Data\-For\-Brunel\-Figure\-To\-File\-With\-Mean\-Spiking\-Rate} (double ratio\-Jinover\-Jex\-G, double ratio\-Vext\-Over\-Vthr)
+\begin{DoxyCompactList}\small\item\em A method allowing to specify the necessary simulation parameters (but not the interval) in order to obtain the data required for the reproduction of Brunel's figures and ,as a test, the mean firing frequency of the simulation's neurons. \end{DoxyCompactList}\item 
+double \hyperlink{classSimulation_acf963fa9fa6621ec7f98f743ffbd96f5}{get\-Mean\-Spike\-Rate\-In\-Interval} (double ratio\-Jinover\-Jex\-G, double ratio\-Vext\-Over\-Vthr, unsigned int time\-Begin\-Measurement, unsigned int time\-End\-Measurement)
+\begin{DoxyCompactList}\small\item\em A method allowing to specify the necessary simulation parameters (but not the interval) in order to obtain the data required the mean firing rate of the simulation's neurons in a given interval. Seems to be too time consuming to work out in a unit\-Test. \end{DoxyCompactList}\item 
+\hypertarget{classSimulation_a46506067eba805c7a282832b404c671f}{int {\bfseries run\-Brunel} ()}\label{classSimulation_a46506067eba805c7a282832b404c671f}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned int \hyperlink{classSimulation_a474659676b4cc3e5c002a23df835be5c}{get\-Time\-Begin\-Print\-To\-Txt\-File} ()
+\begin{DoxyCompactList}\small\item\em A getter of the simulation time from when on the spikes get printed to the text file. \end{DoxyCompactList}\item 
+static unsigned int \hyperlink{classSimulation_a364b076cae1c94df74f3c608b02d9090}{get\-Time\-End\-Print\-To\-Txt\-File} ()
+\begin{DoxyCompactList}\small\item\em A getter of the simulation time up to when the spikes get printed to the text file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSimulation_a9c9a1b5e52b447c84977990ebd545f38}{run} (unsigned int duration\-Of\-Simulation=F\-I\-N\-A\-L\-\_\-\-T\-I\-M\-E)
+\begin{DoxyCompactList}\small\item\em An auxiliary method in order to modularize the code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSimulation_a7b3ddbe6f43ec8b5fee95f1a5cdedbbe}{\hyperlink{classNetwork}{Network} \hyperlink{classSimulation_a7b3ddbe6f43ec8b5fee95f1a5cdedbbe}{network}}\label{classSimulation_a7b3ddbe6f43ec8b5fee95f1a5cdedbbe}
+
+\begin{DoxyCompactList}\small\item\em The ensemble of neurons that is being studied. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classSimulation_aee799c8533cca60bc65f9ec6ab6765c7}{static unsigned int \hyperlink{classSimulation_aee799c8533cca60bc65f9ec6ab6765c7}{time\-Begin\-Print\-To\-Txt\-File}}\label{classSimulation_aee799c8533cca60bc65f9ec6ab6765c7}
+
+\begin{DoxyCompactList}\small\item\em A static parameter specifying from when on the spikes get printed to the text file, an unsigned int. \end{DoxyCompactList}\item 
+\hypertarget{classSimulation_acd5308517686cbb107fb2ec5ea937782}{static unsigned int \hyperlink{classSimulation_acd5308517686cbb107fb2ec5ea937782}{time\-End\-Print\-To\-Txt\-File}}\label{classSimulation_acd5308517686cbb107fb2ec5ea937782}
+
+\begin{DoxyCompactList}\small\item\em A static parameter specifying up to when the spikes get printed to the text file, an unsigned int. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSimulation_acf963fa9fa6621ec7f98f743ffbd96f5}{\index{Simulation@{Simulation}!get\-Mean\-Spike\-Rate\-In\-Interval@{get\-Mean\-Spike\-Rate\-In\-Interval}}
+\index{get\-Mean\-Spike\-Rate\-In\-Interval@{get\-Mean\-Spike\-Rate\-In\-Interval}!Simulation@{Simulation}}
+\subsubsection[{get\-Mean\-Spike\-Rate\-In\-Interval}]{\setlength{\rightskip}{0pt plus 5cm}double Simulation\-::get\-Mean\-Spike\-Rate\-In\-Interval (
+\begin{DoxyParamCaption}
+\item[{double}]{ratio\-Jinover\-Jex\-G, }
+\item[{double}]{ratio\-Vext\-Over\-Vthr, }
+\item[{unsigned int}]{time\-Begin\-Measurement, }
+\item[{unsigned int}]{time\-End\-Measurement}
+\end{DoxyParamCaption}
+)}}\label{classSimulation_acf963fa9fa6621ec7f98f743ffbd96f5}
+
+
+A method allowing to specify the necessary simulation parameters (but not the interval) in order to obtain the data required the mean firing rate of the simulation's neurons in a given interval. Seems to be too time consuming to work out in a unit\-Test. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ratio\-Jinover\-Jex\-G,a} & double \\
+\hline
+{\em ratio\-Vext\-Over\-Vthr,a} & double \\
+\hline
+{\em time\-Begin\-Measurement,an} & unsigned int \\
+\hline
+{\em time\-End\-Measurement,unsigned} & int \\
+\hline
+\end{DoxyParams}
+\hypertarget{classSimulation_a474659676b4cc3e5c002a23df835be5c}{\index{Simulation@{Simulation}!get\-Time\-Begin\-Print\-To\-Txt\-File@{get\-Time\-Begin\-Print\-To\-Txt\-File}}
+\index{get\-Time\-Begin\-Print\-To\-Txt\-File@{get\-Time\-Begin\-Print\-To\-Txt\-File}!Simulation@{Simulation}}
+\subsubsection[{get\-Time\-Begin\-Print\-To\-Txt\-File}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Simulation\-::get\-Time\-Begin\-Print\-To\-Txt\-File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classSimulation_a474659676b4cc3e5c002a23df835be5c}
+
+
+A getter of the simulation time from when on the spikes get printed to the text file. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classNetwork}{Network} 
+\end{DoxySeeAlso}
+\hypertarget{classSimulation_a364b076cae1c94df74f3c608b02d9090}{\index{Simulation@{Simulation}!get\-Time\-End\-Print\-To\-Txt\-File@{get\-Time\-End\-Print\-To\-Txt\-File}}
+\index{get\-Time\-End\-Print\-To\-Txt\-File@{get\-Time\-End\-Print\-To\-Txt\-File}!Simulation@{Simulation}}
+\subsubsection[{get\-Time\-End\-Print\-To\-Txt\-File}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Simulation\-::get\-Time\-End\-Print\-To\-Txt\-File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classSimulation_a364b076cae1c94df74f3c608b02d9090}
+
+
+A getter of the simulation time up to when the spikes get printed to the text file. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classNetwork}{Network} 
+\end{DoxySeeAlso}
+\hypertarget{classSimulation_a842b9a8457fec98727ce838a8f165e87}{\index{Simulation@{Simulation}!print\-Data\-For\-Brunel\-Figure\-To\-File@{print\-Data\-For\-Brunel\-Figure\-To\-File}}
+\index{print\-Data\-For\-Brunel\-Figure\-To\-File@{print\-Data\-For\-Brunel\-Figure\-To\-File}!Simulation@{Simulation}}
+\subsubsection[{print\-Data\-For\-Brunel\-Figure\-To\-File}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation\-::print\-Data\-For\-Brunel\-Figure\-To\-File (
+\begin{DoxyParamCaption}
+\item[{double}]{ratio\-Jinover\-Jex\-G, }
+\item[{double}]{ratio\-Vext\-Over\-Vthr, }
+\item[{unsigned int}]{time\-Begin\-Measurement = {\ttfamily TIME\-\_\-BEGIN\-\_\-PRINT\-\_\-TO\-\_\-TXT\-\_\-FILE\-\_\-BY\-\_\-DEFAULT}, }
+\item[{unsigned int}]{time\-End\-Measurement = {\ttfamily TIME\-\_\-END\-\_\-PRINT\-\_\-TO\-\_\-TXT\-\_\-FILE\-\_\-BY\-\_\-DEFAULT}, }
+\item[{const std\-::string \&}]{name\-Of\-File = {\ttfamily \char`\"{}simulationData.txt\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{classSimulation_a842b9a8457fec98727ce838a8f165e87}
+
+
+A method allowing to specify the necessary simulation parameters in order to obtain the data required for the reproduction of Brunel's figures. 
+
+\begin{DoxySeeAlso}{See Also}
+main() 
+\end{DoxySeeAlso}
+\hypertarget{classSimulation_a48419e2332a7186041433ca3b67fbdab}{\index{Simulation@{Simulation}!print\-Data\-For\-Brunel\-Figure\-To\-File\-With\-Mean\-Spiking\-Rate@{print\-Data\-For\-Brunel\-Figure\-To\-File\-With\-Mean\-Spiking\-Rate}}
+\index{print\-Data\-For\-Brunel\-Figure\-To\-File\-With\-Mean\-Spiking\-Rate@{print\-Data\-For\-Brunel\-Figure\-To\-File\-With\-Mean\-Spiking\-Rate}!Simulation@{Simulation}}
+\subsubsection[{print\-Data\-For\-Brunel\-Figure\-To\-File\-With\-Mean\-Spiking\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}double Simulation\-::print\-Data\-For\-Brunel\-Figure\-To\-File\-With\-Mean\-Spiking\-Rate (
+\begin{DoxyParamCaption}
+\item[{double}]{ratio\-Jinover\-Jex\-G, }
+\item[{double}]{ratio\-Vext\-Over\-Vthr}
+\end{DoxyParamCaption}
+)}}\label{classSimulation_a48419e2332a7186041433ca3b67fbdab}
+
+
+A method allowing to specify the necessary simulation parameters (but not the interval) in order to obtain the data required for the reproduction of Brunel's figures and ,as a test, the mean firing frequency of the simulation's neurons. 
+
+\begin{DoxySeeAlso}{See Also}
+main() 
+\end{DoxySeeAlso}
+\hypertarget{classSimulation_a9c9a1b5e52b447c84977990ebd545f38}{\index{Simulation@{Simulation}!run@{run}}
+\index{run@{run}!Simulation@{Simulation}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation\-::run (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{duration\-Of\-Simulation = {\ttfamily FINAL\-\_\-TIME}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classSimulation_a9c9a1b5e52b447c84977990ebd545f38}
+
+
+An auxiliary method in order to modularize the code. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classSimulation_a842b9a8457fec98727ce838a8f165e87}{print\-Data\-For\-Brunel\-Figure\-To\-File()} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em duration\-Of\-Simulation,a} & integer \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+simulation.\-hpp\item 
+simulation.\-cpp\end{DoxyCompactItemize}

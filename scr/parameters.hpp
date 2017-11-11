@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <cassert>
+#include <string>
 
 //Parameters
 
@@ -14,8 +15,10 @@ constexpr double MIN_TIME_INTERVAL_H(0.1);	//minimal time interval in millisecon
 constexpr unsigned int SIGNAL_DELAY_D(15); //delay that the signal undergoes between emission and reception, for the sake of convenience uniform, in steps
 
 //Fetch Data
-constexpr unsigned int TIME_BEGIN_PRINT_TO_TXT_FILE(10000); //simulation time interval in which the data gets printed to a text file, shouldn't between initial and final time of the simulation
-constexpr unsigned int TIME_END_PRINT_TO_TXT_FILE(12000);
+constexpr unsigned int TIME_BEGIN_PRINT_TO_TXT_FILE_BY_DEFAULT(10000); //simulation time interval in which the data gets printed to a text file, shouldn't between initial and final time of the simulation
+constexpr unsigned int TIME_END_PRINT_TO_TXT_FILE_BY_DEFAULT(12000);
+
+const std::string NAME_OF_FILE("simulationData.txt"); //If not otherwise specified the data gets printed in a file of this name
 
 	//Current
 constexpr double EXTERNAL_CURRENT_BY_DEFAULT(0); //current applied to the neuron from the outside in piktoampere, by default zero, is not accounted for when simulating an entire network
@@ -29,9 +32,9 @@ constexpr double SPIKE_AMPLITUDE_J(0.1); 	//post synaptic spike response amplitu
 
 	//Network
 constexpr unsigned int TOTAL_NUMBER_OF_NEURONS_N(12500);	//number of neurons in a simulation
-constexpr double PERCENT_EXCITATORY_NEURONS(80);
-constexpr unsigned int NUMBER_OF_EXCITATORY_NEURONS_Ne(TOTAL_NUMBER_OF_NEURONS_N*PERCENT_EXCITATORY_NEURONS/100);
-constexpr unsigned int NUMBER_OF_INHIBITORY_NEURONS_Ni(TOTAL_NUMBER_OF_NEURONS_N-NUMBER_OF_EXCITATORY_NEURONS_Ne);
+constexpr double PERCENT_EXCITATORY_NEURONS(80);	//percent of excitatory neurons in a simulation
+constexpr unsigned int NUMBER_OF_EXCITATORY_NEURONS_Ne(TOTAL_NUMBER_OF_NEURONS_N*PERCENT_EXCITATORY_NEURONS/100); //number of excitatory neurons in a simulation
+constexpr unsigned int NUMBER_OF_INHIBITORY_NEURONS_Ni(TOTAL_NUMBER_OF_NEURONS_N-NUMBER_OF_EXCITATORY_NEURONS_Ne); //number of inhibitory neurons in a simulation
 
 constexpr unsigned int NUMBER_OF_CONNECTIONS_FROM_NEURONS_C(1);	//each neuron receives C randomly chosen connections from other neurons in the network, since this value is also important for the computation of the membrane resistance R it can't have its actual value for the testing of the older parts of the program to work, MUST NOT BE ZERO FOR THIS RESULTS IN UNDEFINED BEHAVIOUR, DIVISION BY ZERO!
 
@@ -53,6 +56,6 @@ constexpr double MEMBRANE_RESISTANCE_R(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_F
 constexpr double INTERMEDIATE_RESULT_UPDATE_POTENTIAL(exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU));	//an expression which has to be calculated multiple times when updating the membrane potential and that is constant
 
 //Activity of the rest of the brain
-constexpr double RATIO_V_EXTERNAL_OVER_V_THRESHOLD(0.9);
+constexpr double RATIO_V_EXTERNAL_OVER_V_THRESHOLD(0.9); //mean frequency of stimulation from the rest of  over the external frequency that was needed to reach the threshold in absence of feedback
 
 #endif

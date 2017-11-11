@@ -29,7 +29,7 @@
  * - and thus the membrane resistance R = 20 GΩ (=tau/C)
  * */
  
- TEST(oneNeuron, spikeTimes)	//with an external input current of 1.01 mV neuron spikes after 92.4ms
+ TEST(oneNeuron, spikeTimes)	//with an external input current of 1.01 mV neuron spikes after 92.4, 186.8, 281.2 and 375.6 ms, this is being tested
  {
 	Neuron neuron;
 	neuron.setInputCurrent(1.01);
@@ -41,7 +41,7 @@
 	EXPECT_FALSE(neuron.getSpikeTime().empty());
 	updateNeuronNTimes(neuron, 3000);
 	
-	std::vector<unsigned int> calculatedSpikeTimes({924,1868,2812,3756});//to verify!!
+	std::vector<unsigned int> calculatedSpikeTimes({924,1868,2812,3756});
 	EXPECT_EQ(calculatedSpikeTimes,neuron.getSpikeTime());
 	
 }
@@ -53,19 +53,15 @@
 	neuron.setInputCurrent(1);
 	neuron.updateWithoutBackgroundNoise();
 	
-	//cerr(TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C)*(1-exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)
 	EXPECT_DOUBLE_EQ( (TIME_CONSTANT_TAU/NUMBER_OF_CONNECTIONS_FROM_NEURONS_C)*(1-exp(-MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU)),neuron.getMembranePotential()); //tests if the first update of the membrane potential one correct
 	
 	updateNeuronNTimes(neuron, 10000);
 	EXPECT_EQ(0,neuron.getNumberOfSpikes());
 	EXPECT_NEAR (MEMBRANE_POTENTIAL_THRESHOLD, neuron.getMembranePotential(), 0.1);
 	
-	
 }
  
- /*
-  * Tests of more general nature, independent of parameter
-  * */
+ 
 TEST(oneNeuron, updateMembranePotentialWithPosExternalCurrent) //tests if the membrane potential is correctly updated after one step if the neuron doesn't receive any spike but with stimulation through an external current after one time step
 {
 	Neuron neuron;
@@ -129,10 +125,13 @@ TEST(twoNeurons, ringBuffer) //tests if a spike arrive with the right delay and 
 	
 }
 
-/*TEST(neuronalNetwork, initialisation) //tests if each neuron receives the correct number of spikes and is thus properly connected
+TEST(neuronalNetwork, initialisation) //tests if each neuron receives the correct number of spikes and is thus properly connected
 {
 	Network network;
-}*/
+	EXPECT_NEAR(network.getMeanNumberOfTargetsPerNeuron(),NUMBER_OF_CONNECTIONS_FROM_EXCITATORY_NEURONS_Ce+NUMBER_OF_CONNECTIONS_FROM_INHIBITORY_NEURONS_Ci,0.00001);
+	EXPECT_NEAR(network.getMeanNumberOfExcitatoryTargetsPerNeuron(),NUMBER_OF_CONNECTIONS_FROM_EXCITATORY_NEURONS_Ce,0.00001);
+	
+}
 
 TEST(oneNeuron, randomBackgroundNoise) //tests if the variance resp. the expected value of the expression a*poissson(x) is equal to a*a*var(poisson(x)) resp. a*mean(poisson(x)) as expected
 {
@@ -140,7 +139,7 @@ TEST(oneNeuron, randomBackgroundNoise) //tests if the variance resp. the expecte
 	
 	std::vector<double> backgroundNoise;
 	
-	for(size_t i(0);i<1000000;i++)
+	for(size_t i(0);i<1000000;i++)// calculate expected value
 	{
 		backgroundNoise.push_back(neuron.getBackgroundNoise());
 	}
@@ -148,7 +147,8 @@ TEST(oneNeuron, randomBackgroundNoise) //tests if the variance resp. the expecte
 	double meanValue(std::accumulate(backgroundNoise.begin(), backgroundNoise.end(), 0.0) / backgroundNoise.size());
 	
 	EXPECT_NEAR(RATIO_V_EXTERNAL_OVER_V_THRESHOLD*MEMBRANE_POTENTIAL_THRESHOLD*MIN_TIME_INTERVAL_H/TIME_CONSTANT_TAU, meanValue, 0.001);//tests if the expected value is the right one
-	for(auto& element:backgroundNoise)
+	
+	for(auto& element:backgroundNoise) //calculate variance
 	{
 		element=pow(element-meanValue,2);
 	}
@@ -156,15 +156,12 @@ TEST(oneNeuron, randomBackgroundNoise) //tests if the variance resp. the expecte
 	
 }
 
-/*TEST(simulation, averageSpikeRate) //tests if the variance resp. the expected value of the expression a*poissson(x) is equal to a*a*var(poisson(x)) resp. a*mean(poisson(x)) as expected
+/*TEST(simulation, averageSpikeRate) //tests if the mean spike frequency is close to the one indicate in brunel's paper, seems to be too time consuming for a unit test. Therfore the comparison of these values is given when excecuting the program.
 {
 	Simulation simulation;
-	EXPECT_NEAR(simulation.getMeanSpikeRateInInterval(6,4,2000,12000),55.8,1);
+	EXPECT_NEAR(simulation.getMeanSpikeRateInInterval(6,4,2000,12000),55.8,10);
 	
 }*/
-
-
-
 
 int main(int argc, char **argv)
 {
